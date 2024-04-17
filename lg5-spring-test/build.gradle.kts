@@ -5,3 +5,4 @@ dependencies {
     implementation(libs.jupiter.engine)
     testRuntimeOnly(libs.jupiter.launcher)
 }
+tasks.jar { enabled = true }
