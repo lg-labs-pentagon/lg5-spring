@@ -1,7 +1,6 @@
 dependencies {
     api(libs.springboot.starter.test)
-    api(libs.jupiter)
-    api(libs.mockito.core)
+    api(project(":lg5-jvm-test"))
 
 }
 tasks.jar { enabled = true }

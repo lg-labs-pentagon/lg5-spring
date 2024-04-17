@@ -75,6 +75,11 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
 
+      - name: Declare some variables
+        shell: bash
+        run: |
+          echo "sha_short=$(git rev-parse --short "$GITHUB_SHA")" >> "$GITHUB_ENV"
+
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@417ae3ccd767c252f5661f1ace9f835f9654f2b5 # v3.1.0
 
@@ -82,6 +87,6 @@ jobs:
         run: ./gradlew build
 
       - name:  Publish to GitHub Packages
-        run: ./gradlew publish
+        run: ./gradlew publish -Pversion=1.0.0-alpha.${{ env.sha_short }}
         env:
           GITHUB_TOKEN: ${{ secrets.DEPLOY_GITHUB_TOKEN }}

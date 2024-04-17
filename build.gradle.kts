@@ -29,8 +29,8 @@ subprojects {
 
 }
 allprojects {
-    group = "com.lg5.spring"
-    version = "1.0.0-alpha.6"
+    group = project.group
+    version = project.version
 }
 
 repositories {
