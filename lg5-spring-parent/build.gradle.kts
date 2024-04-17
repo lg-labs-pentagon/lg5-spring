@@ -1,3 +1,5 @@
 dependencies {
-    testImplementation(kotlin("test"))
+    api(libs.springboot.starter.parent)
+    api(libs.guava)
+    api(libs.lombok)
 }
