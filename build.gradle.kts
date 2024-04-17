@@ -5,7 +5,6 @@ plugins {
 }
 
 subprojects {
-    apply(plugin = "kotlin")
     apply(plugin = "java-library")
     apply(plugin = "maven-publish")
 
