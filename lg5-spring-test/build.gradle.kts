@@ -1,5 +1,5 @@
 dependencies {
-    implementation(libs.springboot.starter.test)
+    api(libs.springboot.starter.test)
     implementation(libs.mockito.core)
     implementation(libs.jupiter.api)
     implementation(libs.jupiter.engine)
