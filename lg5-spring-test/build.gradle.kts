@@ -1,8 +1,7 @@
 dependencies {
     api(libs.springboot.starter.test)
-    implementation(libs.mockito.core)
-    implementation(libs.jupiter.api)
-    implementation(libs.jupiter.engine)
-    testRuntimeOnly(libs.jupiter.launcher)
+    api(libs.jupiter)
+    api(libs.mockito.core)
+
 }
 tasks.jar { enabled = true }
