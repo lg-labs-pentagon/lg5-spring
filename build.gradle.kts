@@ -30,7 +30,7 @@ subprojects {
 }
 allprojects {
     group = "com.lg5.spring"
-    version = "1.0.0-alpha"
+    version = "1.0.0-alpha.1"
 }
 
 repositories {
