@@ -18,7 +18,7 @@ subprojects {
         repositories {
             mavenLocal()
             maven {
-                url = uri("https://maven.pkg.github.com/lg-pentagon/lg5-spring")
+                url = uri("https://maven.pkg.github.com/lg-labs-pentagon/lg5-spring")
                 credentials {
                     username = System.getenv("GITHUB_ACTOR")
                     password = System.getenv("GITHUB_TOKEN")
