@@ -1,7 +1,7 @@
 dependencies {
-    testImplementation(libs.springboot.starter.test)
-    testImplementation(libs.mockito.core)
-    testImplementation(libs.jupiter.api)
-    testImplementation(libs.jupiter.engine)
-    testRuntimeOnly(libs.jupiter.launcher)
+    implementation(libs.springboot.starter.test)
+    implementation(libs.mockito.core)
+    implementation(libs.jupiter.api)
+    implementation(libs.jupiter.engine)
+    implementation(libs.jupiter.launcher)
 }
