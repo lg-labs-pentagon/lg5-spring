@@ -46,3 +46,7 @@ tasks.test {
 kotlin {
     jvmToolchain(21)
 }
+
+tasks.withType<JavaCompile>() {
+    options.encoding = "UTF-8"
+}

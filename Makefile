@@ -6,6 +6,9 @@ jvm-test-test:
 jvm-test-publish:
 	./gradlew :lg5-jvm-test:publishLibraryPublicationToMavenLocal
 
+jvm-test-build:
+	./gradlew :lg5-spring-parent:build
+
 jvm-publish:
 	jvm-test-publish
 
