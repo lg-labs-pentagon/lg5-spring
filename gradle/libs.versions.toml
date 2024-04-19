@@ -4,7 +4,6 @@ lombok-version = "1.18.32"
 guava-version = "31.0.1-jre"
 spring-boot-version = "3.2.3"
 mockito-version = "5.7.0"
-puppycrawl-version = "10.12.1"
 
 
 
@@ -23,8 +22,7 @@ jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", v
 jupiter-launcher = { module="org.junit.platform:junit-platform-launcher"}
 mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito-version" }
 
-# Checkstyle
-puppycrawl-tools = { group = "com.puppycrawl.tools", name = "checkstyle", version.ref = "puppycrawl-version" }
+
 
 # Utils
 lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok-version" }
