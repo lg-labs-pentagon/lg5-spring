@@ -10,7 +10,7 @@ subprojects {
 
     publishing {
         publications {
-            create<MavenPublication>("mavenJava") {
+            create<MavenPublication>("library") {
                 from(components["java"])
             }
         }
