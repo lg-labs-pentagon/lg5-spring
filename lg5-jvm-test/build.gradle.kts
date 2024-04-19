@@ -1,6 +1,10 @@
 plugins {
     jacoco
 }
+
+group="com.lg5.jvm"
+version = project.version
+
 jacoco {
     toolVersion = "0.8.11"
 }
