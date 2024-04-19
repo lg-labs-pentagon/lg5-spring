@@ -1,10 +1,12 @@
 plugins {
     jacoco
 }
-
+jacoco {
+    toolVersion = "0.8.11"
+}
 
 dependencies {
-    api(libs.jupiter)
+    api(libs.jupiter.root)
     api(libs.mockito.core)
 }
 
