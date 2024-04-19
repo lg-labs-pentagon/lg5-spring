@@ -9,7 +9,7 @@ mockito-version = "5.7.0"
 
 [libraries]
 # spring boot
-springboot-starter-parent = { group = "org.springframework.boot", name = "springboot-starter-parent", version.ref = "spring-boot-version" }
+springboot-starter-parent = { group = "org.springframework.boot", name = "spring-boot-starter-parent", version.ref = "spring-boot-version" }
 springboot-starter-test = { group = "org.springframework.boot", name = "spring-boot-starter-test", version.ref = "spring-boot-version" }
 
 springboot-logging = { group = "org.springframework.boot", name = "spring-boot-starter-logging", version.ref = "spring-boot-version" }
