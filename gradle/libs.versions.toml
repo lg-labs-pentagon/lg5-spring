@@ -2,24 +2,30 @@
 junit-jupiter-version = "5.10.2"
 lombok-version = "1.18.32"
 guava-version = "33.1.0-jre"
-spring-boot-version = "3.2.5"
+spring-boot-version = "3.2.3"
 mockito-version = "5.7.0"
+spring-dependency-version = "1.1.4"
+jacoco-version = "0.8.11"
+slf4j-version= "2.1.0-alpha1"
+
 
 
 
 [libraries]
 # spring boot
 springboot-starter-parent = { group = "org.springframework.boot", name = "spring-boot-starter-parent", version.ref = "spring-boot-version" }
-springboot-starter-test = { group = "org.springframework.boot", name = "spring-boot-starter-test", version.ref = "spring-boot-version" }
+springboot-dependencies = { group = "org.springframework.boot", name = "spring-boot-dependencies", version.ref = "spring-boot-version" }
+
 
 springboot-logging = { group = "org.springframework.boot", name = "spring-boot-starter-logging", version.ref = "spring-boot-version" }
 
 # Test
+springboot-starter-test = { group = "org.springframework.boot", name = "spring-boot-starter-test", version.ref = "spring-boot-version" }
 
 jupiter-root = { group = "org.junit.jupiter", name = "junit-jupiter", version.ref = "junit-jupiter-version" }
 jupiter-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version.ref = "junit-jupiter-version" }
 jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit-jupiter-version" }
-jupiter-launcher = { module="org.junit.platform:junit-platform-launcher"}
+jupiter-launcher = { module = "org.junit.platform:junit-platform-launcher" }
 mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito-version" }
 
 
@@ -27,3 +33,8 @@ mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mo
 # Utils
 lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok-version" }
 guava = { group = "com.google.guava", name = "guava", version.ref = "guava-version" }
+slf4j-api = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j-version" }
+
+[plugins]
+springboot-plugin = { id = "org.springframework.boot", version.ref = "spring-boot-version" }
+spring-dependency-management = { id = "io.spring.dependency-management", version.ref = "spring-dependency-version" }

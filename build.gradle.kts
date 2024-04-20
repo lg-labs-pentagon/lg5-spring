@@ -1,6 +1,6 @@
 plugins {
     kotlin("jvm") version "1.9.23"
-    `java-library`
+    java
     `maven-publish`
 }
 
@@ -10,8 +10,9 @@ subprojects {
 
     publishing {
         publications {
-            create<MavenPublication>("library") {
+            create<MavenPublication>("mavenJava") {
                 from(components["java"])
+                pom.packaging = "pom"
             }
         }
         repositories {
@@ -26,7 +27,10 @@ subprojects {
         }
     }
 
+
 }
+
+
 allprojects {
     group = project.group
     version = project.version

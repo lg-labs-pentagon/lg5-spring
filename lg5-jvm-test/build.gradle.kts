@@ -6,7 +6,7 @@ group="com.lg5.jvm"
 version = project.version
 
 jacoco {
-    toolVersion = "0.8.11"
+    toolVersion = libs.versions.jacoco.version.get()
 }
 
 dependencies {
@@ -16,6 +16,10 @@ dependencies {
 
 tasks.test {
     finalizedBy(tasks.jacocoTestReport) // report is always generated after tests run
+
+    exclude("**/AvroModel.")
+    exclude("**/**.kafka.*")
+    exclude("infrastructure/kafka/*")
 }
 
 tasks.jacocoTestReport {

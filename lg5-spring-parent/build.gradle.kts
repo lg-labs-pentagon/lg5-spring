@@ -2,32 +2,55 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     java apply true
-    id("org.springframework.boot") version "3.2.5" apply false
-    id("io.spring.dependency-management") version "1.1.4"
-    kotlin("jvm") version "1.9.23"
-    kotlin("plugin.spring") version "1.9.23"
+    alias(libs.plugins.springboot.plugin) apply false
+    alias(libs.plugins.spring.dependency.management)
 }
 
-repositories {
-    mavenCentral()
+version = "123231.1236"
+
+
+plugins.withType<JavaPlugin> {
+    extensions.configure<JavaPluginExtension> {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+    val springBootVersion: String by project
+    dependencies {
+        implementation(platform(libs.springboot.dependencies))
+        implementation(libs.springboot.logging)
+    }
 }
 
-dependencies {
-    implementation("org.springframework.boot:spring-boot-starter")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
+extensions.configure<PublishingExtension> {
+    publications {
+        create<MavenPublication>("parentJava") {
+            from(components["java"])
+            pom.packaging = "pom"
+            pom.withXml {
+                asNode().appendNode("parent").apply {
+                    appendNode("groupId", "org.springframework.boot")
+                    appendNode("artifactId", "spring-boot-starter-parent")
+                    appendNode("version", "3.2.3")
+                }
+            }
+        }
+    }
+    tasks.withType<PublishToMavenLocal>{
+        onlyIf {
+            publication == publishing.publications["parentJava"]
+        }
+
+    }
 }
 
 
 tasks.withType<KotlinCompile> {
     kotlinOptions {
-        freeCompilerArgs += "-Xjsr305=strict"
+        freeCompilerArgs = listOf(
+            "-Xjsr305=strict"
+        )
         jvmTarget = "17"
     }
 }
 
-tasks.withType<Test> {
-    useJUnitPlatform()
-}
-
-tasks.jar { enabled = false }
+tasks.jar { enabled = true }

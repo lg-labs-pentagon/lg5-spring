@@ -6,8 +6,10 @@ jvm-test-test:
 jvm-test-publish:
 	./gradlew :lg5-jvm-test:publishLibraryPublicationToMavenLocal
 
-jvm-test-build:
+spring-parent-build:
 	./gradlew :lg5-spring-parent:build
+spring-parent-publish:
+	./gradlew :lg5-spring-parent:publishJavaPublicationToMavenLocal --warning-mode all
 
 jvm-publish:
 	jvm-test-publish
