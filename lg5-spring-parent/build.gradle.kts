@@ -1,3 +1,4 @@
+
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -23,23 +24,39 @@ extensions.configure<PublishingExtension> {
     publications {
         create<MavenPublication>("parentJava") {
             from(components["java"])
-            pom.packaging = "pom"
+
+
             pom.withXml {
-                asNode().appendNode("parent").apply {
-                    appendNode("groupId", libs.springboot.starter.parent.get().group)
-                    appendNode("artifactId", libs.springboot.starter.parent.get().name)
-                    appendNode("version", libs.versions.springboot.version.get())
+                asNode()
+                    .appendNode("parent")
+                    .apply {
+                        appendNode("groupId", libs.springboot.starter.parent.get().group)
+                        appendNode("artifactId", libs.springboot.starter.parent.get().name)
+                        appendNode("version", libs.versions.springboot.version.get())
                 }
             }
+            pom.packaging = "pom"
             pom.properties.put("lg5.version", "\${parent.version}")
+            /*
+            pom.withXml {
+                asNode().children().last().apply {
+                    dependencyManagement {
+                        dependencies {
+                        }
+                    }
+                }
+            }
+            */
+
+
         }
     }
-    tasks.withType<PublishToMavenLocal>{
+    tasks.withType<PublishToMavenLocal> {
         onlyIf {
             publication == publishing.publications["parentJava"]
         }
     }
-    tasks.withType<PublishToMavenRepository>{
+    tasks.withType<PublishToMavenRepository> {
         onlyIf {
             publication == publishing.publications["parentJava"]
         }
