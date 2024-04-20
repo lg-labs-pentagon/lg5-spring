@@ -9,8 +9,8 @@ plugins {
 
 plugins.withType<JavaPlugin> {
     extensions.configure<JavaPluginExtension> {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
     val springBootVersion: String by project
     dependencies {
@@ -26,9 +26,9 @@ extensions.configure<PublishingExtension> {
             pom.packaging = "pom"
             pom.withXml {
                 asNode().appendNode("parent").apply {
-                    appendNode("groupId", "org.springframework.boot")
-                    appendNode("artifactId", "spring-boot-starter-parent")
-                    appendNode("version", "3.2.3")
+                    appendNode("groupId", libs.springboot.starter.parent.get().group)
+                    appendNode("artifactId", libs.springboot.starter.parent.get().name)
+                    appendNode("version", libs.versions.springboot.version.get())
                 }
             }
             pom.properties.put("lg5.version", "\${parent.version}")
@@ -52,7 +52,7 @@ tasks.withType<KotlinCompile> {
         freeCompilerArgs = listOf(
             "-Xjsr305=strict"
         )
-        jvmTarget = "17"
+        jvmTarget = "21"
     }
 }
 
