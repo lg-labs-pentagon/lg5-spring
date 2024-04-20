@@ -36,7 +36,7 @@ extensions.configure<PublishingExtension> {
                 }
             }
             pom.packaging = "pom"
-            pom.properties.put("lg5.version", "\${parent.version}")
+            pom.properties.put("lg5.version", "\${project.parent.version}")
             /*
             pom.withXml {
                 asNode().children().last().apply {
