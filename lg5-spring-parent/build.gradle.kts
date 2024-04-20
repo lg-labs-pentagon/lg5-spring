@@ -6,8 +6,6 @@ plugins {
     alias(libs.plugins.spring.dependency.management)
 }
 
-version = "123231.1236"
-
 
 plugins.withType<JavaPlugin> {
     extensions.configure<JavaPluginExtension> {
@@ -39,7 +37,11 @@ extensions.configure<PublishingExtension> {
         onlyIf {
             publication == publishing.publications["parentJava"]
         }
-
+    }
+    tasks.withType<PublishToMavenRepository>{
+        onlyIf {
+            publication == publishing.publications["parentJava"]
+        }
     }
 }
 
