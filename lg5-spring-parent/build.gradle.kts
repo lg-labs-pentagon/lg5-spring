@@ -31,6 +31,7 @@ extensions.configure<PublishingExtension> {
                     appendNode("version", "3.2.3")
                 }
             }
+            pom.properties.put("lg5.version", "\${parent.version}")
         }
     }
     tasks.withType<PublishToMavenLocal>{
