@@ -32,6 +32,7 @@ extensions.configure<PublishingExtension> {
                         appendNode("groupId", libs.springboot.parent.get().group)
                         appendNode("artifactId", libs.springboot.parent.get().name)
                         appendNode("version", libs.versions.springboot.version.get())
+                        appendNode("relativePath")
                     }
             }
             pom.packaging = "pom"
