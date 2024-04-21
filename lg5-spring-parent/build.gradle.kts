@@ -103,11 +103,11 @@ fun Node.jacocoPlugin() {
                 }
             }
         }
-//        appendNode("configuration")
-//            .appendNode("excludes").apply {
-//                appendNode("exclude", "**/AvroModel.")
-//                appendNode("exclude", "**/**.kafka.*")
-//                appendNode("exclude", "infrastructure/kafka/*")
-//            }
+        appendNode("configuration")
+            .appendNode("excludes").apply {
+                appendNode("exclude", "**/AvroModel.")
+                appendNode("exclude", "**/**.kafka.*")
+                appendNode("exclude", "infrastructure/kafka/*")
+            }
     }
 }
