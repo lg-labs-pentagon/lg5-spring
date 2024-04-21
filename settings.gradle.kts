@@ -14,3 +14,5 @@ include("lg5-spring-kafka:lg5-spring-kafka-publisher")
 findProject(":lg5-spring-kafka:lg5-spring-kafka-publisher")?.name = "lg5-spring-kafka-publisher"
 include("lg5-spring-kafka:lg5-spring-kafka-consumer")
 findProject(":lg5-spring-kafka:lg5-spring-kafka-consumer")?.name = "lg5-spring-kafka-consumer"
+include("lg5-spring-kafka:lg5-spring-kafka-config-data")
+findProject(":lg5-spring-kafka:lg5-spring-kafka-config-data")?.name = "lg5-spring-kafka-config-data"
