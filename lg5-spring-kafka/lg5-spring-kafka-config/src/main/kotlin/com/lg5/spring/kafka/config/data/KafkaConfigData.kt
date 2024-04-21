@@ -1,12 +1,10 @@
 package com.lg5.spring.kafka.config.data
 
-import lombok.Data
-import lombok.Getter
+
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Configuration
 
-@Getter
-@Data
+
 @Configuration
 @ConfigurationProperties(prefix = "kafka-config")
 open class KafkaConfigData {
