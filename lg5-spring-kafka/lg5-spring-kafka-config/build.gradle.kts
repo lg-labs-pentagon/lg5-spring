@@ -9,8 +9,13 @@ java {
     withSourcesJar()
     true
     sourceCompatibility=JavaVersion.VERSION_21
-}
 
+}
+sourceSets {
+    main {
+        java.srcDirs("src/main/java", "src/main/kotlin")
+    }
+}
 dependencies {
 
     implementation(libs.springboot.starter)
