@@ -13,8 +13,9 @@ maven-compiler-plugin-version="3.11.0"
 
 [libraries]
 # spring boot
-springboot-starter-parent = { group = "org.springframework.boot", name = "spring-boot-starter-parent", version.ref = "springboot-version" }
+springboot-parent = { group = "org.springframework.boot", name = "spring-boot-starter-parent", version.ref = "springboot-version" }
 springboot-dependencies = { group = "org.springframework.boot", name = "spring-boot-dependencies", version.ref = "springboot-version" }
+springboot-starter = { group = "org.springframework.boot", name = "spring-boot-starter", version.ref = "springboot-version" }
 
 
 springboot-logging = { group = "org.springframework.boot", name = "spring-boot-starter-logging", version.ref = "springboot-version" }

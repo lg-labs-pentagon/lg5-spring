@@ -29,8 +29,8 @@ extensions.configure<PublishingExtension> {
                 asNode()
                     .appendNode("parent")
                     .apply {
-                        appendNode("groupId", libs.springboot.starter.parent.get().group)
-                        appendNode("artifactId", libs.springboot.starter.parent.get().name)
+                        appendNode("groupId", libs.springboot.parent.get().group)
+                        appendNode("artifactId", libs.springboot.parent.get().name)
                         appendNode("version", libs.versions.springboot.version.get())
                     }
             }
