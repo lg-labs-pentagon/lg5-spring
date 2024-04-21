@@ -101,16 +101,13 @@ fun Node.jacocoPlugin() {
                     appendNode("goals")
                         .appendNode("goal", "prepare-agent")
                 }
-
-                appendNode("configuration")
-                    .appendNode("excludes").apply {
-                        appendNode("exclude", "**/AvroModel.")
-                        appendNode("exclude", "**/**.kafka.*")
-                        appendNode("exclude", "infrastructure/kafka/*")
-                    }
             }
-
-
         }
+        appendNode("configuration")
+            .appendNode("excludes").apply {
+                appendNode("exclude", "**/AvroModel.")
+                appendNode("exclude", "**/**.kafka.*")
+                appendNode("exclude", "infrastructure/kafka/*")
+            }
     }
 }
