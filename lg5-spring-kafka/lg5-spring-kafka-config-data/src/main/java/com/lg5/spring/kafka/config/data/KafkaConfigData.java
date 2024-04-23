@@ -16,13 +16,6 @@ public class KafkaConfigData {
     private Integer numOfPartitions;
     private Short replicationFactor;
 
-    public KafkaConfigData(String bootstrapServers, String schemaRegistryUrlKey, String schemaRegistryUrl, Integer numOfPartitions, Short replicationFactor) {
-        this.bootstrapServers = bootstrapServers;
-        this.schemaRegistryUrlKey = schemaRegistryUrlKey;
-        this.schemaRegistryUrl = schemaRegistryUrl;
-        this.numOfPartitions = numOfPartitions;
-        this.replicationFactor = replicationFactor;
-    }
 
     @Override
     public boolean equals(Object o) {

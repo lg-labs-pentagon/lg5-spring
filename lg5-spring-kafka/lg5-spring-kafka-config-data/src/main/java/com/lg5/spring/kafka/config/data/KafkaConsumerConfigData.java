@@ -24,23 +24,6 @@ public class KafkaConsumerConfigData {
     private Integer maxPartitionFetchBytesDefault;
     private Integer maxPartitionFetchBytesBoostFactor;
 
-    public KafkaConsumerConfigData(String keyDeserializer, String valueDeserializer, String autoOffsetReset, String specificAvroReaderKey, String specificAvroReader, Boolean batchListener, Boolean autoStartup, Integer concurrencyLevel, Integer sessionTimeoutMs, Integer heartbeatIntervalMs, Integer maxPollIntervalMs, Long pollTimeoutMs, Integer maxPollRecords, Integer maxPartitionFetchBytesDefault, Integer maxPartitionFetchBytesBoostFactor) {
-        this.keyDeserializer = keyDeserializer;
-        this.valueDeserializer = valueDeserializer;
-        this.autoOffsetReset = autoOffsetReset;
-        this.specificAvroReaderKey = specificAvroReaderKey;
-        this.specificAvroReader = specificAvroReader;
-        this.batchListener = batchListener;
-        this.autoStartup = autoStartup;
-        this.concurrencyLevel = concurrencyLevel;
-        this.sessionTimeoutMs = sessionTimeoutMs;
-        this.heartbeatIntervalMs = heartbeatIntervalMs;
-        this.maxPollIntervalMs = maxPollIntervalMs;
-        this.pollTimeoutMs = pollTimeoutMs;
-        this.maxPollRecords = maxPollRecords;
-        this.maxPartitionFetchBytesDefault = maxPartitionFetchBytesDefault;
-        this.maxPartitionFetchBytesBoostFactor = maxPartitionFetchBytesBoostFactor;
-    }
 
     public String getKeyDeserializer() {
         return keyDeserializer;

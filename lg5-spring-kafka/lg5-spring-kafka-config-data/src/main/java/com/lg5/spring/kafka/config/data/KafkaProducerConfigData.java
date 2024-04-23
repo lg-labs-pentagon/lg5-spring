@@ -19,19 +19,6 @@ public class KafkaProducerConfigData {
     private Integer requestTimeoutMs;
     private Integer retryCount;
 
-    public KafkaProducerConfigData(String keySerializerClass, String valueSerializerClass, String compressionType,
-                                   String acks, Integer batchSize, Integer batchSizeBoostFactor, Integer lingerMs,
-                                   Integer requestTimeoutMs, Integer retryCount) {
-        this.keySerializerClass = keySerializerClass;
-        this.valueSerializerClass = valueSerializerClass;
-        this.compressionType = compressionType;
-        this.acks = acks;
-        this.batchSize = batchSize;
-        this.batchSizeBoostFactor = batchSizeBoostFactor;
-        this.lingerMs = lingerMs;
-        this.requestTimeoutMs = requestTimeoutMs;
-        this.retryCount = retryCount;
-    }
 
     public String getKeySerializerClass() {
         return keySerializerClass;
