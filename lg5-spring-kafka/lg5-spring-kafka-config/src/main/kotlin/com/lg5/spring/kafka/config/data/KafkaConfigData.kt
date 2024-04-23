@@ -7,16 +7,16 @@ import org.springframework.stereotype.Component
 @Component
 @ConfigurationProperties(prefix = "kafka-config")
 open class KafkaConfigData {
-    @Value("\${bootstrap-servers}")
+    @Value("\${kafka-config.bootstrap-servers}")
     lateinit var bootstrapServers: String
 
-    @Value("\${schema-registry-url-key}")
+    @Value("\${kafka-config.schema-registry-url-key}")
     lateinit var schemaRegistryUrlKey: String
 
-    @Value("\${schema-registry-url}")
+    @Value("\${kafka-config.schema-registry-url}")
     lateinit var schemaRegistryUrl: String
 
-    @Value("\${num-of-partitions}")
+    @Value("\${kafka-config.num-of-partitions}")
     var numOfPartitions: Int = 0
         get() {
             return field
@@ -25,7 +25,7 @@ open class KafkaConfigData {
             field = value
         }
 
-    @Value("\${replication-factor}")
+    @Value("\${kafka-config.replication-factor}")
     var replicationFactor = 0
         get() {
             return field
