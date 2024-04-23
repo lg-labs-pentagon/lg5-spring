@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component
 @Component
 @ConfigurationProperties(prefix = "kafka-config")
 open class KafkaConfigData {
+
     @Value("\${kafka-config.bootstrap-servers}")
     lateinit var bootstrapServers: String
 
@@ -18,20 +19,8 @@ open class KafkaConfigData {
 
     @Value("\${kafka-config.num-of-partitions}")
     var numOfPartitions: Int = 0
-        get() {
-            return field
-        }
-        set(value) {
-            field = value
-        }
 
     @Value("\${kafka-config.replication-factor}")
-    var replicationFactor = 0
-        get() {
-            return field
-        }
-        set(value) {
-            field = value
-        }
+    var replicationFactor: Short = 0
 
 }
