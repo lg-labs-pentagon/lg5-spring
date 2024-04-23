@@ -6,6 +6,7 @@ plugins {
 version = project.version
 dependencies {
     implementation(libs.springboot.starter)
+    implementation(libs.lombok)
     testImplementation(platform("org.junit:junit-bom:5.10.2"))
     testImplementation("org.junit.jupiter:junit-jupiter")
 }
