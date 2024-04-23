@@ -17,7 +17,13 @@ open class KafkaConfigData {
     lateinit var schemaRegistryUrl: String
 
     @Value("\${num-of-partitions}")
-    lateinit var numOfPartitions: String
+    var numOfPartitions: Int = 0
+        get() {
+            return field
+        }
+        set(value) {
+            field = value
+        }
 
     @Value("\${replication-factor}")
     var replicationFactor = 0
