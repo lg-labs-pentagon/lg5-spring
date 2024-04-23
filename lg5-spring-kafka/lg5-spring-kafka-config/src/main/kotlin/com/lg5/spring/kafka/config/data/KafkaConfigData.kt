@@ -1,24 +1,17 @@
 package com.lg5.spring.kafka.config.data
 
 
-import lombok.Getter
+
 import org.springframework.boot.context.properties.ConfigurationProperties
-import org.springframework.context.annotation.Configuration
+import org.springframework.stereotype.Component
 
 
-@Getter
-@Configuration
+@Component
 @ConfigurationProperties(prefix = "kafka-config")
-open class KafkaConfigData {
-    private var bootstrapServers: String? = null
-    private val schemaRegistryUrlKey: String? = null
-    private val schemaRegistryUrl: String? = null
-    private val numOfPartitions: Int? = null
-    private val replicationFactor: Short? = null
-
-    override fun toString(): String {
-        return "KafkaConfigData(bootstrapServers=$bootstrapServers, schemaRegistryUrlKey=$schemaRegistryUrlKey, schemaRegistryUrl=$schemaRegistryUrl, numOfPartitions=$numOfPartitions, replicationFactor=$replicationFactor)"
-    }
-
-
-}
+data class KafkaConfigData(
+    val bootstrapServers: String? = null,
+    val schemaRegistryUrlKey: String? = null,
+    val schemaRegistryUrl: String? = null,
+    val numOfPartitions: Int? = null,
+    val replicationFactor: Short? = null
+)
