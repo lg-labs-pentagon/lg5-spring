@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component
 @Component
 @ConfigurationProperties(prefix = "kafka-config")
 data class KafkaConfigData(
-    val bootstrapServers: String? = null,
+    var bootstrapServers: String? = null,
     val schemaRegistryUrlKey: String? = null,
     val schemaRegistryUrl: String? = null,
     val numOfPartitions: Int? = null,
