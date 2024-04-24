@@ -22,7 +22,6 @@ dependencies {
     testImplementation(project(":lg5-spring-test"))
 
 }
-
 tasks.test {
     useJUnitPlatform()
 }

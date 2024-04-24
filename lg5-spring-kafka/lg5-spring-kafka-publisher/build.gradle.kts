@@ -14,15 +14,9 @@ sourceSets {
         java.srcDirs("src/main/java", "src/main/kotlin")
     }
 }
-repositories{
-    maven{
-        name="confluent"
-        url=uri("https://packages.confluent.io/maven/")
-    }
-}
 dependencies {
     implementation(libs.springboot.starter)
-    implementation(libs.spring.kafka)
+    api(libs.spring.kafka)
     implementation(libs.apache.avro)
     implementation(libs.springboot.logging)
     implementation(libs.kafka.avro.serializer){
@@ -32,15 +26,19 @@ dependencies {
         exclude(group = "io.swagger", module = "swagger-core")
     }
     implementation(project(":lg5-spring-kafka:lg5-spring-kafka-config"))
-    implementation(project(":lg5-spring-outbox"))
+    api(project(":lg5-spring-outbox"))
 
 }
-
 tasks.test {
     useJUnitPlatform()
 }
 kotlin {
     jvmToolchain(21)
 }
-
+repositories{
+    maven{
+        name="confluent"
+        url=uri("https://packages.confluent.io/maven/")
+    }
+}
 tasks.jar { enabled = true }
