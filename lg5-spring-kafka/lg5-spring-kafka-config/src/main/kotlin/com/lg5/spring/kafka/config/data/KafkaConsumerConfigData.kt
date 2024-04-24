@@ -22,12 +22,12 @@ class KafkaConsumerConfigData {
 
     var concurrencyLevel: Int =0
 
-    var sessionTimeoutMs: Int =0
-    var heartbeatIntervalMs: Int=0
-    var maxPollIntervalMs: Int=0
-    var pollTimeoutMs: Long =0
-    var maxPollRecords: Int=0
-    var maxPartitionFetchBytesDefault: Int =0
-    val maxPartitionFetchBytesBoostFactor: Int = 0
+    lateinit var sessionTimeoutMs:String
+    lateinit var heartbeatIntervalMs:String
+    lateinit var maxPollIntervalMs:String
+    lateinit var pollTimeoutMs:String
+    lateinit var maxPollRecords:String
+    lateinit var maxPartitionFetchBytesDefault:String
+    lateinit var maxPartitionFetchBytesBoostFactor:String
 
 }
