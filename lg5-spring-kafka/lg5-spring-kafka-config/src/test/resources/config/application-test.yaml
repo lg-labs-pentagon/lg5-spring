@@ -1,12 +1,12 @@
 kafka-config:
   bootstrap-servers: localhost:19092, localhost:29092, localhost:39092
-  schema-registry-url-key: schema.registry.url
+  schema-registry-url-key: schema.registry.urlTest
   schema-registry-url: http://localhost:8081
   num-of-partitions: 3
   replication-factor: 3
 
 kafka-producer-config:
-  key-serializer-class: org.apache.kafka.common.serialization.StringSerializer
+  key-serializer-class: org.apache.kafka.common.serialization.StringSerializerTest
   value-serializer-class: io.confluent.kafka.serializers.KafkaAvroSerializer
   compression-type: snappy
   acks: all
@@ -17,7 +17,7 @@ kafka-producer-config:
   retry-count: 5
 
 kafka-consumer-config:
-  key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  key-deserializer: org.apache.kafka.common.serialization.StringDeserializerTest
   value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
   auto-offset-reset: earliest
   specific-avro-reader-key: specific.avro.reader

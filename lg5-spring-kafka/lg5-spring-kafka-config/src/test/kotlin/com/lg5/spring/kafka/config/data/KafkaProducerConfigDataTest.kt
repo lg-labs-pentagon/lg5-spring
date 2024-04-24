@@ -24,7 +24,7 @@ class KafkaProducerConfigDataTest {
 
     @Test
     fun it_should_load_properties_to_a_kafka_config_data() {
-        assertEquals("org.apache.kafka.common.serialization.StringSerializer", producerConfigData.keySerializerClass)
+        assertEquals("org.apache.kafka.common.serialization.StringSerializerTest", producerConfigData.keySerializerClass)
         assertEquals("io.confluent.kafka.serializers.KafkaAvroSerializer", producerConfigData.valueSerializerClass)
         assertEquals("snappy", producerConfigData.compressionType)
         assertEquals("all", producerConfigData.acks)

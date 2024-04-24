@@ -26,7 +26,7 @@ class KafkaConsumerConfigDataTest {
 
     @Test
     fun it_should_load_properties_to_a_kafka_consumer_config() {
-        assertEquals("org.apache.kafka.common.serialization.StringDeserializer", consumerConfigData.keyDeserializer)
+        assertEquals("org.apache.kafka.common.serialization.StringDeserializerTest", consumerConfigData.keyDeserializer)
         assertEquals("io.confluent.kafka.serializers.KafkaAvroDeserializer", consumerConfigData.valueDeserializer)
         assertEquals("earliest", consumerConfigData.autoOffsetReset)
         assertEquals("specific.avro.reader", consumerConfigData.specificAvroReaderKey)

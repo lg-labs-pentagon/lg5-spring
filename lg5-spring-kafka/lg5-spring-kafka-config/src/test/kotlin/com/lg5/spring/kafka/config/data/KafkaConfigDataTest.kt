@@ -25,7 +25,7 @@ class KafkaConfigDataTest {
     @Test
     fun it_should_load_properties_to_a_kafka_config_data() {
         assertEquals("localhost:19092, localhost:29092, localhost:39092", kafkaConfigData.bootstrapServers)
-        assertEquals("schema.registry.url", kafkaConfigData.schemaRegistryUrlKey)
+        assertEquals("schema.registry.urlTest", kafkaConfigData.schemaRegistryUrlKey)
         assertEquals("http://localhost:8081", kafkaConfigData.schemaRegistryUrl)
         assertEquals(3, kafkaConfigData.numOfPartitions)
         assertEquals(3, kafkaConfigData.replicationFactor)
