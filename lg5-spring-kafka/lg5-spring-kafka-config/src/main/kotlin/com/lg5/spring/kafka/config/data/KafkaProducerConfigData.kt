@@ -1,9 +1,9 @@
 package com.lg5.spring.kafka.config.data
 
 import org.springframework.boot.context.properties.ConfigurationProperties
-import org.springframework.stereotype.Component
+import org.springframework.context.annotation.Configuration
 
-@Component
+@Configuration
 @ConfigurationProperties(prefix = "kafka-producer-config")
 open class KafkaProducerConfigData {
 
