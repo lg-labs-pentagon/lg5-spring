@@ -13,12 +13,19 @@ maven-compiler-plugin-version="3.11.0"
 avro-version="1.11.3"
 spring-kafka-version="3.0.12"
 
+#Kafka Publisher
+kafka-avro-serializer-version="7.5.1"
+
+#Lg5 DDD
+
+
 
 [libraries]
 # spring boot
 springboot-parent = { group = "org.springframework.boot", name = "spring-boot-starter-parent", version.ref = "springboot-version" }
 springboot-dependencies = { group = "org.springframework.boot", name = "spring-boot-dependencies", version.ref = "springboot-version" }
 springboot-starter = { group = "org.springframework.boot", name = "spring-boot-starter", version.ref = "springboot-version" }
+springboot-json = { group = "org.springframework.boot", name = "spring-boot-starter-json", version.ref = "springboot-version" }
 
 slf4j-api = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j-version" }
 springboot-logging = { group = "org.springframework.boot", name = "spring-boot-starter-logging", version.ref = "springboot-version" }
@@ -37,7 +44,10 @@ mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mo
 # Utils
 lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok-version" }
 guava = { group = "com.google.guava", name = "guava", version.ref = "guava-version" }
+
+#events
 apache-avro = { group = "org.apache.avro", name = "avro", version.ref = "avro-version" }
+kafka-avro-serializer = { group = "io.confluent", name = "kafka-avro-serializer", version.ref = "kafka-avro-serializer-version" }
 spring-kafka = { group = "org.springframework.kafka", name = "spring-kafka", version.ref = "spring-kafka-version" }
 
 [plugins]
