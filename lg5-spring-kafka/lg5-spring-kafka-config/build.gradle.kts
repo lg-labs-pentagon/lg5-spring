@@ -1,6 +1,5 @@
 plugins {
     kotlin("jvm") version "1.9.23"
-    java
     alias(libs.plugins.springboot.plugin) apply false
     alias(libs.plugins.spring.dependency.management)
 }
@@ -16,10 +15,7 @@ sourceSets {
     }
 }
 dependencies {
-
     implementation(libs.springboot.starter)
-    implementation(libs.lombok)
-    implementation(kotlin("stdlib"))
     testImplementation(project(":lg5-spring-test"))
 
 }
