@@ -24,16 +24,15 @@ dependencies {
     implementation(libs.springboot.starter)
     implementation(libs.spring.kafka)
     implementation(libs.apache.avro)
+    implementation(libs.springboot.logging)
     implementation(libs.kafka.avro.serializer){
         exclude(group = "org.slf4j", module = "slf4j-log4j12")
         exclude(group = "log4j", module = "log4j")
         exclude(group = "io.swagger", module = "swagger-annotation")
         exclude(group = "io.swagger", module = "swagger-core")
     }
-
-
-
     implementation(project(":lg5-spring-kafka:lg5-spring-kafka-config"))
+    implementation(project(":lg5-spring-outbox"))
 
 }
 
