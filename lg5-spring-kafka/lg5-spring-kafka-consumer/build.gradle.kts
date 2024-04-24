@@ -16,8 +16,8 @@ sourceSets {
 }
 dependencies {
     implementation(libs.springboot.starter)
-    implementation(libs.spring.kafka)
-    implementation(libs.apache.avro)
+    api(libs.spring.kafka)
+    api(libs.apache.avro)
     implementation(project(":lg5-spring-kafka:lg5-spring-kafka-config"))
     testImplementation(project(":lg5-spring-test"))
 
