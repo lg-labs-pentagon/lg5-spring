@@ -8,30 +8,30 @@ import org.springframework.stereotype.Component
 @ConfigurationProperties(prefix = "kafka-producer-config")
 open class KafkaProducerConfigData {
 
-    @Value("\${key-serializer-class}")
+    @Value("\${kafka-producer-config.key-serializer-class}")
     lateinit var keySerializerClass: String
 
-    @Value("\${value-serializer-class}")
+    @Value("\${kafka-producer-config.value-serializer-class}")
     lateinit var valueSerializerClass: String
 
-    @Value("\${compression-type}")
+    @Value("\${kafka-producer-config.compression-type}")
     lateinit var compressionType: String
 
-    @Value("\${acks}")
+    @Value("\${kafka-producer-config.acks}")
     lateinit var acks: String
 
-    @Value("\${batch-size}")
+    @Value("\${kafka-producer-config.batch-size}")
     var batchSize: Int=0
 
-    @Value("\${batch-size-boost-factor}")
+    @Value("\${kafka-producer-config.batch-size-boost-factor}")
     var batchSizeBoostFactor: Int = 0
 
-    @Value("\${linger-ms}")
+    @Value("\${kafka-producer-config.linger-ms}")
     var lingerMs: Int = 0
 
-    @Value("\${request-timeout-ms}")
+    @Value("\${kafka-producer-config.request-timeout-ms}")
     var requestTimeoutMs: Int = 0
 
-    @Value("\${retry-count}")
+    @Value("\${kafka-producer-config.retry-count}")
     var retryCount: Int = 0
 }

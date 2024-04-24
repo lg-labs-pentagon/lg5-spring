@@ -8,35 +8,35 @@ import org.springframework.stereotype.Component
 @ConfigurationProperties(prefix = "kafka-consumer-config")
 open class KafkaConsumerConfigData {
 
-    @Value("\${key-deserializer}")
+    @Value("\${kafka-consumer-config.key-deserializer}")
     lateinit var keyDeserializer: String
-    @Value("\${value-deserializer}")
+    @Value("\${kafka-consumer-config.value-deserializer}")
     lateinit var valueDeserializer: String
-    @Value("\${auto-offset-reset}")
+    @Value("\${kafka-consumer-config.auto-offset-reset}")
     lateinit var autoOffsetReset: String
-    @Value("\${specific-avro-readerKey}")
+    @Value("\${kafka-consumer-config.specific-avro-readerKey}")
     lateinit var specificAvroReaderKey: String
-    @Value("\${specific-avro-reader}")
+    @Value("\${kafka-consumer-config.specific-avro-reader}")
     lateinit var specificAvroReader: String
-    @Value("\${batch-listener}")
+    @Value("\${kafka-consumer-config.batch-listener}")
     var batchListener: Boolean = false
-    @Value("\${auto-startup}")
+    @Value("\${kafka-consumer-config.auto-startup}")
     var autoStartup: Boolean =  false
-    @Value("\${concurrency-level}")
+    @Value("\${kafka-consumer-config.concurrency-level}")
     var concurrencyLevel: Int =0
-    @Value("\${session-timeout-ms}")
+    @Value("\${kafka-consumer-config.session-timeout-ms}")
     var sessionTimeoutMs: Int =0
-    @Value("\${heartbeat-interval-ms}")
+    @Value("\${kafka-consumer-config.heartbeat-interval-ms}")
     var heartbeatIntervalMs: Int=0
-    @Value("\${max-poll-interval-ms}")
+    @Value("\${kafka-consumer-config.max-poll-interval-ms}")
     var maxPollIntervalMs: Int=0
-    @Value("\${poll-timeout-ms}")
+    @Value("\${kafka-consumer-config.poll-timeout-ms}")
     var pollTimeoutMs: Long =0
-    @Value("\${max-poll-records}")
+    @Value("\${kafka-consumer-config.max-poll-records}")
     var maxPollRecords: Int=0
-    @Value("\${max-partition-fetch-bytes-default}")
+    @Value("\${kafka-consumer-config.max-partition-fetch-bytes-default}")
     var maxPartitionFetchBytesDefault: Int =0
-    @Value("\${max-partition-fetch-bytes-boost-factor}")
+    @Value("\${kafka-consumer-config.max-partition-fetch-bytes-boost-factor}")
     val maxPartitionFetchBytesBoostFactor: Int = 0
 
 }
