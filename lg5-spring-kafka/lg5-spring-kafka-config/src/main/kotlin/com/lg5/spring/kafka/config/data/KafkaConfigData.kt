@@ -1,15 +1,10 @@
 package com.lg5.spring.kafka.config.data
 
-import com.lg5.spring.kafka.config.data.KafkaConfigData.Companion.PREFIX
-import org.springframework.boot.autoconfigure.AutoConfiguration
 import org.springframework.boot.context.properties.ConfigurationProperties
-import org.springframework.boot.context.properties.EnableConfigurationProperties
-import org.springframework.context.annotation.PropertySource
+import org.springframework.context.annotation.Configuration
 
-@AutoConfiguration
-@ConfigurationProperties(PREFIX)
-@PropertySource("classpath:application.yaml")
-@EnableConfigurationProperties(value = [KafkaConfigData::class])
+@Configuration
+@ConfigurationProperties(prefix = "kafka-config")
 open class KafkaConfigData {
 
     lateinit var bootstrapServers: String
@@ -17,8 +12,4 @@ open class KafkaConfigData {
     lateinit var schemaRegistryUrl: String
     var numOfPartitions: Int = 0
     var replicationFactor: Short = 0
-
-    companion object{
-        const val PREFIX: String = "kafka-config"
-    }
 }
