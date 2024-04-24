@@ -1,4 +1,4 @@
-package com.lg5.spring.kafka.consumer
+package com.lg5.spring.kafka.consumer.config
 
 import com.lg5.spring.kafka.config.data.KafkaConfigData
 import com.lg5.spring.kafka.config.data.KafkaConsumerConfigData
