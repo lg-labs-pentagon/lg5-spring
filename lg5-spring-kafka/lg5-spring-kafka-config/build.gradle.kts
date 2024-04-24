@@ -7,7 +7,6 @@ plugins {
 
 java {
     withSourcesJar()
-    true
     sourceCompatibility=JavaVersion.VERSION_21
 
 }
@@ -21,6 +20,7 @@ dependencies {
     implementation(libs.springboot.starter)
     implementation(libs.lombok)
     implementation(kotlin("stdlib"))
+    testImplementation(project(":lg5-spring-test"))
 
 }
 

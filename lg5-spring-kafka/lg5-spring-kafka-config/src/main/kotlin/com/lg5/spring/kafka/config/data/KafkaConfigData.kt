@@ -1,26 +1,14 @@
 package com.lg5.spring.kafka.config.data
 
-import org.springframework.beans.factory.annotation.Value
 import org.springframework.boot.context.properties.ConfigurationProperties
-import org.springframework.stereotype.Component
+import org.springframework.context.annotation.Configuration
 
-@Component
+@Configuration
 @ConfigurationProperties(prefix = "kafka-config")
 open class KafkaConfigData {
-
-    @Value("\${kafka-config.bootstrap-servers}")
     lateinit var bootstrapServers: String
-
-    @Value("\${kafka-config.schema-registry-url-key}")
     lateinit var schemaRegistryUrlKey: String
-
-    @Value("\${kafka-config.schema-registry-url}")
     lateinit var schemaRegistryUrl: String
-
-    @Value("\${kafka-config.num-of-partitions}")
     var numOfPartitions: Int = 0
-
-    @Value("\${kafka-config.replication-factor}")
     var replicationFactor: Short = 0
-
 }

@@ -10,7 +10,7 @@ open class KafkaConsumerConfigData {
     lateinit var valueDeserializer: String
     lateinit var autoOffsetReset: String
     lateinit var specificAvroReaderKey: String
-    lateinit var specificAvroReader: String
+    lateinit var specificAvroReader: String // TODO change and test as Bool
     var batchListener: Boolean = false
     var autoStartup: Boolean = false
     var concurrencyLevel: Int = 0
