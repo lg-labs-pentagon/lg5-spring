@@ -9,6 +9,9 @@ jacoco-version = "0.8.11"
 slf4j-version= "2.1.0-alpha1"
 maven-compiler-plugin-version="3.11.0"
 
+# Kafka Consumer
+avro-version="1.11.3"
+spring-kafka-version="3.0.12"
 
 
 [libraries]
@@ -17,7 +20,7 @@ springboot-parent = { group = "org.springframework.boot", name = "spring-boot-st
 springboot-dependencies = { group = "org.springframework.boot", name = "spring-boot-dependencies", version.ref = "springboot-version" }
 springboot-starter = { group = "org.springframework.boot", name = "spring-boot-starter", version.ref = "springboot-version" }
 
-
+slf4j-api = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j-version" }
 springboot-logging = { group = "org.springframework.boot", name = "spring-boot-starter-logging", version.ref = "springboot-version" }
 
 # Test
@@ -34,7 +37,8 @@ mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mo
 # Utils
 lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok-version" }
 guava = { group = "com.google.guava", name = "guava", version.ref = "guava-version" }
-slf4j-api = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j-version" }
+apache-avro = { group = "org.apache.avro", name = "avro", version.ref = "avro-version" }
+spring-kafka = { group = "org.springframework.kafka", name = "spring-kafka", version.ref = "spring-kafka-version" }
 
 [plugins]
 springboot-plugin = { id = "org.springframework.boot", version.ref = "springboot-version" }
