@@ -3,11 +3,13 @@ package com.lg5.spring.kafka.config.data
 import com.lg5.spring.kafka.config.data.KafkaConfigData.Companion.PREFIX
 import org.springframework.boot.autoconfigure.AutoConfiguration
 import org.springframework.boot.context.properties.ConfigurationProperties
+import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.PropertySource
 
 @AutoConfiguration
 @ConfigurationProperties(PREFIX)
 @PropertySource("classpath:application.yaml")
+@EnableConfigurationProperties(value = [KafkaConfigData::class])
 open class KafkaConfigData {
 
     lateinit var bootstrapServers: String
