@@ -27,7 +27,7 @@ class KafkaConsumerConfigData {
     lateinit var maxPollIntervalMs:String
     lateinit var pollTimeoutMs:String
     lateinit var maxPollRecords:String
-    lateinit var maxPartitionFetchBytesDefault:String
-    lateinit var maxPartitionFetchBytesBoostFactor:String
+    var maxPartitionFetchBytesDefault:Int=0
+    var maxPartitionFetchBytesBoostFactor:Int=0
 
 }
