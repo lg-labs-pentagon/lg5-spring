@@ -14,7 +14,7 @@ open class KafkaConsumerConfigData {
     lateinit var valueDeserializer: String
     @Value("\${kafka-consumer-config.auto-offset-reset}")
     lateinit var autoOffsetReset: String
-    @Value("\${kafka-consumer-config.specific-avro-readerKey}")
+    @Value("\${kafka-consumer-config.specific-avro-reader-key}")
     lateinit var specificAvroReaderKey: String
     @Value("\${kafka-consumer-config.specific-avro-reader}")
     lateinit var specificAvroReader: String
