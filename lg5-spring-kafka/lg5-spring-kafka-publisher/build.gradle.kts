@@ -25,6 +25,8 @@ dependencies {
         exclude(group = "io.swagger", module = "swagger-annotation")
         exclude(group = "io.swagger", module = "swagger-core")
     }
+
+    api(group = "org.springframework.boot", name = "spring-boot-starter-json", version="3.2.3")
     implementation(project(":lg5-spring-kafka:lg5-spring-kafka-config"))
     api(project(":lg5-spring-outbox"))
 
