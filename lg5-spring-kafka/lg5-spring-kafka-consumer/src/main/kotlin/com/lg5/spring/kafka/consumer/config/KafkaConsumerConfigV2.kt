@@ -15,7 +15,7 @@ import java.io.Serializable
 
 
 @Configuration
-open class KafkaConsumerConfig<K : Serializable, V : SpecificRecordBase>(
+open class KafkaConsumerConfigV2<K : Serializable, V : SpecificRecordBase>(
     private val kafkaConfigData: KafkaConfigData,
     private val kafkaConsumerConfigData: KafkaConsumerConfigData
 ) {

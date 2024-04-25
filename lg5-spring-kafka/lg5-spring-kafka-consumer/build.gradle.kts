@@ -10,9 +10,7 @@ java {
 
 }
 sourceSets {
-    main {
-        java.srcDirs("src/main/java", "src/main/kotlin")
-    }
+
 }
 dependencies {
     implementation(libs.springboot.starter)
