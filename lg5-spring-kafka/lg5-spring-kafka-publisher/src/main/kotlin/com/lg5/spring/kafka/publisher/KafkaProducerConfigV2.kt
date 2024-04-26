@@ -4,14 +4,12 @@ import com.lg5.spring.kafka.config.data.KafkaConfigData
 import com.lg5.spring.kafka.config.data.KafkaProducerConfigData
 import org.apache.avro.specific.SpecificRecordBase
 import org.apache.kafka.clients.producer.ProducerConfig
-import org.springframework.context.annotation.Configuration
 import org.springframework.kafka.core.DefaultKafkaProducerFactory
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.kafka.core.ProducerFactory
 import java.io.Serializable
 
 
-@Configuration
 open class KafkaProducerConfigV2<K : Serializable?, V : SpecificRecordBase?>(
     private val kafkaConfigData: KafkaConfigData,
     private val kafkaProducerConfigData: KafkaProducerConfigData
