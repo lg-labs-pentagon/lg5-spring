@@ -4,7 +4,6 @@ import com.lg5.spring.kafka.config.data.KafkaConfigData
 import com.lg5.spring.kafka.config.data.KafkaProducerConfigData
 import org.apache.avro.specific.SpecificRecordBase
 import org.apache.kafka.clients.producer.ProducerConfig
-import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.kafka.core.DefaultKafkaProducerFactory
 import org.springframework.kafka.core.KafkaTemplate
@@ -17,7 +16,7 @@ open class KafkaProducerConfigV2<K : Serializable?, V : SpecificRecordBase?>(
     private val kafkaConfigData: KafkaConfigData,
     private val kafkaProducerConfigData: KafkaProducerConfigData
 ) {
-    @Bean
+
     open fun producerConfigV2(): Map<String, Any> {
         val props: MutableMap<String, Any> = HashMap()
         props[ProducerConfig.BOOTSTRAP_SERVERS_CONFIG] = kafkaConfigData.bootstrapServers
@@ -34,12 +33,12 @@ open class KafkaProducerConfigV2<K : Serializable?, V : SpecificRecordBase?>(
         return props
     }
 
-    @Bean
+
     open fun producerFactoryV2(): ProducerFactory<K, V> {
         return DefaultKafkaProducerFactory(producerConfigV2())
     }
 
-    @Bean
+
     open fun kafkaTemplateV2(): KafkaTemplate<K, V> {
         return KafkaTemplate(producerFactoryV2())
     }

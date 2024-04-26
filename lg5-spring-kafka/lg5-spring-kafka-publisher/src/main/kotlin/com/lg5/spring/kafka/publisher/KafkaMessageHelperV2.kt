@@ -6,14 +6,12 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.lg5.spring.kafka.publisher.exception.KafkaMessageException
 import com.lg5.spring.kafka.publisher.service.impl.KafkaProducerV2Impl
 import com.lg5.spring.outbox.com.lg5.spring.outbox.OutboxStatus
-
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.kafka.support.SendResult
-import org.springframework.stereotype.Component
 import java.util.function.BiConsumer
 
-@Component
+
 class KafkaMessageHelperV2(private val objectMapper: ObjectMapper) {
 
     fun <T, U> getKafkaCallback(
