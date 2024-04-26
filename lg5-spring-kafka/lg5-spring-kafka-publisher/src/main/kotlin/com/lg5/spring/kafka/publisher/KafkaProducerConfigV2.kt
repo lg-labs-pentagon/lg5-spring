@@ -13,12 +13,12 @@ import java.io.Serializable
 
 
 @Configuration
-open class KafkaProducerConfig<K : Serializable?, V : SpecificRecordBase?>(
+open class KafkaProducerConfigV2<K : Serializable?, V : SpecificRecordBase?>(
     private val kafkaConfigData: KafkaConfigData,
     private val kafkaProducerConfigData: KafkaProducerConfigData
 ) {
     @Bean
-    open fun producerConfig(): Map<String, Any> {
+    open fun producerConfigV2(): Map<String, Any> {
         val props: MutableMap<String, Any> = HashMap()
         props[ProducerConfig.BOOTSTRAP_SERVERS_CONFIG] = kafkaConfigData.bootstrapServers
         props[kafkaConfigData.schemaRegistryUrlKey] = kafkaConfigData.schemaRegistryUrl
@@ -35,12 +35,12 @@ open class KafkaProducerConfig<K : Serializable?, V : SpecificRecordBase?>(
     }
 
     @Bean
-    open fun producerFactory(): ProducerFactory<K, V> {
-        return DefaultKafkaProducerFactory(producerConfig())
+    open fun producerFactoryV2(): ProducerFactory<K, V> {
+        return DefaultKafkaProducerFactory(producerConfigV2())
     }
 
     @Bean
-    open fun kafkaTemplate(): KafkaTemplate<K, V> {
-        return KafkaTemplate(producerFactory())
+    open fun kafkaTemplateV2(): KafkaTemplate<K, V> {
+        return KafkaTemplate(producerFactoryV2())
     }
 }

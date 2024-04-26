@@ -4,7 +4,7 @@ package com.lg5.spring.kafka.publisher
 import com.fasterxml.jackson.core.JsonProcessingException
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.lg5.spring.kafka.publisher.exception.KafkaMessageException
-import com.lg5.spring.kafka.publisher.service.impl.KafkaProducerImpl
+import com.lg5.spring.kafka.publisher.service.impl.KafkaProducerV2Impl
 import com.lg5.spring.outbox.com.lg5.spring.outbox.OutboxStatus
 
 import org.slf4j.Logger
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component
 import java.util.function.BiConsumer
 
 @Component
-class KafkaMessageHelper(private val objectMapper: ObjectMapper) {
+class KafkaMessageHelperV2(private val objectMapper: ObjectMapper) {
 
     fun <T, U> getKafkaCallback(
         topicName: String,
@@ -63,6 +63,6 @@ class KafkaMessageHelper(private val objectMapper: ObjectMapper) {
     }
 
     companion object {
-        private val LOG: Logger = LoggerFactory.getLogger(KafkaProducerImpl::class.java)
+        private val LOG: Logger = LoggerFactory.getLogger(KafkaProducerV2Impl::class.java)
     }
 }

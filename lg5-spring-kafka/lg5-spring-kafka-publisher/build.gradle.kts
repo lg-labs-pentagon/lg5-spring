@@ -10,16 +10,13 @@ java {
 
 }
 sourceSets {
-    main {
-        java.srcDirs("src/main/java", "src/main/kotlin")
-    }
+
 }
 dependencies {
     implementation(libs.springboot.starter)
     api(libs.spring.kafka)
-    implementation(libs.apache.avro)
     implementation(libs.springboot.logging)
-    implementation(libs.kafka.avro.serializer){
+    api(libs.kafka.avro.serializer){
         exclude(group = "org.slf4j", module = "slf4j-log4j12")
         exclude(group = "log4j", module = "log4j")
         exclude(group = "io.swagger", module = "swagger-annotation")

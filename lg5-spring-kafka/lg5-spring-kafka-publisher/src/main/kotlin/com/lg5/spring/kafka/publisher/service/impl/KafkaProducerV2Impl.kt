@@ -1,7 +1,8 @@
 package com.lg5.spring.kafka.publisher.service.impl
 
 import com.lg5.spring.kafka.publisher.exception.KafkaProducerException
-import com.lg5.spring.kafka.publisher.service.KafkaProducer
+import com.lg5.spring.kafka.publisher.service.KafkaProducerV2
+
 import jakarta.annotation.PreDestroy
 import org.apache.avro.specific.SpecificRecordBase
 import org.slf4j.Logger
@@ -10,19 +11,20 @@ import org.springframework.kafka.KafkaException
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.kafka.support.SendResult
 import org.springframework.stereotype.Component
+
 import java.io.Serializable
+import java.util.concurrent.CompletableFuture
 import java.util.function.BiConsumer
 
-
 @Component
-class KafkaProducerImpl<K : Serializable, V : SpecificRecordBase>(kvKafkaTemplate: KafkaTemplate<K, V>) :
-    KafkaProducer<K, V> {
+class KafkaProducerV2Impl<K : Serializable, V : SpecificRecordBase>(kvKafkaTemplate: KafkaTemplate<K, V>) :
+    KafkaProducerV2<K, V> {
     private val kafkaTemplate = kvKafkaTemplate
 
     override fun send(topicName: String, key: K, message: V, callback: BiConsumer<SendResult<K, V>, Throwable>) {
         LOG.info("Sending message={} to topic {}", message, topicName)
         try {
-            val kafkaResultFuture = kafkaTemplate.send(topicName, key, message)
+            val kafkaResultFuture:CompletableFuture<SendResult<K, V>> = kafkaTemplate.send(topicName, key, message)
             kafkaResultFuture.whenComplete(callback)
         } catch (e: KafkaException) {
             LOG.error("Error on kafka producer with key: {}, message: {} and exception: {}", key, message, e.message)
@@ -37,6 +39,6 @@ class KafkaProducerImpl<K : Serializable, V : SpecificRecordBase>(kvKafkaTemplat
     }
 
     companion object {
-        private val LOG: Logger = LoggerFactory.getLogger(KafkaProducerImpl::class.java)
+        private val LOG: Logger = LoggerFactory.getLogger(KafkaProducerV2Impl::class.java)
     }
 }
