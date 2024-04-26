@@ -15,7 +15,7 @@ import java.util.function.BiConsumer;
 
 @Component
 public class KafkaMessageHelper {
-    private static final Logger LOG = LoggerFactory.getLogger(KafkaMessageHelperV2.class);
+    private static final Logger LOG = LoggerFactory.getLogger(KafkaMessageHelper.class);
 
     private final ObjectMapper objectMapper;
 
