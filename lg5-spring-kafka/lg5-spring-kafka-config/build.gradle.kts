@@ -17,6 +17,8 @@ sourceSets {
 dependencies {
     implementation(libs.springboot.starter)
     testImplementation(project(":lg5-spring-test"))
+    testImplementation(libs.jupiter.root)
+    testRuntimeOnly(libs.jupiter.launcher)
 
 }
 
