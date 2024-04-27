@@ -184,7 +184,6 @@ fun Node.mavenCheckstylePlugin() {
                     appendNode("consoleOutput", "true")
                     appendNode("failsOnError", "true")
                     appendNode("violationSeverity", "warning")
-                    appendNode("outputFileFormat", "html")
                 }
             }
         }
