@@ -243,7 +243,7 @@ fun Node.springBootMavenBuildImagePlugin() {
             appendNode("image")
                 .appendNode("name", "\${project.groupId}/\${project.parent.artifactId}:\${project.version}")
             appendNode("createdDate", "now")
-            appendNode("skip", "true")
+            appendNode("skip", "false")
         }
 
         appendNode("executions")
