@@ -16,3 +16,5 @@ include("lg5-spring-kafka:lg5-spring-kafka-consumer")
 findProject(":lg5-spring-kafka:lg5-spring-kafka-consumer")?.name = "lg5-spring-kafka-consumer"
 include("lg5-spring-outbox")
 include("lg5-jvm-saga")
+include("lg5-spring-kafka:lg5-spring-kafka-model")
+findProject(":lg5-spring-kafka:lg5-spring-kafka-model")?.name = "lg5-spring-kafka-model"
