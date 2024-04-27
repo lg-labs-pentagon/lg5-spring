@@ -16,6 +16,7 @@ plugins.withType<JavaPlugin> {
     dependencies {
         implementation(platform(libs.springboot.dependencies))
         implementation(libs.springboot.logging)
+        implementation(libs.springboot.devtools)
     }
 }
 
@@ -82,9 +83,6 @@ tasks.withType<KotlinCompile> {
 tasks.jar {
     enabled = true
     from("checkstyle.xml")
-}
-dependencies {
-    implementation(kotlin("stdlib-jdk8"))
 }
 repositories {
     mavenCentral()
