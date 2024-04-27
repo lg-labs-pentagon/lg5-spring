@@ -86,7 +86,7 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build
 
-      - name:  Publish to GitHub Packages
+      - name:  Publish to GitHub Packages with commit ${{ env.sha_short }}
         run: ./gradlew publish -Pversion=1.0.0-alpha.${{ env.sha_short }}
         env:
           GITHUB_TOKEN: ${{ secrets.DEPLOY_GITHUB_TOKEN }}
