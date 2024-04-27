@@ -1,4 +1,5 @@
 dependencies{
     api(libs.springboot.logging)
+    api(libs.springboot.devtools)
     api(project(":lg5-jvm-utils"))
 }
