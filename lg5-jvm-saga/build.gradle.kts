@@ -2,7 +2,7 @@ plugins {
     kotlin("jvm")
 }
 
-group = "com.lg5.spring.saga"
+group="com.lg5.jvm"
 version = project.version
 
 java {
