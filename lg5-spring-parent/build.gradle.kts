@@ -44,6 +44,7 @@ extensions.configure<PublishingExtension> {
                             .appendNode("plugins").apply {
                                 avroPlugin()
                                 jibMavenPlugin()
+                                springBootMavenBuildImagePlugin()
                             }
                         appendNode("plugins").apply {
                             mavenCompilerPlugin()
@@ -229,6 +230,27 @@ fun Node.jibMavenPlugin() {
                         }
                     }
                 }
+            }
+    }
+}
+
+fun Node.springBootMavenBuildImagePlugin() {
+    appendNode("plugin").apply {
+        appendNode("groupId", libs.springboot.parent.get().group)
+        appendNode("artifactId", "spring-boot-maven-plugin")
+
+        appendNode("configuration").apply {
+            appendNode("image")
+                .appendNode("name", "\${project.groupId}/\${project.parent.artifactId}:\${project.version}")
+            appendNode("createdDate", "now")
+            appendNode("skip", "false")
+        }
+
+        appendNode("executions")
+            .appendNode("execution").apply {
+                appendNode("phase", "install")
+                appendNode("goals")
+                    .appendNode("goal", "build-image")
             }
 
     }
