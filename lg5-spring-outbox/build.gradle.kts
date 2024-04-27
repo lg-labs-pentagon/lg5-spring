@@ -5,6 +5,12 @@ plugins {
 group = "com.lg5.spring.outbox"
 version = project.version
 
+java {
+    withSourcesJar()
+    sourceCompatibility=JavaVersion.VERSION_21
+
+}
+
 repositories {
     mavenCentral()
 }
@@ -20,3 +26,4 @@ tasks.test {
 kotlin {
     jvmToolchain(21)
 }
+tasks.jar { enabled = true }
