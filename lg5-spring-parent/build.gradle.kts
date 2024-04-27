@@ -189,9 +189,9 @@ fun Node.mavenCheckstylePlugin() {
 
 fun Node.jibMavenPlugin() {
     appendNode("plugin").apply {
-        appendNode("groupId", libs.checkstyle.plugin.get().group)
-        appendNode("artifactId", libs.checkstyle.plugin.get().name)
-        appendNode("version", libs.checkstyle.plugin.get().version)
+        appendNode("groupId", libs.jib.plugin.get().group)
+        appendNode("artifactId", libs.jib.plugin.get().name)
+        appendNode("version", libs.jib.plugin.get().version)
 
         appendNode("configuration")
             .appendNode("from").apply {
