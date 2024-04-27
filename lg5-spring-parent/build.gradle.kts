@@ -15,7 +15,6 @@ plugins.withType<JavaPlugin> {
     val springBootVersion: String by project
     dependencies {
         implementation(platform(libs.springboot.dependencies))
-        implementation(libs.springboot.logging)
         implementation(libs.springboot.devtools)
     }
 }
