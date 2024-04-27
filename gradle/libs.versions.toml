@@ -46,9 +46,10 @@ lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok-v
 guava = { group = "com.google.guava", name = "guava", version.ref = "guava-version" }
 
 #events
-apache-avro = { group = "org.apache.avro", name = "avro", version.ref = "avro-version" }
-kafka-avro-serializer = { group = "io.confluent", name = "kafka-avro-serializer", version.ref = "kafka-avro-serializer-version" }
 spring-kafka = { group = "org.springframework.kafka", name = "spring-kafka", version.ref = "spring-kafka-version" }
+apache-avro = { group = "org.apache.avro", name = "avro", version.ref = "avro-version" }
+avro-plugin = { group = "org.apache.avro", name = "avro-maven-plugin", version.ref = "avro-version" }
+kafka-avro-serializer = { group = "io.confluent", name = "kafka-avro-serializer", version.ref = "kafka-avro-serializer-version" }
 
 [plugins]
 springboot-plugin = { id = "org.springframework.boot", version.ref = "springboot-version" }
