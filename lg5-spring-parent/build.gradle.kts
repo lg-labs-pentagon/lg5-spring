@@ -78,7 +78,10 @@ tasks.withType<KotlinCompile> {
         jvmTarget = "21"
     }
 }
-tasks.jar { enabled = true }
+tasks.jar {
+    enabled = true
+    from("checkstyle.xml")
+}
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
 }
