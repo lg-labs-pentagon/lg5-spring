@@ -42,10 +42,11 @@ extensions.configure<PublishingExtension> {
                     appendNode("pluginManagement")
                         .appendNode("plugins").apply {
                             avroPlugin()
-                    }
+                        }
                     appendNode("plugins").apply {
                         mavenCompilerPlugin()
                         jacocoPlugin()
+                        mavenCheckstylePlugin()
                     }
                 }
 
@@ -148,28 +149,36 @@ fun Node.avroPlugin() {
         }
     }
 }
-/*
 
-<plugin>
-<groupId>org.apache.avro</groupId>
-<artifactId>avro-maven-plugin</artifactId>
-<version>${avro.version}</version>
+fun Node.mavenCheckstylePlugin() {
+    appendNode("plugin").apply {
+        appendNode("groupId", libs.checkstyle.plugin.get().group)
+        appendNode("artifactId", libs.checkstyle.plugin.get().name)
+        appendNode("version", libs.checkstyle.plugin.get().version)
 
-<configuration>
-    <stringType>String</stringType>
-    <enableDecimalLogicalType>true</enableDecimalLogicalType>
-</configuration>
-<executions>
-    <execution>
-        <phase>generate-resources</phase>
-        <goals>
-        <goal>schema</goal>
-        </goals>
-        <configuration>
-            <sourceDirectory>src/main/resources/avro</sourceDirectory>
-            <outputDirectory>src/main/java</outputDirectory>
-        </configuration>
-    </execution>
-</executions>
+        appendNode("dependencies")
+            .appendNode("dependency").apply {
+                appendNode("groupId", libs.puppycrawl.tools.get().group)
+                appendNode("artifactId", libs.puppycrawl.tools.get().name)
+                appendNode("version", libs.puppycrawl.tools.get().version)
+        }
 
-</plugin>*/
+        appendNode("executions").apply {
+            appendNode("execution").apply {
+
+                appendNode("id", "validate")
+                appendNode("phase", "validate")
+                appendNode("goals")
+                    .appendNode("goal", "check")
+
+
+                appendNode("configuration").apply {
+                    appendNode("configLocation", "./checkstyle.xml")
+                    appendNode("consoleOutput", "true")
+                    appendNode("failsOnError", "true")
+                    appendNode("violationSeverity", "warning")
+                }
+            }
+        }
+    }
+}

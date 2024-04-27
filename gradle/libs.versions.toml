@@ -16,8 +16,9 @@ spring-kafka-version="3.0.12"
 #Kafka Publisher
 kafka-avro-serializer-version="7.5.1"
 
-#Lg5 DDD
-
+#Lg5 Code Quality
+maven-checkstyle-plugin-version="3.3.0"
+puppycrawl-tools-checkstyle-version="10.12.1"
 
 
 [libraries]
@@ -50,6 +51,10 @@ spring-kafka = { group = "org.springframework.kafka", name = "spring-kafka", ver
 apache-avro = { group = "org.apache.avro", name = "avro", version.ref = "avro-version" }
 avro-plugin = { group = "org.apache.avro", name = "avro-maven-plugin", version.ref = "avro-version" }
 kafka-avro-serializer = { group = "io.confluent", name = "kafka-avro-serializer", version.ref = "kafka-avro-serializer-version" }
+
+# code qualities
+checkstyle-plugin = { group = "org.apache.maven.plugins", name = "maven-checkstyle-plugin", version.ref = "maven-checkstyle-plugin-version" }
+puppycrawl-tools = { group = "com.puppycrawl.tools", name = "checkstyle", version.ref = "puppycrawl-tools-checkstyle-version" }
 
 [plugins]
 springboot-plugin = { id = "org.springframework.boot", version.ref = "springboot-version" }
