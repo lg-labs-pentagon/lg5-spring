@@ -20,6 +20,10 @@ kafka-avro-serializer-version="7.5.1"
 maven-checkstyle-plugin-version="3.3.0"
 puppycrawl-tools-checkstyle-version="10.12.1"
 
+# build images Jib
+jib-maven-plugin-version ="3.4.0"
+
+
 
 [libraries]
 # spring boot
@@ -55,6 +59,10 @@ kafka-avro-serializer = { group = "io.confluent", name = "kafka-avro-serializer"
 # code qualities
 checkstyle-plugin = { group = "org.apache.maven.plugins", name = "maven-checkstyle-plugin", version.ref = "maven-checkstyle-plugin-version" }
 puppycrawl-tools = { group = "com.puppycrawl.tools", name = "checkstyle", version.ref = "puppycrawl-tools-checkstyle-version" }
+
+# build images with JIB
+jib-plugin = { group = "com.google.cloud.tools", name = "jib-maven-plugin", version.ref = "jib-maven-plugin-version" }
+
 
 [plugins]
 springboot-plugin = { id = "org.springframework.boot", version.ref = "springboot-version" }

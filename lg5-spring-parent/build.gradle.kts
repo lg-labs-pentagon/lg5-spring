@@ -38,18 +38,22 @@ extensions.configure<PublishingExtension> {
             pom.packaging = "pom"
             pom.properties.put("lg5.version", "\${project.parent.version}")
             pom.withXml {
-                asNode().appendNode("build").apply {
-                    appendNode("pluginManagement")
-                        .appendNode("plugins").apply {
-                            avroPlugin()
-                        }
-                    appendNode("plugins").apply {
-                        mavenCompilerPlugin()
-                        jacocoPlugin()
-                        mavenCheckstylePlugin()
-                    }
-                }
+                asNode()
+                    .appendNode("build").apply {
+                        appendNode("pluginManagement")
+                            .appendNode("plugins").apply {
+                                avroPlugin()
+                                jibMavenPlugin()
+                            }
+                        appendNode("plugins").apply {
+                            mavenCompilerPlugin()
+                            jacocoPlugin()
+                            mavenCheckstylePlugin()
 
+                        }
+                    }
+                asNode()
+                    .profiles()
             }
         }
     }
@@ -161,7 +165,7 @@ fun Node.mavenCheckstylePlugin() {
                 appendNode("groupId", libs.puppycrawl.tools.get().group)
                 appendNode("artifactId", libs.puppycrawl.tools.get().name)
                 appendNode("version", libs.puppycrawl.tools.get().version)
-        }
+            }
 
         appendNode("executions").apply {
             appendNode("execution").apply {
@@ -181,4 +185,62 @@ fun Node.mavenCheckstylePlugin() {
             }
         }
     }
+}
+
+fun Node.jibMavenPlugin() {
+    appendNode("plugin").apply {
+        appendNode("groupId", libs.checkstyle.plugin.get().group)
+        appendNode("artifactId", libs.checkstyle.plugin.get().name)
+        appendNode("version", libs.checkstyle.plugin.get().version)
+
+        appendNode("configuration")
+            .appendNode("from").apply {
+                appendNode("image", "gcr.io/distroless/java17-debian12")
+                appendNode("platforms")
+                    .appendNode("platform").apply {
+                        appendNode("architecture", "\${docker.from.image.platform.architecture}")
+                        appendNode("os", "\${docker.from.image.platform.os}")
+                    }
+            }
+
+        appendNode("executions")
+            .appendNode("execution").apply {
+
+                appendNode("id", "build-image")
+                appendNode("phase", "post-integration-test")
+                appendNode("goals")
+                    .appendNode("goal", "dockerBuild")
+
+
+                appendNode("configuration").apply {
+                    appendNode("to").appendNode(
+                        "image",
+                        "\${project.groupId}/\${parent.artifactId}:\${project.version}"
+                    )
+                    appendNode("container").apply {
+                        appendNode("creationTime", "USE_CURRENT_TIMESTAMP")
+                        appendNode("jvmFlags").apply {
+                            appendNode("jvmFlag", "-Duser.timezone=UTC")
+                            appendNode("jvmFlag", "-XX:+PrintFlagsFinal")
+                            appendNode("jvmFlag", "-XX:MaxRAMPercentage=50")
+                        }
+                    }
+                }
+            }
+
+    }
+}
+
+fun Node.profiles() {
+    appendNode("profiles")
+        .appendNode("profile").apply {
+
+            appendNode("id", "arch-aarch64")
+
+            appendNode("activation")
+                .appendNode("os")
+                .appendNode("arch", "aarch64")
+            appendNode("properties")
+                .appendNode("docker.from.image.platform.architecture", "arm64")
+        }
 }
