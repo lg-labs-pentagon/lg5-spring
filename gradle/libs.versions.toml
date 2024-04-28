@@ -3,6 +3,7 @@ junit-jupiter-version = "5.10.2"
 lombok-version = "1.18.32"
 guava-version = "33.1.0-jre"
 springboot-version = "3.2.3"
+springframework-version = "6.1.4"
 mockito-version = "5.7.0"
 spring-dependency-version = "1.1.4"
 jacoco-version = "0.8.11"
@@ -32,7 +33,13 @@ springboot-dependencies = { group = "org.springframework.boot", name = "spring-b
 springboot-starter = { group = "org.springframework.boot", name = "spring-boot-starter", version.ref = "springboot-version" }
 springboot-json = { group = "org.springframework.boot", name = "spring-boot-starter-json", version.ref = "springboot-version" }
 springboot-devtools = { group = "org.springframework.boot", name = "spring-boot-devtools", version.ref = "springboot-version" }
+springboot-validation = { group = "org.springframework.boot", name = "spring-boot-starter-validation", version.ref = "springboot-version" }
 
+#Spring
+spring-tx = { group = "org.springframework", name = "spring-tx", version.ref = "springframework-version" }
+spring-context = { group = "org.springframework", name = "spring-context", version.ref = "springframework-version" }
+
+# Logger
 slf4j-api = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j-version" }
 springboot-logging = { group = "org.springframework.boot", name = "spring-boot-starter-logging", version.ref = "springboot-version" }
 
@@ -44,8 +51,6 @@ jupiter-api = { group = "org.junit.jupiter", name = "junit-jupiter-api", version
 jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", version.ref = "junit-jupiter-version" }
 jupiter-launcher = { module = "org.junit.platform:junit-platform-launcher" }
 mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito-version" }
-
-
 
 # Utils
 lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok-version" }

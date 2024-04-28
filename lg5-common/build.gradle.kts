@@ -1,8 +1,7 @@
 subprojects {
-    group = project.group.toString().plus(".kafka")
+    group = project.group.toString().plus(".common")
 
     repositories {
         mavenCentral()
     }
 }
-

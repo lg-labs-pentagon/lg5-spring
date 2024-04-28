@@ -18,3 +18,6 @@ include("lg5-spring-outbox")
 include("lg5-jvm-saga")
 include("lg5-spring-kafka:lg5-spring-kafka-model")
 findProject(":lg5-spring-kafka:lg5-spring-kafka-model")?.name = "lg5-spring-kafka-model"
+include("lg5-common")
+include("lg5-common:lg5-common-application-service")
+findProject(":lg5-common:lg5-common-application-service")?.name = "lg5-common-application-service"

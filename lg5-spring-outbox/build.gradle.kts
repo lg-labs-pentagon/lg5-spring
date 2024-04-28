@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation(libs.springboot.starter)
+    implementation(libs.spring.context)
     testImplementation(kotlin("test"))
 }
 
