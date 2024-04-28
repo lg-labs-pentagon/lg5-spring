@@ -23,3 +23,5 @@ include("lg5-common:lg5-common-application-service")
 findProject(":lg5-common:lg5-common-application-service")?.name = "lg5-common-application-service"
 include("lg5-common:lg5-common-domain")
 findProject(":lg5-common:lg5-common-domain")?.name = "lg5-common-domain"
+include("lg5-common:lg5-common-api")
+findProject(":lg5-common:lg5-common-api")?.name = "lg5-common-api"
