@@ -1,5 +1,5 @@
 subprojects {
-    group = project.group.toString().plus(".common")
+    group = "lg5.common"
 
     repositories {
         mavenCentral()
