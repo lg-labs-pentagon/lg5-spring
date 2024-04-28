@@ -21,3 +21,5 @@ findProject(":lg5-spring-kafka:lg5-spring-kafka-model")?.name = "lg5-spring-kafk
 include("lg5-common")
 include("lg5-common:lg5-common-application-service")
 findProject(":lg5-common:lg5-common-application-service")?.name = "lg5-common-application-service"
+include("lg5-common:lg5-common-domain-core")
+findProject(":lg5-common:lg5-common-domain-core")?.name = "lg5-common-domain-core"
