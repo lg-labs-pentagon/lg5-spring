@@ -1,8 +1,8 @@
-package com.lg5.spring.kafka.publisher;
+package com.lg5.spring.kafka.producer;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.lg5.spring.kafka.publisher.exception.KafkaMessageException;
+import com.lg5.spring.kafka.producer.exception.KafkaMessageException;
 import com.lg5.spring.outbox.OutboxStatus;
 import org.apache.kafka.clients.producer.RecordMetadata;
 import org.slf4j.Logger;

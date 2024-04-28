@@ -10,8 +10,8 @@ include("lg5-jvm-utils")
 include("lg5-spring-kafka")
 include("lg5-spring-kafka:lg5-spring-kafka-config")
 findProject(":lg5-spring-kafka:lg5-spring-kafka-config")?.name = "lg5-spring-kafka-config"
-include("lg5-spring-kafka:lg5-spring-kafka-publisher")
-findProject(":lg5-spring-kafka:lg5-spring-kafka-publisher")?.name = "lg5-spring-kafka-publisher"
+include("lg5-spring-kafka:lg5-spring-kafka-producer")
+findProject(":lg5-spring-kafka:lg5-spring-kafka-producer")?.name = "lg5-spring-kafka-producer"
 include("lg5-spring-kafka:lg5-spring-kafka-consumer")
 findProject(":lg5-spring-kafka:lg5-spring-kafka-consumer")?.name = "lg5-spring-kafka-consumer"
 include("lg5-spring-outbox")

@@ -1,8 +1,8 @@
-package com.lg5.spring.kafka.publisher.service.impl;
+package com.lg5.spring.kafka.producer.service.impl;
 
 
-import com.lg5.spring.kafka.publisher.exception.KafkaProducerException;
-import com.lg5.spring.kafka.publisher.service.KafkaProducer;
+import com.lg5.spring.kafka.producer.exception.KafkaProducerException;
+import com.lg5.spring.kafka.producer.service.KafkaProducer;
 import jakarta.annotation.PreDestroy;
 
 import org.apache.avro.specific.SpecificRecordBase;

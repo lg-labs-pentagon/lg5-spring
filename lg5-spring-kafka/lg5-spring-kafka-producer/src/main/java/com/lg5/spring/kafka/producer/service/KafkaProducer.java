@@ -1,4 +1,4 @@
-package com.lg5.spring.kafka.publisher.service;
+package com.lg5.spring.kafka.producer.service;
 
 import org.apache.avro.specific.SpecificRecordBase;
 import org.springframework.kafka.support.SendResult;

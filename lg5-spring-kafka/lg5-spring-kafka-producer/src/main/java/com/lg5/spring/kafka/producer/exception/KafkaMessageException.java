@@ -1,4 +1,4 @@
-package com.lg5.spring.kafka.publisher.exception;
+package com.lg5.spring.kafka.producer.exception;
 
 public class KafkaMessageException extends RuntimeException {
     public KafkaMessageException(String message, Throwable cause) {

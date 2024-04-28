@@ -1,4 +1,4 @@
-package com.lg5.spring.kafka.publisher;
+package com.lg5.spring.kafka.producer;
 
 import com.lg5.spring.kafka.config.data.KafkaConfigData;
 import com.lg5.spring.kafka.config.data.KafkaProducerConfigData;
