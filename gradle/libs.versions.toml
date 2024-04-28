@@ -24,6 +24,8 @@ puppycrawl-tools-checkstyle-version="10.12.1"
 # build images Jib
 jib-maven-plugin-version ="3.4.0"
 
+#lg5 Old
+ddd-common-domain-version="1.0.0-alpha.2"
 
 
 [libraries]
@@ -68,6 +70,9 @@ puppycrawl-tools = { group = "com.puppycrawl.tools", name = "checkstyle", versio
 
 # build images with JIB
 jib-plugin = { group = "com.google.cloud.tools", name = "jib-maven-plugin", version.ref = "jib-maven-plugin-version" }
+
+# lg5 old
+ddd-common-domain = { group = "com.labs.lg.pentagon", name = "ddd-common-domain", version.ref = "ddd-common-domain-version" }
 
 
 [plugins]
