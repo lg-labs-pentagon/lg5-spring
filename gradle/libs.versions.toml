@@ -29,6 +29,15 @@ jib-maven-plugin-version ="3.4.0"
 #lg5 Old
 ddd-common-domain-version="1.0.0-alpha.2"
 
+#Logger
+### TODO upgrade version to 7.4
+### https://github.com/logfellow/logstash-logback-encoder/releases
+### https://central.sonatype.com/artifact/net.logstash.logback/logstash-logback-encoder/overview
+logstash-logback-encoder-version="7.2"
+snappy-version="1.1.8.4"
+spring-cloud-sleuth-version="3.1.7"
+java-uuid-generator-version="4.3.0"
+
 
 [libraries]
 # spring boot
@@ -51,6 +60,10 @@ spring-context = { group = "org.springframework", name = "spring-context", versi
 # Logger
 slf4j-api = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j-version" }
 springboot-logging = { group = "org.springframework.boot", name = "spring-boot-starter-logging", version.ref = "springboot-version" }
+logstash-logback-encoder = { group = "net.logstash.logback", name = "logstash-logback-encoder", version.ref = "logstash-logback-encoder-version" }
+snappy-java = { group = "org.xerial.snappy", name = "snappy-java", version.ref = "snappy-version" }
+springcloud-starter-sleuth = { group = "org.springframework.cloud", name = "spring-cloud-starter-sleuth", version.ref = "spring-cloud-sleuth-version" }
+java-uuid-generator = { group = "com.fasterxml.uuid", name = "java-uuid-generator", version.ref = "java-uuid-generator-version" }
 
 # Test
 springboot-starter-test = { group = "org.springframework.boot", name = "spring-boot-starter-test", version.ref = "springboot-version" }
