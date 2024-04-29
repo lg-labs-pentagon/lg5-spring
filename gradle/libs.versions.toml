@@ -10,6 +10,8 @@ jacoco-version = "0.8.11"
 slf4j-version= "2.1.0-alpha1"
 maven-compiler-plugin-version="3.11.0"
 
+# Data
+postgresql-version="42.6.0"
 # Kafka Consumer
 avro-version="1.11.3"
 spring-kafka-version="3.0.12"
@@ -36,6 +38,10 @@ springboot-starter = { group = "org.springframework.boot", name = "spring-boot-s
 springboot-json = { group = "org.springframework.boot", name = "spring-boot-starter-json", version.ref = "springboot-version" }
 springboot-devtools = { group = "org.springframework.boot", name = "spring-boot-devtools", version.ref = "springboot-version" }
 springboot-validation = { group = "org.springframework.boot", name = "spring-boot-starter-validation", version.ref = "springboot-version" }
+
+# Spring Data JPA
+springboot-data-jpa = { group = "org.springframework.boot", name = "spring-boot-starter-data-jpa", version.ref = "springboot-version" }
+postgresql = { group = "org.postgresql", name = "postgresql", version.ref = "postgresql-version" }
 
 #Spring
 spring-tx = { group = "org.springframework", name = "spring-tx", version.ref = "springframework-version" }
@@ -73,6 +79,7 @@ jib-plugin = { group = "com.google.cloud.tools", name = "jib-maven-plugin", vers
 
 # lg5 old
 ddd-common-domain = { group = "com.labs.lg.pentagon", name = "ddd-common-domain", version.ref = "ddd-common-domain-version" }
+
 
 
 [plugins]
