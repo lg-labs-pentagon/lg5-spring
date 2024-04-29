@@ -38,6 +38,7 @@ springboot-starter = { group = "org.springframework.boot", name = "spring-boot-s
 springboot-json = { group = "org.springframework.boot", name = "spring-boot-starter-json", version.ref = "springboot-version" }
 springboot-devtools = { group = "org.springframework.boot", name = "spring-boot-devtools", version.ref = "springboot-version" }
 springboot-validation = { group = "org.springframework.boot", name = "spring-boot-starter-validation", version.ref = "springboot-version" }
+springboot-start-web = { group = "org.springframework.boot", name = "spring-boot-starter-web", version.ref = "springboot-version" }
 
 # Spring Data JPA
 springboot-data-jpa = { group = "org.springframework.boot", name = "spring-boot-starter-data-jpa", version.ref = "springboot-version" }
