@@ -12,11 +12,14 @@ plugins {
 plugins.withType<JavaPlugin> {
     extensions.configure<JavaPluginExtension> {
     }
-    val springBootVersion: String by project
+    val lg5SpringParentVersion: String by project
     dependencies {
         implementation(platform(libs.springboot.dependencies))
+        implementation(platform("com.lg5.spring:lg5-spring-data-jpa:${project.version}"))
     }
 }
+
+
 
 extensions.configure<PublishingExtension> {
     publications {
