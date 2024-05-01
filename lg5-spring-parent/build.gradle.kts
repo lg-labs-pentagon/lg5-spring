@@ -45,7 +45,7 @@ extensions.configure<PublishingExtension> {
 
                         //  <!-- Third utilities - Owner LgLabs-->
                         dependency("lg5.common:lg5-common-domain:${project.version}")
-                        dependency("com.lg5.jvm:lg5-common-application-service:${project.version}")
+                        dependency("lg5.common:lg5-common-application-service:${project.version}")
                         dependency("com.lg5.jvm:lg5-jvm-utils:${project.version}")
 
                         // <!-- tests -->
