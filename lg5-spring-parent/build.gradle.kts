@@ -27,6 +27,8 @@ extensions.configure<PublishingExtension> {
             pom {
                 dependencyManagement {
                     dependencies {
+                        // <!-- Starter Apps -->
+                        dependency("com.lg5.spring:lg5-spring-starter:${project.version}")
                         //  <!--Common Modules-->
                         dependency("com.lg5.spring:lg5-spring-data-jpa:${project.version}")
                         dependency("com.lg5.spring:lg5-spring-api-rest:${project.version}")

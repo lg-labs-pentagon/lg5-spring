@@ -52,6 +52,7 @@ mvn install
     * [lg5-spring-kafka-producer](lg5-spring-kafka%2Flg5-spring-kafka-producer)
 * [lg5-spring-logger](lg5-spring-logger)
 * [lg5-spring-outbox](lg5-spring-outbox)
+* [lg5-spring-starter](lg5-spring-starter)
 * [lg5-spring-test](lg5-spring-test)
 * [lg5-spring-utils](lg5-spring-utils)
 * [lg5-common](lg5-common)
