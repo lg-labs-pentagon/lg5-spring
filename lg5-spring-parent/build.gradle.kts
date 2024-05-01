@@ -15,17 +15,22 @@ plugins.withType<JavaPlugin> {
     val lg5SpringParentVersion: String by project
     dependencies {
         implementation(platform(libs.springboot.dependencies))
-        implementation(platform("com.lg5.spring:lg5-spring-data-jpa:${project.version}"))
     }
 }
-
 
 
 extensions.configure<PublishingExtension> {
     publications {
         create<MavenPublication>("parentJava") {
             from(components["java"])
+            pom {
+                dependencyManagement {
+                    dependencies{
+                        dependency("com.lg5.spring:lg5-spring-data-jpa:${project.version}")
+                    }
 
+                }
+            }
 
             pom.withXml {
                 asNode()
