@@ -94,6 +94,18 @@ make publish-local
 > So, you must check the folder `.m2`.
 
 
+### The Version Catalog with [TOML][6] file
+
+
+The TOML file consists of 4 major sections:
+
+the **[versions]** section is used to declare versions which can be referenced by dependencies
+
+the **[libraries]** section is used to declare the aliases to coordinates
+
+the **[bundles]** section is used to declare dependency bundles
+
+the **[plugins]** section is used to declare plugins
 
 ## ⚖️ License
 
@@ -109,6 +121,9 @@ The MIT License (MIT). Please see [License][LIC] for more information.
 [4]: https://github.com/lg-labs-pentagon/lg5-spring/README.md
 
 [5]: https://github.com/lg-labs-pentagon/lg5-spring/packages/2125499
+
+[6]: https://docs.gradle.org/current/userguide/platforms.html
+
 
 
 
