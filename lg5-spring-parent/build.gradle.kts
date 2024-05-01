@@ -248,7 +248,7 @@ fun Node.jibMavenPlugin() {
                 appendNode("configuration").apply {
                     appendNode("to").appendNode(
                         "image",
-                        "\${project.groupId}/\${parent.artifactId}:\${project.version}"
+                        "\${project.groupId}/\${project.parent.artifactId}:\${project.version}"
                     )
                     appendNode("container").apply {
                         appendNode("creationTime", "USE_CURRENT_TIMESTAMP")
