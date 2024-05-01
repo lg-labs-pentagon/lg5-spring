@@ -23,10 +23,33 @@ extensions.configure<PublishingExtension> {
     publications {
         create<MavenPublication>("parentJava") {
             from(components["java"])
+
             pom {
                 dependencyManagement {
-                    dependencies{
+                    dependencies {
+                        //  <!--Common Modules-->
                         dependency("com.lg5.spring:lg5-spring-data-jpa:${project.version}")
+                        dependency("com.lg5.spring:lg5-spring-api-rest:${project.version}")
+                        dependency("com.lg5.spring:lg5-spring-logger:${project.version}")
+
+                        //  <!--SAGA Pattern-->
+                        dependency("com.lg5.jvm:lg5-jvm-saga:${project.version}")
+
+                        // <!--OUTBOX Pattern-->
+                        dependency("com.lg5.spring.outbox:lg5-spring-outbox:${project.version}")
+
+                        //  <!-- Kafka -->
+                        dependency("com.lg5.spring.kafka:lg5-spring-kafka-producer:${project.version}")
+                        dependency("com.lg5.spring.kafka:lg5-spring-kafka-consumer:${project.version}")
+                        dependency("com.lg5.spring.kafka:lg5-spring-kafka-model:${project.version}")
+
+                        //  <!-- Third utilities - Owner LgLabs-->
+                        dependency("lg5.common:lg5-common-domain:${project.version}")
+                        dependency("com.lg5.jvm:lg5-common-application-service:${project.version}")
+                        dependency("com.lg5.jvm:lg5-jvm-utils:${project.version}")
+
+                        // <!-- tests -->
+                        dependency("com.lg5.spring:lg5-spring-test:${project.version}")
                     }
 
                 }
@@ -62,6 +85,8 @@ extensions.configure<PublishingExtension> {
                     }
                 asNode()
                     .profiles()
+                asNode()
+                    .repositories()
             }
         }
     }
@@ -271,5 +296,13 @@ fun Node.profiles() {
                 .appendNode("arch", "aarch64")
             appendNode("properties")
                 .appendNode("docker.from.image.platform.architecture", "arm64")
+        }
+}
+
+fun Node.repositories() {
+    appendNode("repositories")
+        .appendNode("repository").apply {
+            appendNode("id", "confluent")
+            appendNode("url", "https://packages.confluent.io/maven/")
         }
 }
