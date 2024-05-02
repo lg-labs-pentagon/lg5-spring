@@ -54,17 +54,6 @@ public class KafkaMessageHelper {
         };
     }
 
-    @Deprecated
-    public <T, U> BiConsumer<SendResult<String, T>, Throwable> getKafkaCallback(String topicName,
-                                                                                T avroModel,
-                                                                                U outboxMessage,
-                                                                                BiConsumer<U, OutboxStatus>
-                                                                                        outboxCallback,
-                                                                                String eventId,
-                                                                                String avroModelName) {
-        return getKafkaCallback(topicName, avroModel, outboxMessage, outboxCallback, eventId);
-    }
-
     public <T, U> BiConsumer<SendResult<String, T>, Throwable> getKafkaCallback(String topicName,
                                                                                 T avroModel,
                                                                                 U outboxMessage,
