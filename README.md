@@ -14,7 +14,7 @@ From **Lg Pentagon** or **lg5**! Get [Lg5-Spring][4] to develop μ-services fast
 For more information, check this pages https://lufgarciaqu.medium.com.
 <h1></h1>
 
-# Using Spring Boot `3.2.X`, JDK 21
+# Use Spring Boot `3.2.X`, JDK 21
 
 [More details][4]
 
@@ -31,13 +31,15 @@ For more information, check this pages https://lufgarciaqu.medium.com.
 ```
 _Note: Please check the [latest version][5]_
 
-Install 2/2: Install the dependencies in your project.
+Install 2/2: Install the dependencies in your proje`ct.
 
 ```bash
 mvn install
 ```
 
+# 🏗️🏗️ [Repo with Real Example using Lg5Spring][7]
 
+Also, [The template repository(blank-service)][8] use it.
 
 
 ## 📚Contents
@@ -119,11 +121,14 @@ The MIT License (MIT). Please see [License][LIC] for more information.
 
 [2]: https://img.shields.io/badge/license-MIT-green?style=flat-square
 
-[4]: https://github.com/lg-labs-pentagon/lg5-spring/README.md
+[4]: https://github.com/lg-labs-pentagon/lg5-spring
 
 [5]: https://github.com/lg-labs-pentagon/lg5-spring/packages/2125499
 
 [6]: https://docs.gradle.org/current/userguide/platforms.html
+
+[7]: https://github.com/lg-labs/food-ordering-system
+[8]: https://github.com/lg-labs/blank-service
 
 
 
