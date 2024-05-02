@@ -24,15 +24,37 @@ public class KafkaMessageHelper {
     }
 
 
-    public <T> T stringToObjectClass(String payload, Class<T> outputType) {
-        try {
-            return objectMapper.readValue(payload, outputType);
-        } catch (JsonProcessingException e) {
-            LOG.error("Could not read {} object!", outputType.getName(), e);
-            throw new KafkaMessageException("Could not read " + outputType.getName() + " object!", e);
-        }
+    private <T> BiConsumer<SendResult<String, T>, Throwable> getCallback(String topicName, T avroModel) {
+        return (result, ex) -> {
+            if (ex == null) {
+                final RecordMetadata metadata = result.getRecordMetadata();
+                LOG.info("""
+                                Received new metadata.
+                                Topic: {};
+                                Partition {};
+                                Offset {};
+                                Timestamp {};
+                                at time {};
+                                """,
+                        metadata.topic(),
+                        metadata.partition(),
+                        metadata.offset(),
+                        metadata.timestamp(),
+                        System.nanoTime());
+            } else {
+                LOG.error("""
+                                Error while sending {}:
+                                 - with message: {}
+                                 - to topic {}
+                                """,
+                        avroModel.getClass().getName(),
+                        avroModel.toString(),
+                        topicName, ex);
+            }
+        };
     }
 
+    @Deprecated
     public <T, U> BiConsumer<SendResult<String, T>, Throwable> getKafkaCallback(String topicName,
                                                                                 T avroModel,
                                                                                 U outboxMessage,
@@ -40,27 +62,60 @@ public class KafkaMessageHelper {
                                                                                         outboxCallback,
                                                                                 String eventId,
                                                                                 String avroModelName) {
+        return getKafkaCallback(topicName, avroModel, outboxMessage, outboxCallback, eventId);
+    }
+
+    public <T, U> BiConsumer<SendResult<String, T>, Throwable> getKafkaCallback(String topicName,
+                                                                                T avroModel,
+                                                                                U outboxMessage,
+                                                                                BiConsumer<U, OutboxStatus>
+                                                                                        outboxCallback,
+                                                                                String eventId) {
 
         return (result, ex) -> {
             if (ex == null) {
                 final RecordMetadata metadata = result.getRecordMetadata();
-                LOG.info("Received successful response from Kafka for event id: {} "
-                                + " Topic: {} Partition: {} Offset: {} Timestamp: {}",
+                LOG.info("""
+                                Received new metadata.
+                                Topic: {};
+                                Event Id: {}
+                                Partition {};
+                                Offset {};
+                                Timestamp {};
+                                at time {};
+                                """,
                         eventId,
                         metadata.topic(),
                         metadata.partition(),
                         metadata.offset(),
-                        metadata.timestamp()
-                );
+                        metadata.timestamp(),
+                        System.nanoTime());
+
                 outboxCallback.accept(outboxMessage, OutboxStatus.COMPLETED);
             } else {
-                LOG.error("Error while sending {} with message: {} and outbox type: {} to topic {}",
-                        avroModelName,
-                        avroModel.toString(),
+                LOG.error("""
+                                Error while sending {}:
+                                 - event Id: {}
+                                 - with message: {}
+                                 - outbox type: {}
+                                 - to topic {}
+                                """,
+                        eventId,
+                        avroModel.getClass().getName(),
                         outboxMessage.getClass().getName(),
+                        avroModel.toString(),
                         topicName, ex);
                 outboxCallback.accept(outboxMessage, OutboxStatus.FAILED);
             }
         };
+    }
+
+    public <T> T stringToObjectClass(String payload, Class<T> outputType) {
+        try {
+            return objectMapper.readValue(payload, outputType);
+        } catch (JsonProcessingException e) {
+            LOG.error("Could not read {} object!", outputType.getName(), e);
+            throw new KafkaMessageException("Could not read " + outputType.getName() + " object!", e);
+        }
     }
 }
