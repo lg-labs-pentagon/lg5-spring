@@ -24,7 +24,7 @@ public class KafkaMessageHelper {
     }
 
 
-    private <T> BiConsumer<SendResult<String, T>, Throwable> getCallback(String topicName, T avroModel) {
+    public  <T> BiConsumer<SendResult<String, T>, Throwable> getCallback(String topicName, T avroModel) {
         return (result, ex) -> {
             if (ex == null) {
                 final RecordMetadata metadata = result.getRecordMetadata();
