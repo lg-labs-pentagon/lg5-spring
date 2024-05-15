@@ -49,6 +49,7 @@ extensions.configure<PublishingExtension> {
                         dependency("lg5.common:lg5-common-domain:${project.version}")
                         dependency("lg5.common:lg5-common-application-service:${project.version}")
                         dependency("com.lg5.jvm:lg5-jvm-utils:${project.version}")
+                        dependency("com.lg5.spring:lg5-spring-utils:${project.version}")
 
                         // <!-- tests -->
                         dependency("com.lg5.spring:lg5-spring-test:${project.version}")
