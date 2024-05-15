@@ -15,6 +15,8 @@ dependencies {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
         exclude(group = "com.vaadin.external.google", module = "android-json")
     }
+    api(libs.awaitility)
+    api(libs.rest.assured)
 
 }
 tasks.jar { enabled = true }

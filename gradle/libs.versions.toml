@@ -38,6 +38,9 @@ snappy-version="1.1.8.4"
 spring-cloud-sleuth-version="3.1.7"
 java-uuid-generator-version="4.3.0"
 
+# utils
+awaitility-version="4.2.0"
+rest-assured-version="5.3.1"
 
 [libraries]
 # spring boot
@@ -48,6 +51,7 @@ springboot-json = { group = "org.springframework.boot", name = "spring-boot-star
 springboot-devtools = { group = "org.springframework.boot", name = "spring-boot-devtools", version.ref = "springboot-version" }
 springboot-validation = { group = "org.springframework.boot", name = "spring-boot-starter-validation", version.ref = "springboot-version" }
 springboot-start-web = { group = "org.springframework.boot", name = "spring-boot-starter-web", version.ref = "springboot-version" }
+springboot-start-actuator = { group = "org.springframework.boot", name = "spring-boot-starter-actuator", version.ref = "springboot-version" }
 
 # Spring Data JPA
 springboot-data-jpa = { group = "org.springframework.boot", name = "spring-boot-starter-data-jpa", version.ref = "springboot-version" }
@@ -77,6 +81,8 @@ mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mo
 # Utils
 lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok-version" }
 guava = { group = "com.google.guava", name = "guava", version.ref = "guava-version" }
+awaitility = { group = "org.awaitility", name = "awaitility", version.ref = "awaitility-version" }
+rest-assured= { group = "io.rest-assured", name = "rest-assured", version.ref = "awaitility-version" }
 
 #events
 spring-kafka = { group = "org.springframework.kafka", name = "spring-kafka", version.ref = "spring-kafka-version" }
