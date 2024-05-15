@@ -82,7 +82,7 @@ mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mo
 lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok-version" }
 guava = { group = "com.google.guava", name = "guava", version.ref = "guava-version" }
 awaitility = { group = "org.awaitility", name = "awaitility", version.ref = "awaitility-version" }
-rest-assured= { group = "io.rest-assured", name = "rest-assured", version.ref = "awaitility-version" }
+rest-assured= { group = "io.rest-assured", name = "rest-assured", version.ref = "rest-assured-version" }
 
 #events
 spring-kafka = { group = "org.springframework.kafka", name = "spring-kafka", version.ref = "spring-kafka-version" }
