@@ -56,6 +56,7 @@ Also, [The template repository(blank-service)][8] use it.
 * [lg5-spring-outbox](lg5-spring-outbox)
 * [lg5-spring-starter](lg5-spring-starter)
 * [lg5-spring-test](lg5-spring-test)
+* [lg5-spring-testcontainers](lg5-spring-testcontainers)
 * [lg5-spring-utils](lg5-spring-utils)
 * [lg5-common](lg5-common)
     * [lg5-common-application-service](lg5-common%2Flg5-common-application-service)

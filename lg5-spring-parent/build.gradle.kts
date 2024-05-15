@@ -52,6 +52,7 @@ extensions.configure<PublishingExtension> {
 
                         // <!-- tests -->
                         dependency("com.lg5.spring:lg5-spring-test:${project.version}")
+                        dependency("com.lg5.spring:lg5-spring-testcontainers:${project.version}")
                     }
 
                 }

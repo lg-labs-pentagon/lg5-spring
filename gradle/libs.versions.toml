@@ -11,7 +11,8 @@ slf4j-version= "2.1.0-alpha1"
 maven-compiler-plugin-version="3.11.0"
 
 # Data
-postgresql-version="42.6.0"
+postgresql-version="42.7.3"
+liquibase-version="4.27.0"
 # Kafka Consumer
 avro-version="1.11.3"
 spring-kafka-version="3.0.12"
@@ -42,6 +43,9 @@ java-uuid-generator-version="4.3.0"
 awaitility-version="4.2.0"
 rest-assured-version="5.3.1"
 
+#Testcontainer
+testcontainers-version="1.19.8"
+
 [libraries]
 # spring boot
 springboot-parent = { group = "org.springframework.boot", name = "spring-boot-starter-parent", version.ref = "springboot-version" }
@@ -52,10 +56,12 @@ springboot-devtools = { group = "org.springframework.boot", name = "spring-boot-
 springboot-validation = { group = "org.springframework.boot", name = "spring-boot-starter-validation", version.ref = "springboot-version" }
 springboot-start-web = { group = "org.springframework.boot", name = "spring-boot-starter-web", version.ref = "springboot-version" }
 springboot-start-actuator = { group = "org.springframework.boot", name = "spring-boot-starter-actuator", version.ref = "springboot-version" }
+springboot-docker-compose = { group = "org.springframework.boot", name = "spring-boot-docker-compose", version.ref = "springboot-version" }
 
 # Spring Data JPA
 springboot-data-jpa = { group = "org.springframework.boot", name = "spring-boot-starter-data-jpa", version.ref = "springboot-version" }
 postgresql = { group = "org.postgresql", name = "postgresql", version.ref = "postgresql-version" }
+liquibase = { group = "org.liquibase", name = "liquibase-core", version.ref = "liquibase-version" }
 
 #Spring
 spring-tx = { group = "org.springframework", name = "spring-tx", version.ref = "springframework-version" }
@@ -100,6 +106,12 @@ jib-plugin = { group = "com.google.cloud.tools", name = "jib-maven-plugin", vers
 # lg5 old
 ddd-common-domain = { group = "com.labs.lg.pentagon", name = "ddd-common-domain", version.ref = "ddd-common-domain-version" }
 
+#Testcontainer
+
+testcontainers-postgresql = { group = "org.testcontainers", name = "postgresql", version.ref = "testcontainers-version" }
+testcontainers-kafka = { group = "org.testcontainers", name = "kafka", version.ref = "testcontainers-version" }
+testcontainers-jupiter = { group = "org.testcontainers", name = "junit-jupiter", version.ref = "testcontainers-version" }
+springboot-testcontainers = { group = "org.springframework.boot", name = "spring-boot-testcontainers", version.ref = "springboot-version" }
 
 
 [plugins]
