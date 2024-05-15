@@ -14,8 +14,6 @@ spring-parent-publish:
 jvm-publish:
 	jvm-test-publish
 
-
-
 all-build:
 	./gradlew build --warning-mode all
 
