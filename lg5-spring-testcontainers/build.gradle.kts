@@ -1,3 +1,8 @@
+java {
+    withSourcesJar()
+    sourceCompatibility=JavaVersion.VERSION_21
+}
+
 repositories {
     mavenCentral()
 }

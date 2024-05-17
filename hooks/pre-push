@@ -1,2 +1,3 @@
 #!/bin/sh
+to_lg
 ./gradlew clean build --warning-mode all
