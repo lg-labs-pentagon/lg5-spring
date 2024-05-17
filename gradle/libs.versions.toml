@@ -1,9 +1,9 @@
 [versions]
 springboot-version = "3.2.5"
+springframework-version = "6.1.6"
 junit-jupiter-version = "5.10.2"
 lombok-version = "1.18.32"
 guava-version = "33.1.0-jre"
-springframework-version = "6.1.4"
 mockito-version = "5.7.0"
 spring-dependency-version = "1.1.4"
 jacoco-version = "0.8.11"
@@ -35,7 +35,7 @@ ddd-common-domain-version="1.0.0-alpha.2"
 ### https://github.com/logfellow/logstash-logback-encoder/releases
 ### https://central.sonatype.com/artifact/net.logstash.logback/logstash-logback-encoder/overview
 logstash-logback-encoder-version="7.2"
-snappy-version="1.1.8.4"
+snappy-version="1.1.10.4"
 spring-cloud-sleuth-version="3.1.7"
 java-uuid-generator-version="4.3.0"
 
