@@ -1,8 +1,30 @@
-# Lg5 Spring
+# Lg5 Spring Library
+**_Hex Arch, DDD,SAGA, Outbox&Kafka_**
 
 ## Use Spring Boot `3.2.X`, JDK 21
 
-> Tools for developer software just faster.
+> Tools for developer software just faster.   
+
+## 🚀 Using Lg5 Spring
+
+> Install 1/2: Add this to pom.xml:
+
+```xml title="pom.xml" linenums="1" hl_lines="3"
+<parent>
+  <groupId>com.lg5.spring</groupId>
+  <artifactId>lg5-spring-parent</artifactId>
+  <version>1.0.0-alpha.[check lts version]</version>
+</parent>   
+```
+_Note: Please check the [latest version][5]_
+
+Install 2/2: Install the dependencies in your project.
+
+```bash title="terminal" linenums="1" hl_lines="1"
+mvn install
+```
+
+## 📚Contents
 
 * [lg5-spring-parent](lg5-spring-parent)
 * [lg5-spring-api-rest](lg5-spring-api-rest)
@@ -19,3 +41,6 @@
 * [lg5-spring-test](lg5-spring-test)
 * [lg5-spring-testcontainers](lg5-spring-testcontainers)
 * [lg5-spring-utils](lg5-spring-utils)
+
+
+[5]: https://github.com/lg-labs-pentagon/lg5-spring/packages/2125499

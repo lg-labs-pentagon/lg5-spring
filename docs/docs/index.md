@@ -12,7 +12,7 @@
 From **Lg Pentagon** or **lg5**! Get [Lg5-Spring][4] to develop μ-services faster.
 
 For more information, check this pages https://lufgarciaqu.medium.com.
-<h1></h1><br/>
+<h1>Hex Arch, DDD,SAGA, Outbox&Kafka</h1><br/>
 
 ## Use Spring Boot `3.2.X`, JDK 21
 
@@ -22,18 +22,18 @@ For more information, check this pages https://lufgarciaqu.medium.com.
 
 > Install 1/2: Add this to pom.xml:
 
-```xml
+```xml title="pom.xml" linenums="1" hl_lines="3"
 <parent>
-    <groupId>com.lg5.spring</groupId>
-    <artifactId>lg5-spring-parent</artifactId>
-    <version>1.0.0-alpha.[check lts version]</version>
+  <groupId>com.lg5.spring</groupId>
+  <artifactId>lg5-spring-parent</artifactId>
+  <version>1.0.0-alpha.[check lts version]</version>
 </parent>   
 ```
 _Note: Please check the [latest version][5]_
 
-Install 2/2: Install the dependencies in your proje`ct.
+Install 2/2: Install the dependencies in your project.
 
-```bash
+```bash title="Terminal" linenums="1" hl_lines="1"
 mvn install
 ```
 
@@ -42,29 +42,10 @@ mvn install
 Also, [The template repository(blank-service)][8] use it.
 
 
-## 📚Contents
+## Important Modules
 
-* [lg5-spring-parent](lg5-spring-parent)
-* [lg5-spring-api-rest](lg5-spring-api-rest)
-* [lg5-spring-client](lg5-spring-client)
-* [lg5-spring-data-jpa](lg5-spring-data-jpa)
-* [lg5-spring-kafka](lg5-spring-kafka)
-    * [lg5-spring-kafka-config](lg5-spring-kafka%2Flg5-spring-kafka-config)
-    * [lg5-spring-kafka-consumer](lg5-spring-kafka%2Flg5-spring-kafka-consumer)
-    * [lg5-spring-kafka-model](lg5-spring-kafka%2Flg5-spring-kafka-model)
-    * [lg5-spring-kafka-producer](lg5-spring-kafka%2Flg5-spring-kafka-producer)
-* [lg5-spring-logger](lg5-spring-logger)
-* [lg5-spring-outbox](lg5-spring-outbox)
-* [lg5-spring-starter](lg5-spring-starter)
-* [lg5-spring-test](lg5-spring-test)
-* [lg5-spring-testcontainers](lg5-spring-testcontainers)
-* [lg5-spring-utils](lg5-spring-utils)
-* [lg5-common](lg5-common)
-    * [lg5-common-application-service](lg5-common%2Flg5-common-application-service)
-    * [lg5-common-domain](lg5-common%2Flg5-common-domain)
-* [lg5-jvm-saga](lg5-jvm-saga)
-* [lg5-jvm-test](lg5-jvm-test)
-* [lg5-jvm-utils](lg5-jvm-utils)
+* [lg5-spring](lg5-spring)
+* [lg5-jvm](lg5-JVM)
 
 # ⚠️ Important
 
