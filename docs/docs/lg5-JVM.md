@@ -9,7 +9,7 @@
 
 > Install 1/2: Add this to pom.xml:
 
-```xml title="pom.xml" linenums="1" hl_lines="3"
+```xml title="pom.xml" linenums="1" hl_lines="4"
 <dependency>
   <groupId>com.lg5.jvm</groupId>
   <artifactId>lg5-jvm-utils</artifactId>

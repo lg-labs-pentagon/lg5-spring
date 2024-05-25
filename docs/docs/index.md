@@ -22,7 +22,7 @@ For more information, check this pages https://lufgarciaqu.medium.com.
 
 > Install 1/2: Add this to pom.xml:
 
-```xml title="pom.xml" linenums="1" hl_lines="3"
+```xml title="pom.xml" linenums="1" hl_lines="4"
 <parent>
   <groupId>com.lg5.spring</groupId>
   <artifactId>lg5-spring-parent</artifactId>
