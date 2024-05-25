@@ -12,9 +12,9 @@
 From **Lg Pentagon** or **lg5**! Get [Lg5-Spring][4] to develop μ-services faster.
 
 For more information, check this pages https://lufgarciaqu.medium.com.
-<h1></h1>
+<h1></h1><br/>
 
-# Use Spring Boot `3.2.X`, JDK 21
+## Use Spring Boot `3.2.X`, JDK 21
 
 [More details][4]
 

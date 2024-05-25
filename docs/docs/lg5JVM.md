@@ -1,6 +1,6 @@
 # Lg5 Spring
 
-## Another heading
+## Use JDK 21
 
 > **No use frameworks**, but it is important to create software using the best practices 
 

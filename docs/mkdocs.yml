@@ -1,4 +1,4 @@
-site_name: Lg
+site_name: Lg Projects
 site_url: https://lg-labs-pentagon.github.io/lg5-spring/
 theme:
   name: material
@@ -61,4 +61,4 @@ markdown_extensions:
       emoji_generator: !!python/name:materialx.emoji.to_svg
 
 copyright: |
-  &copy; 2023 <a href="https://github.com/lglabs"  target="_blank" rel="noopener">Luis Fernando García Q.</a>
+  &copy; 2024 <a href="https://github.com/lglabs"  target="_blank" rel="noopener">Luis Fernando García Q.</a>
