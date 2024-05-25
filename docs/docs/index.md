@@ -12,13 +12,14 @@
 From **Lg Pentagon** or **lg5**! Get [Lg5-Spring][4] to develop μ-services faster.
 
 For more information, check this pages https://lufgarciaqu.medium.com.
-<h1>Hex Arch, DDD,SAGA, Outbox&Kafka</h1><br/>
 
-## Use Spring Boot `3.2.X`, JDK 21
+<br/><h2>Hex Arch, DDD,SAGA, Outbox&Kafka</h2>
 
-[More details][4]
+### Use Spring Boot `3.2.X`, JDK 21
 
 ## 🚀 Using Lg5 Spring
+
+[Code Repository][4] and an example of use with [blank-service][9]️.
 
 > Install 1/2: Add this to pom.xml:
 
@@ -37,9 +38,9 @@ Install 2/2: Install the dependencies in your project.
 mvn install
 ```
 
-# 🏗️🏗️ [Repo with Real Example using Lg5Spring][7]
+# 🏗 [The template (blank-service)][9]️
 
-Also, [The template repository(blank-service)][8] use it.
+Also, [Repo with Real Example using Lg5Spring][7], and [Repo blank-service][8]️.
 
 
 ## Important Modules
@@ -112,6 +113,7 @@ The MIT License (MIT). Please see [License][LIC] for more information.
 
 [7]: https://github.com/lg-labs/food-ordering-system
 [8]: https://github.com/lg-labs/blank-service
+[9]: https://lg-labs.github.io/blank-service
 
 
 

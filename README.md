@@ -19,9 +19,10 @@ For full documentation visit the [Wiki][9].
 
 # Use Spring Boot `3.2.X`, JDK 21
 
-[More details][4]
+
 
 ## 🚀 Using Lg5 Spring
+[Code Repository][4]
 
 > Install 1/2: Add this to pom.xml:
 
