@@ -1,6 +1,7 @@
 [versions]
 springboot-version = "3.2.5"
 springframework-version = "6.1.6"
+spring-cloud-sleuth-version="3.1.7"
 junit-jupiter-version = "5.10.2"
 lombok-version = "1.18.32"
 guava-version = "33.1.0-jre"
@@ -13,6 +14,10 @@ maven-compiler-plugin-version="3.11.0"
 # Data
 postgresql-version="42.7.3"
 liquibase-version="4.27.0"
+
+# Rest Client
+openfeign-version="4.1.1"
+
 # Kafka Consumer
 avro-version="1.11.3"
 spring-kafka-version="3.0.12"
@@ -36,7 +41,6 @@ ddd-common-domain-version="1.0.0-alpha.2"
 ### https://central.sonatype.com/artifact/net.logstash.logback/logstash-logback-encoder/overview
 logstash-logback-encoder-version="7.2"
 snappy-version="1.1.10.4"
-spring-cloud-sleuth-version="3.1.7"
 java-uuid-generator-version="4.3.0"
 
 # utils
@@ -66,7 +70,8 @@ liquibase = { group = "org.liquibase", name = "liquibase-core", version.ref = "l
 #Spring
 spring-tx = { group = "org.springframework", name = "spring-tx", version.ref = "springframework-version" }
 spring-context = { group = "org.springframework", name = "spring-context", version.ref = "springframework-version" }
-
+# Rest Client
+openfeign = { group = "org.springframework.cloud", name = "spring-cloud-starter-openfeign", version.ref = "openfeign-version" }
 # Logger
 slf4j-api = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j-version" }
 springboot-logging = { group = "org.springframework.boot", name = "spring-boot-starter-logging", version.ref = "springboot-version" }

@@ -46,6 +46,7 @@ Also, [The template repository(blank-service)][8] use it.
 
 * [lg5-spring-parent](lg5-spring-parent)
 * [lg5-spring-api-rest](lg5-spring-api-rest)
+* [lg5-spring-client](lg5-spring-client)
 * [lg5-spring-data-jpa](lg5-spring-data-jpa)
 * [lg5-spring-kafka](lg5-spring-kafka)
     * [lg5-spring-kafka-config](lg5-spring-kafka%2Flg5-spring-kafka-config)

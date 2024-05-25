@@ -40,6 +40,9 @@ extensions.configure<PublishingExtension> {
                         // <!--OUTBOX Pattern-->
                         dependency("com.lg5.spring.outbox:lg5-spring-outbox:${project.version}")
 
+                        //  <!-- Rest Client-->
+                        dependency("com.lg5.spring:lg5-spring-client:${project.version}")
+
                         //  <!-- Kafka -->
                         dependency("com.lg5.spring.kafka:lg5-spring-kafka-producer:${project.version}")
                         dependency("com.lg5.spring.kafka:lg5-spring-kafka-consumer:${project.version}")
