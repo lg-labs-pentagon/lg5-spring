@@ -304,8 +304,12 @@ fun Node.profiles() {
             appendNode("activation")
                 .appendNode("os")
                 .appendNode("arch", "aarch64")
-            appendNode("properties")
-                .appendNode("docker.from.image.platform.architecture", "arm64")
+            appendNode("properties").apply{
+                appendNode("docker.from.image.platform.architecture", "arm64")
+                appendNode("docker.from.image.platform.os", "linux")
+            }
+
+
         }
 }
 
