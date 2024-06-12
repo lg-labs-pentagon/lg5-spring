@@ -30,7 +30,7 @@ maven-checkstyle-plugin-version="3.3.0"
 puppycrawl-tools-checkstyle-version="10.12.1"
 
 # build images Jib
-jib-maven-plugin-version ="3.4.0"
+jib-maven-plugin-version ="3.4.3"
 
 #lg5 Old
 ddd-common-domain-version="1.0.0-alpha.2"

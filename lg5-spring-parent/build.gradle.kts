@@ -238,7 +238,7 @@ fun Node.jibMavenPlugin() {
 
         appendNode("configuration")
             .appendNode("from").apply {
-                appendNode("image", "gcr.io/distroless/java17-debian12")
+                appendNode("image", "openjdk:21-oracle")
                 appendNode("platforms")
                     .appendNode("platform").apply {
                         appendNode("architecture", "\${docker.from.image.platform.architecture}")
