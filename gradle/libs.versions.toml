@@ -53,6 +53,8 @@ apache-commons-version="3.14.0"
 
 #Testcontainer
 testcontainers-version="1.19.8"
+wiremock-testcontainers-module-version="1.0-alpha-13"
+wiremock-standalone-version="3.5.4"
 
 [libraries]
 # spring boot
@@ -124,6 +126,8 @@ testcontainers-postgresql = { group = "org.testcontainers", name = "postgresql",
 testcontainers-kafka = { group = "org.testcontainers", name = "kafka", version.ref = "testcontainers-version" }
 testcontainers-jupiter = { group = "org.testcontainers", name = "junit-jupiter", version.ref = "testcontainers-version" }
 springboot-testcontainers = { group = "org.springframework.boot", name = "spring-boot-testcontainers", version.ref = "springboot-version" }
+testcontainers-wiremock = { group = "org.wiremock.integrations.testcontainers", name = "wiremock-testcontainers-module", version.ref = "wiremock-testcontainers-module-version" }
+wiremock-standalone = { group = "org.wiremock", name = "wiremock-standalone", version.ref = "wiremock-standalone-version" }
 
 
 [plugins]

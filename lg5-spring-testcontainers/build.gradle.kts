@@ -16,6 +16,8 @@ dependencies {
     api(libs.testcontainers.jupiter)
     api(libs.testcontainers.postgresql)
     api(libs.testcontainers.kafka)
+    api(libs.testcontainers.wiremock)
+    api(libs.wiremock.standalone)
     api(libs.rest.assured)
 }
 tasks.jar { enabled = true }

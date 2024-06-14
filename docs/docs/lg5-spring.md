@@ -42,6 +42,13 @@ mvn install
 * [lg5-spring-starter](lg5-spring-starter)
 * [lg5-spring-test](lg5-spring-test)
 * [lg5-spring-testcontainers](lg5-spring-testcontainers)
+  * Postgres Container
+  * Kafka Container
+    * `${kafka-config.bootstrap-servers}`
+  * SchemaRegistry Container
+    * `${kafka-config.schema-registry-url}`
+  * Wiremock Container
+    * `${third.jsonplaceholder.url}`
 * [lg5-spring-utils](lg5-spring-utils)
 
 [4]: https://github.com/lg-labs-pentagon/lg5-spring
