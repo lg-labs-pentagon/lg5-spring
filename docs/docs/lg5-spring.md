@@ -1,23 +1,26 @@
 # Lg5 Spring Library
+
 **_Hex Arch, DDD,SAGA, Outbox&Kafka_**
 
 [Repository][4]
 
 ## Use Spring Boot `3.2.X`, JDK 21
 
-> Tools for developer software just faster.   
+> Tools for developer software just faster.
 
 ## 🚀 Using Lg5 Spring
 
 > Install 1/2: Add this to pom.xml:
 
 ```xml title="pom.xml" linenums="1" hl_lines="4"
+
 <parent>
-  <groupId>com.lg5.spring</groupId>
-  <artifactId>lg5-spring-parent</artifactId>
-  <version>1.0.0-alpha.[check lts version]</version>
+    <groupId>com.lg5.spring</groupId>
+    <artifactId>lg5-spring-parent</artifactId>
+    <version>1.0.0-alpha.[check lts version]</version>
 </parent>   
 ```
+
 _Note: Please check the [latest version][5]_
 
 Install 2/2: Install the dependencies in your project.
@@ -29,6 +32,10 @@ mvn install
 ## 📚Contents
 
 * [lg5-spring-parent](lg5-spring-parent)
+    * Integration Test (_Suffix IT.java_)
+        * `mvn verify`
+    * Unit Test(_Suffix Test.java_)
+        * `mvn test`
 * [lg5-spring-api-rest](lg5-spring-api-rest)
 * [lg5-spring-client](lg5-spring-client)
 * [lg5-spring-data-jpa](lg5-spring-data-jpa)
@@ -42,14 +49,15 @@ mvn install
 * [lg5-spring-starter](lg5-spring-starter)
 * [lg5-spring-test](lg5-spring-test)
 * [lg5-spring-testcontainers](lg5-spring-testcontainers)
-  * Postgres Container
-  * Kafka Container
-    * `${kafka-config.bootstrap-servers}`
-  * SchemaRegistry Container
-    * `${kafka-config.schema-registry-url}`
-  * Wiremock Container
-    * `${third.jsonplaceholder.url}`
+    * Postgres Container
+    * Kafka Container
+        * `${kafka-config.bootstrap-servers}`
+    * SchemaRegistry Container
+        * `${kafka-config.schema-registry-url}`
+    * Wiremock Container
+        * `${third.jsonplaceholder.url}`
 * [lg5-spring-utils](lg5-spring-utils)
 
 [4]: https://github.com/lg-labs-pentagon/lg5-spring
+
 [5]: https://github.com/lg-labs-pentagon/lg5-spring/packages/2125499
