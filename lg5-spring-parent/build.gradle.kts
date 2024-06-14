@@ -88,6 +88,8 @@ extensions.configure<PublishingExtension> {
                             }
                         appendNode("plugins").apply {
                             mavenCompilerPlugin()
+                            surefirePlugin()
+                            failsafePlugin()
                             jacocoPlugin()
                             mavenCheckstylePlugin()
 
@@ -141,6 +143,46 @@ fun Node.mavenCompilerPlugin() {
         appendNode("configuration")
             .appendNode("release", 21)
 
+    }
+}
+
+fun Node.surefirePlugin() {
+    appendNode("plugin").apply {
+        appendNode("groupId", libs.surefire.plugin.get().group)
+        appendNode("artifactId", libs.surefire.plugin.get().name)
+        appendNode("version", libs.surefire.plugin.get().version)
+
+        appendNode("configuration").apply {
+
+            appendNode("includes").apply {
+                appendNode("include", "**/*Test.java")
+            }
+        }
+    }
+}
+
+fun Node.failsafePlugin() {
+    appendNode("plugin").apply {
+        appendNode("groupId", libs.failsafe.plugin.get().group)
+        appendNode("artifactId", libs.failsafe.plugin.get().name)
+        appendNode("version", libs.failsafe.plugin.get().version)
+
+        appendNode("configuration").apply {
+            appendNode("includes").apply {
+                appendNode("include", "**/*IT.java")
+            }
+        }
+
+        appendNode("executions").apply {
+
+            appendNode("execution").apply {
+                    appendNode("goals").apply {
+                        appendNode("goal", "verify")
+                        appendNode("goal", "integration-test")
+                    }
+
+            }
+        }
     }
 }
 
