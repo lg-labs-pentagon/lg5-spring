@@ -33,10 +33,12 @@ public abstract class TestContainerNotReusedConfig {
 
 
     @Container
-    static WireMockContainer wiremockServer = new WireMockContainer(WIREMOCK_3_3_1)
+    public static WireMockContainer wiremockServer = new WireMockContainer(WIREMOCK_3_3_1)
             .withMappingFromResource("placeholder", "wiremock/placeholder/template.json")
             .withNetwork(network)
             .withNetworkAliases("wiremock");
+
+/* TODO: Implementation Testing***
 
     @Container
     static KafkaContainer kafkaContainer = new KafkaContainer(DockerImageName.parse(CONFLUENTINC_CP_KAFKA_7_6_1))
@@ -61,5 +63,5 @@ public abstract class TestContainerNotReusedConfig {
         registry.add("third.jsonplaceholder.url", wiremockServer::getBaseUrl);
         registry.add("kafka-config.bootstrap-servers", kafkaContainer::getBootstrapServers);
         registry.add("kafka-config.schema-registry-url", () -> schemaRegistryUrl);
-    }
+    }*/
 }
