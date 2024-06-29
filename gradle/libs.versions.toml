@@ -1,14 +1,13 @@
 [versions]
 springboot-version = "3.2.5"
 springframework-version = "6.1.6"
-spring-cloud-sleuth-version="3.1.7"
 junit-jupiter-version = "5.10.2"
 lombok-version = "1.18.32"
 guava-version = "33.1.0-jre"
 mockito-version = "5.7.0"
 spring-dependency-version = "1.1.4"
 jacoco-version = "0.8.11"
-slf4j-version= "2.1.0-alpha1"
+slf4j-version= "2.0.13"
 
 # Data
 postgresql-version="42.7.3"
@@ -39,12 +38,11 @@ jib-maven-plugin-version ="3.4.3"
 ddd-common-domain-version="1.0.0-alpha.2"
 
 #Logger
-### TODO upgrade version to 7.4
-### https://github.com/logfellow/logstash-logback-encoder/releases
-### https://central.sonatype.com/artifact/net.logstash.logback/logstash-logback-encoder/overview
-logstash-logback-encoder-version="7.2"
+logstash-logback-encoder-version="7.4"
 snappy-version="1.1.10.4"
-java-uuid-generator-version="4.3.0"
+java-uuid-generator-version="5.1.0"
+spring-cloud-sleuth-version="3.1.11"
+codehaus-janino-version="3.1.12"
 
 # utils
 awaitility-version="4.2.0"
@@ -86,12 +84,14 @@ spring-tx = { group = "org.springframework", name = "spring-tx", version.ref = "
 spring-context = { group = "org.springframework", name = "spring-context", version.ref = "springframework-version" }
 # Rest Client
 openfeign = { group = "org.springframework.cloud", name = "spring-cloud-starter-openfeign", version.ref = "openfeign-version" }
+
 # Logger
 slf4j-api = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j-version" }
 springboot-logging = { group = "org.springframework.boot", name = "spring-boot-starter-logging", version.ref = "springboot-version" }
 logstash-logback-encoder = { group = "net.logstash.logback", name = "logstash-logback-encoder", version.ref = "logstash-logback-encoder-version" }
-snappy-java = { group = "org.xerial.snappy", name = "snappy-java", version.ref = "snappy-version" }
+janino = { group = "org.codehaus.janino", name = "janino", version.ref = "codehaus-janino-version" }
 springcloud-starter-sleuth = { group = "org.springframework.cloud", name = "spring-cloud-starter-sleuth", version.ref = "spring-cloud-sleuth-version" }
+snappy-java = { group = "org.xerial.snappy", name = "snappy-java", version.ref = "snappy-version" }
 java-uuid-generator = { group = "com.fasterxml.uuid", name = "java-uuid-generator", version.ref = "java-uuid-generator-version" }
 
 # Test
