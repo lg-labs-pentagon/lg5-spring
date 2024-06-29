@@ -4,7 +4,7 @@
 
 [Repository][4]
 
-## Use Spring Boot `3.2.X`, JDK 21
+## Use Spring Boot `3.3.X`, JDK 21
 
 > Tools for developer software just faster.
 
