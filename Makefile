@@ -22,4 +22,4 @@ publish-local:
 
 
 gradle-update:
-	./gradlew wrapper --gradle-version=8.9-20240417001901+0000
+	./gradlew wrapper --gradle-version=8.9-rc-1
