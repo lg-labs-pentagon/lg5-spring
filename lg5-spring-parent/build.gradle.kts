@@ -55,11 +55,13 @@ extensions.configure<PublishingExtension> {
                         dependency("com.lg5.spring:lg5-spring-utils:${project.version}")
 
                         // <!-- tests -->
+                        dependency("com.lg5.jvm:lg5-jvm-test:${project.version}")
                         dependency("com.lg5.spring:lg5-spring-test:${project.version}")
                         dependency("com.lg5.spring:lg5-spring-testcontainers:${project.version}") {
                             exclude("org.springframework.boot:spring-boot-starter-web")
                             exclude("org.springframework.boot:spring-boot-starter-test")
                         }
+                        dependency("com.lg5.spring:lg5-spring-acceptance-test:${project.version}")
                     }
 
                 }
