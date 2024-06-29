@@ -80,7 +80,7 @@ extensions.configure<PublishingExtension> {
             pom.packaging = "pom"
 
             pom.properties.put("lg5.version", project.version.toString())
-            pom.properties.put("digest-amd","sha256:c67f402f77197f2e6ae84ff1fca868699ce3b38bfa78604524051420fa2e4383")
+            pom.properties.put("digest-amd", "sha256:c67f402f77197f2e6ae84ff1fca868699ce3b38bfa78604524051420fa2e4383")
             pom.properties.put("digest-arm", "sha256:c42f049364ab961f746709a4415416634c14a7cba90a08124b69fd82a40da97c")
 
 
@@ -92,14 +92,18 @@ extensions.configure<PublishingExtension> {
                                 avroPlugin()
                                 jibMavenPlugin()
                                 springBootMavenBuildImagePlugin()
+                                surefirePlugin()
+                                failsafePlugin()
+                                jacocoPlugin()
+                                mavenCheckstylePlugin()
+                                mavenCompilerPlugin()
                             }
                         appendNode("plugins").apply {
-                            mavenCompilerPlugin()
-                            surefirePlugin()
-                            failsafePlugin()
-                            jacocoPlugin()
-                            mavenCheckstylePlugin()
-
+                            mavenCompilerPluginSimple()
+                            surefirePluginSimple()
+                            failsafePluginSimple()
+                            jacocoPluginSimple()
+                            mavenCheckstylePluginSimple()
                         }
                     }
                 asNode()
@@ -174,6 +178,14 @@ fun Node.mavenCompilerPlugin() {
     }
 }
 
+fun Node.mavenCompilerPluginSimple() {
+
+    appendNode("plugin").apply {
+        appendNode("groupId", "org.apache.maven.plugins")
+        appendNode("artifactId", "maven-compiler-plugin")
+    }
+}
+
 fun Node.surefirePlugin() {
     appendNode("plugin").apply {
         appendNode("groupId", libs.surefire.plugin.get().group)
@@ -191,6 +203,13 @@ fun Node.surefirePlugin() {
                 appendNode("exclude", "**/*AT.java")
             }
         }
+    }
+}
+
+fun Node.surefirePluginSimple() {
+    appendNode("plugin").apply {
+        appendNode("groupId", libs.surefire.plugin.get().group)
+        appendNode("artifactId", libs.surefire.plugin.get().name)
     }
 }
 
@@ -218,8 +237,8 @@ fun Node.failsafePlugin() {
 
 
             appendNode("execution").apply {
-                appendNode("id","acceptance-test")
-                appendNode("phase","verify")
+                appendNode("id", "acceptance-test")
+                appendNode("phase", "verify")
 
                 appendNode("goals").apply {
                     appendNode("goal", "integration-test")
@@ -234,6 +253,13 @@ fun Node.failsafePlugin() {
                 }
             }
         }
+    }
+}
+
+fun Node.failsafePluginSimple() {
+    appendNode("plugin").apply {
+        appendNode("groupId", libs.failsafe.plugin.get().group)
+        appendNode("artifactId", libs.failsafe.plugin.get().name)
     }
 }
 
@@ -258,6 +284,13 @@ fun Node.jacocoPlugin() {
                 appendNode("exclude", "**/**.kafka.*")
                 appendNode("exclude", "infrastructure/kafka/*")
             }
+    }
+}
+
+fun Node.jacocoPluginSimple() {
+    appendNode("plugin").apply {
+        appendNode("groupId", "org.jacoco")
+        appendNode("artifactId", "jacoco-maven-plugin")
     }
 }
 
@@ -320,6 +353,13 @@ fun Node.mavenCheckstylePlugin() {
                 }
             }
         }
+    }
+}
+
+fun Node.mavenCheckstylePluginSimple() {
+    appendNode("plugin").apply {
+        appendNode("groupId", libs.checkstyle.plugin.get().group)
+        appendNode("artifactId", libs.checkstyle.plugin.get().name)
     }
 }
 
