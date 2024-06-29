@@ -1,5 +1,5 @@
 [versions]
-springboot-version = "3.2.5"
+springboot-version = "3.3.1"
 springframework-version = "6.1.6"
 junit-jupiter-version = "5.10.2"
 lombok-version = "1.18.32"
@@ -46,7 +46,7 @@ codehaus-janino-version="3.1.12"
 
 # utils
 awaitility-version="4.2.0"
-rest-assured-version="5.3.1"
+rest-assured-version="5.4.0"
 apache-commons-version="3.14.0"
 
 mapstruct-version="1.6.0.Beta2"

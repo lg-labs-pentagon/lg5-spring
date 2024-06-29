@@ -33,6 +33,11 @@ mvn install
 * [lg5-jvm-saga](lg5-jvm-saga)
 * [lg5-jvm-test](lg5-jvm-test)
 * [lg5-jvm-utils](lg5-jvm-utils)
+  * MapStruct
+  * Guava
+  * Lombok
+  * Slf4j
+  * Commons Lang3 _(To_remove)_
 
 [4]: https://github.com/lg-labs-pentagon/lg5-spring
 [5]: https://github.com/lg-labs-pentagon/lg5-spring/packages/2128425

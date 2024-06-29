@@ -17,7 +17,7 @@ For more information, check this pages [https://lufgarciaqu.medium.com][1].
 
 For full documentation visit the [Wiki][9].
 
-# Use Spring Boot `3.2.X`, JDK 21
+# Use Spring Boot `3.3.X`, JDK 21
 
 
 

@@ -15,7 +15,7 @@ For more information, check this pages https://lufgarciaqu.medium.com.
 
 <br/><h2>Hex Arch, DDD,SAGA, Outbox&Kafka</h2>
 
-### Use Spring Boot `3.2.X`, JDK 21
+### Use Spring Boot `3.3.X`, JDK 21
 
 ## 🚀 Using Lg5 Spring
 
