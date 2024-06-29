@@ -48,6 +48,9 @@ mvn install
 * [lg5-spring-outbox](lg5-spring-outbox)
 * [lg5-spring-starter](lg5-spring-starter)
 * [lg5-spring-test](lg5-spring-test)
+* [lg5-spring-acceptance-test](lg5-spring-acceptance-test)
+  * Cucumber
+  * Reporting Plugin
 * [lg5-spring-testcontainers](lg5-spring-testcontainers)
     * Postgres Container
     * Kafka Container

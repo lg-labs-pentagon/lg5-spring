@@ -51,10 +51,18 @@ awaitility-version="4.2.0"
 rest-assured-version="5.3.1"
 apache-commons-version="3.14.0"
 
+mapstruct-version="1.6.0.Beta2"
+lombok-mapstruct-binding-version="0.2.0"
+
 #Testcontainer
 testcontainers-version="1.19.8"
 wiremock-testcontainers-module-version="1.0-alpha-13"
 wiremock-standalone-version="3.5.4"
+
+# Acceptance Test
+junit-platform-suite-version="1.10.2"
+cucumber-version="7.15.0"
+reporting-plugin-version="7.11.0"
 
 [libraries]
 # spring boot
@@ -62,7 +70,7 @@ springboot-parent = { group = "org.springframework.boot", name = "spring-boot-st
 springboot-dependencies = { group = "org.springframework.boot", name = "spring-boot-dependencies", version.ref = "springboot-version" }
 springboot-starter = { group = "org.springframework.boot", name = "spring-boot-starter", version.ref = "springboot-version" }
 springboot-json = { group = "org.springframework.boot", name = "spring-boot-starter-json", version.ref = "springboot-version" }
-springboot-devtools = { group = "org.springframework.boot", name = "spring-boot-devtools", version.ref = "springboot-version" }
+    springboot-devtools = { group = "org.springframework.boot", name = "spring-boot-devtools", version.ref = "springboot-version" }
 springboot-validation = { group = "org.springframework.boot", name = "spring-boot-starter-validation", version.ref = "springboot-version" }
 springboot-start-web = { group = "org.springframework.boot", name = "spring-boot-starter-web", version.ref = "springboot-version" }
 springboot-start-actuator = { group = "org.springframework.boot", name = "spring-boot-starter-actuator", version.ref = "springboot-version" }
@@ -102,6 +110,9 @@ guava = { group = "com.google.guava", name = "guava", version.ref = "guava-versi
 awaitility = { group = "org.awaitility", name = "awaitility", version.ref = "awaitility-version" }
 commons-lang3={ group = "org.apache.commons", name = "commons-lang3", version.ref = "apache-commons-version" }
 
+mapstruct={ group = "org.mapstruct", name = "mapstruct", version.ref = "mapstruct-version" }
+lombokmapstruct-binding={ group = "org.projectlombok", name = "lombok-mapstruct-binding", version.ref = "lombok-mapstruct-binding-version" }
+
 #events
 spring-kafka = { group = "org.springframework.kafka", name = "spring-kafka", version.ref = "spring-kafka-version" }
 apache-avro = { group = "org.apache.avro", name = "avro", version.ref = "avro-version" }
@@ -128,6 +139,15 @@ testcontainers-jupiter = { group = "org.testcontainers", name = "junit-jupiter",
 springboot-testcontainers = { group = "org.springframework.boot", name = "spring-boot-testcontainers", version.ref = "springboot-version" }
 testcontainers-wiremock = { group = "org.wiremock.integrations.testcontainers", name = "wiremock-testcontainers-module", version.ref = "wiremock-testcontainers-module-version" }
 wiremock-standalone = { group = "org.wiremock", name = "wiremock-standalone", version.ref = "wiremock-standalone-version" }
+
+# atdd
+# jupiter-root
+junit-platform-suite = { group = "jupiter-launcher", name = "junit-platform-suite", version.ref = "junit-platform-suite-version" }
+cucumber-java = { group = "io.cucumber", name = "cucumber-java", version.ref = "cucumber-version" }
+cucumber-junit-platform-engine = { group = "io.cucumber", name = "cucumber-junit-platform-engine", version.ref = "cucumber-version" }
+cucumber-spring = { group = "io.cucumber", name = "cucumber-spring", version.ref = "cucumber-version" }
+reporting-plugin = { group = "me.jvt.cucumber", name = "cucumber-spring", version.ref = "reporting-plugin-version"}
+
 
 
 [plugins]

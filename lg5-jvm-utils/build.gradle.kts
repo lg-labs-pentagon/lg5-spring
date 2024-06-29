@@ -5,5 +5,7 @@ dependencies{
     api(libs.lombok)
     api(libs.guava)
     api(libs.commons.lang3)
+    api(libs.mapstruct)
+    api(libs.lombokmapstruct.binding)
 
 }

@@ -56,7 +56,7 @@ extensions.configure<PublishingExtension> {
 
                         // <!-- tests -->
                         dependency("com.lg5.spring:lg5-spring-test:${project.version}")
-                        dependency("com.lg5.spring:lg5-spring-testcontainers:${project.version}"){
+                        dependency("com.lg5.spring:lg5-spring-testcontainers:${project.version}") {
                             exclude("org.springframework.boot:spring-boot-starter-web")
                             exclude("org.springframework.boot:spring-boot-starter-test")
                         }
@@ -76,7 +76,12 @@ extensions.configure<PublishingExtension> {
                     }
             }
             pom.packaging = "pom"
+
             pom.properties.put("lg5.version", project.version.toString())
+            pom.properties.put("digest-amd","sha256:c67f402f77197f2e6ae84ff1fca868699ce3b38bfa78604524051420fa2e4383")
+            pom.properties.put("digest-arm", "sha256:c42f049364ab961f746709a4415416634c14a7cba90a08124b69fd82a40da97c")
+
+
             pom.withXml {
                 asNode()
                     .appendNode("build").apply {
@@ -140,8 +145,29 @@ fun Node.mavenCompilerPlugin() {
         appendNode("groupId", "org.apache.maven.plugins")
         appendNode("artifactId", "maven-compiler-plugin")
         appendNode("version", libs.versions.maven.compiler.plugin.version.get())
-        appendNode("configuration")
-            .appendNode("release", 21)
+        appendNode("configuration").apply {
+            appendNode("release", 21)
+
+            appendNode("annotationProcessorPaths").apply {
+                appendNode("path").apply {
+                    appendNode("groupId", libs.mapstruct.get().group)
+                    appendNode("artifactId", "mapstruct-processor")
+                    appendNode("version", libs.mapstruct.get().version)
+                }
+                appendNode("path").apply {
+                    appendNode("groupId", libs.lombok.get().group)
+                    appendNode("artifactId", libs.lombok.get().name)
+                    appendNode("version", libs.lombok.get().version)
+                }
+                appendNode("path").apply {
+                    appendNode("groupId", libs.lombokmapstruct.binding.get().group)
+                    appendNode("artifactId", "lombok-mapstruct-binding")
+                    appendNode("version", libs.lombokmapstruct.binding.get().version)
+                }
+            }
+
+
+        }
 
     }
 }
@@ -157,6 +183,11 @@ fun Node.surefirePlugin() {
             appendNode("includes").apply {
                 appendNode("include", "**/*Test.java")
             }
+
+            appendNode("excludes").apply {
+                appendNode("exclude", "**/*AcceptanceT.java")
+                appendNode("exclude", "**/*AT.java")
+            }
         }
     }
 }
@@ -167,20 +198,38 @@ fun Node.failsafePlugin() {
         appendNode("artifactId", libs.failsafe.plugin.get().name)
         appendNode("version", libs.failsafe.plugin.get().version)
 
-        appendNode("configuration").apply {
-            appendNode("includes").apply {
-                appendNode("include", "**/*IT.java")
-            }
-        }
-
         appendNode("executions").apply {
 
             appendNode("execution").apply {
-                    appendNode("goals").apply {
-                        appendNode("goal", "verify")
-                        appendNode("goal", "integration-test")
-                    }
 
+                appendNode("goals").apply {
+                    appendNode("goal", "verify")
+                    appendNode("goal", "integration-test")
+                }
+
+                appendNode("configuration").apply {
+                    appendNode("includes").apply {
+                        appendNode("include", "**/*IT.java")
+                    }
+                }
+            }
+
+
+            appendNode("execution").apply {
+                appendNode("id","acceptance-test")
+                appendNode("phase","verify")
+
+                appendNode("goals").apply {
+                    appendNode("goal", "integration-test")
+                    appendNode("goal", "verify")
+                }
+
+                appendNode("configuration").apply {
+                    appendNode("includes").apply {
+                        appendNode("include", "**/*AcceptanceT.java")
+                        appendNode("include", "**/*AT.java")
+                    }
+                }
             }
         }
     }
@@ -280,7 +329,7 @@ fun Node.jibMavenPlugin() {
 
         appendNode("configuration")
             .appendNode("from").apply {
-                appendNode("image", "openjdk:21-oracle")
+                appendNode("image", "openjdk@\${digest}")
                 appendNode("platforms")
                     .appendNode("platform").apply {
                         appendNode("architecture", "\${docker.from.image.platform.architecture}")
@@ -338,21 +387,37 @@ fun Node.springBootMavenBuildImagePlugin() {
 }
 
 fun Node.profiles() {
-    appendNode("profiles")
-        .appendNode("profile").apply {
+
+    appendNode("profiles").apply {
+        appendNode("profile").apply {
+
+            appendNode("id", "amd")
+            appendNode("properties").apply {
+                appendNode("docker.from.image.platform.architecture", "amd64")
+                appendNode("docker.from.image.platform.os", "linux")
+                appendNode("digest", "\${digest-amd}")
+            }
+            appendNode("activation").apply {
+                appendNode("activeByDefault", true)
+            }
+        }
+
+        appendNode("profile").apply {
 
             appendNode("id", "arch-aarch64")
-
-            appendNode("activation")
-                .appendNode("os")
-                .appendNode("arch", "aarch64")
-            appendNode("properties").apply{
+            appendNode("properties").apply {
                 appendNode("docker.from.image.platform.architecture", "arm64")
                 appendNode("docker.from.image.platform.os", "linux")
+                appendNode("digest", "\${digest-arm}")
             }
-
-
+            appendNode("activation").apply {
+                appendNode("os")
+                    .appendNode("arch", "aarch64")
+            }
         }
+
+
+    }
 }
 
 fun Node.repositories() {
