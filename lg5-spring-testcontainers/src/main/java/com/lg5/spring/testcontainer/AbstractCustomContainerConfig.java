@@ -15,7 +15,7 @@ import static com.lg5.spring.testcontainer.Constant.CONFLUENTINC_CP_SCHEMA_REGIS
 import static com.lg5.spring.testcontainer.Constant.WIREMOCK_3_3_1;
 import static com.lg5.spring.testcontainer.Constant.network;
 
-
+@Deprecated(forRemoval = true, since = "01-08-2024")
 @TestConfiguration
 public abstract class AbstractCustomContainerConfig extends AbstractContainerNotReusedTest {
 

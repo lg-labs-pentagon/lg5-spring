@@ -9,6 +9,7 @@ import org.testcontainers.utility.DockerImageName;
 import static com.lg5.spring.testcontainer.Constant.POSTGRES_16_3;
 import static com.lg5.spring.testcontainer.Constant.network;
 
+@Deprecated(forRemoval = true, since = "01-08-2024")
 @TestConfiguration
 public abstract class TestContainerNotReusedConfig {
 

@@ -10,6 +10,7 @@ import org.testcontainers.utility.DockerImageName;
 import static com.lg5.spring.testcontainer.Constant.CONFLUENTINC_CP_KAFKA_7_6_1;
 import static com.lg5.spring.testcontainer.Constant.POSTGRES_16_3;
 
+@Deprecated(forRemoval = true, since = "01-08-2024")
 @TestConfiguration
 public abstract class TestContainerReusedConfig {
 

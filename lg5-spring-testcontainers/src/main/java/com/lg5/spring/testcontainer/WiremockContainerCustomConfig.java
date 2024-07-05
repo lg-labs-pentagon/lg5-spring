@@ -11,6 +11,7 @@ import org.springframework.core.env.StandardEnvironment;
 import org.wiremock.integrations.testcontainers.WireMockContainer;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import static com.lg5.spring.testcontainer.Constant.WIREMOCK_3_3_1;
@@ -30,10 +31,13 @@ public abstract class WiremockContainerCustomConfig extends BaseContainerCustomC
     @Order(4)
     public WireMockContainer wireMockContainer(Environment environment) {
         WireMockContainer wireMockContainer = new WireMockContainer(WIREMOCK_3_3_1)
+                .withExposedPorts(8080)
                 .withMappingFromResource("placeholder", wireMockConfigFolderResource)
                 .withNetwork(network)
                 .withNetworkAliases(WIREMOCK_NETWORK_ALIAS)
                 .withReuse(dockerContainerReuse);
+        wireMockContainer.setPortBindings(List.of("7071:8080"));
+
         wireMockContainer.start();
 
         String wireMockContainerBaseUrl = wireMockContainer.getBaseUrl();
