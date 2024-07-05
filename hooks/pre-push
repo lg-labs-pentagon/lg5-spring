@@ -1,3 +1,2 @@
-#!/bin/sh
-to_lg
-./gradlew clean build --warning-mode all
+#!/usr/local/bin/zsh
+sdk use java 21.0.3-zulu && ./gradlew clean build --warning-mode all
