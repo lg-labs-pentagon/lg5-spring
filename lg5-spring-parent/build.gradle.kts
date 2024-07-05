@@ -468,4 +468,8 @@ fun Node.repositories() {
             appendNode("id", "confluent")
             appendNode("url", "https://packages.confluent.io/maven/")
         }
+        .appendNode("repository").apply {
+        appendNode("id", "central")
+        appendNode("url", "https://repo.maven.apache.org/maven2")
+    }
 }
