@@ -463,13 +463,15 @@ fun Node.profiles() {
 }
 
 fun Node.repositories() {
-    appendNode("repositories")
-        .appendNode("repository").apply {
+    appendNode("repositories").apply {
+        appendNode("repository").apply {
             appendNode("id", "confluent")
             appendNode("url", "https://packages.confluent.io/maven/")
         }
-        .appendNode("repository").apply {
-        appendNode("id", "central")
-        appendNode("url", "https://repo.maven.apache.org/maven2")
+        appendNode("repository").apply {
+            appendNode("id", "central")
+            appendNode("url", "https://repo.maven.apache.org/maven2")
+        }
     }
+
 }
