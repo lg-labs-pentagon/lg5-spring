@@ -51,6 +51,7 @@ apache-commons-version="3.14.0"
 
 mapstruct-version="1.6.0.Beta2"
 lombok-mapstruct-binding-version="0.2.0"
+gson-version="2.11.0"
 
 #Testcontainer
 testcontainers-version="1.19.8"
@@ -60,7 +61,7 @@ wiremock-standalone-version="3.5.4"
 # Acceptance Test
 junit-platform-suite-version="1.10.2"
 cucumber-version="7.15.0"
-reporting-plugin-version="7.11.0"
+reporting-plugin-version="7.2.0"
 
 [libraries]
 # spring boot
@@ -107,6 +108,7 @@ rest-assured= { group = "io.rest-assured", name = "rest-assured", version.ref = 
 # Utils
 lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok-version" }
 guava = { group = "com.google.guava", name = "guava", version.ref = "guava-version" }
+gson = { group = "com.google.code.gso", name = "gson", version.ref = "gson-version" }
 awaitility = { group = "org.awaitility", name = "awaitility", version.ref = "awaitility-version" }
 commons-lang3={ group = "org.apache.commons", name = "commons-lang3", version.ref = "apache-commons-version" }
 
