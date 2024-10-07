@@ -16,9 +16,13 @@ public abstract class DataBaseContainerCustomConfig extends BaseContainerCustomC
     @Bean
     @ServiceConnection
     PostgreSQLContainer<?> postgresContainer() {
-        return new PostgreSQLContainer<>(DockerImageName.parse(POSTGRES_16_3))
+        final PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>(DockerImageName.parse(POSTGRES_16_3))
                 .withNetwork(network)
                 .withNetworkAliases(POSTGRES_NETWORK_ALIAS)
                 .withReuse(dockerContainerReuse);
+        postgreSQLContainer.withUrlParam("binaryTransfer", "true");
+        postgreSQLContainer.withUrlParam("reWriteBatchedInserts", "true");
+        postgreSQLContainer.withUrlParam("stringtype", "unspecified");
+        return postgreSQLContainer;
     }
 }
