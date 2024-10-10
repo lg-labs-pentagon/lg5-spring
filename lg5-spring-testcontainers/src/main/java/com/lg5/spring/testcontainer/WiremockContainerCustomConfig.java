@@ -27,6 +27,9 @@ public abstract class WiremockContainerCustomConfig extends BaseContainerCustomC
     @Value("${wiremock.config.url:third.jsonplaceholder.url}")
     protected String wireMockConfigUrl;
 
+    @Value("${wiremock.config.port:7070}")
+    protected String wireMockPortBind;
+
     @Bean
     @Order(4)
     public WireMockContainer wireMockContainer(Environment environment) {
@@ -36,7 +39,7 @@ public abstract class WiremockContainerCustomConfig extends BaseContainerCustomC
                 .withNetwork(network)
                 .withNetworkAliases(WIREMOCK_NETWORK_ALIAS)
                 .withReuse(dockerContainerReuse);
-        wireMockContainer.setPortBindings(List.of("7071:8080"));
+        wireMockContainer.setPortBindings(List.of(wireMockPortBind + ":8080"));
 
         wireMockContainer.start();
 
