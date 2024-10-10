@@ -14,9 +14,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
 import static com.lg5.spring.testcontainer.Constant.WIREMOCK_3_3_1;
 import static com.lg5.spring.testcontainer.Constant.WIREMOCK_NETWORK_ALIAS;
 import static com.lg5.spring.testcontainer.Constant.network;
+import static java.lang.Integer.parseInt;
 
 
 @TestConfiguration
@@ -33,7 +35,7 @@ public abstract class WiremockContainerCustomConfig extends BaseContainerCustomC
     @Bean
     @Order(4)
     public WireMockContainer wireMockContainer(Environment environment) {
-        WireMockContainer wireMockContainer = new WireMockContainer(WIREMOCK_3_3_1)
+        final WireMockContainer wireMockContainer = new WireMockContainer(WIREMOCK_3_3_1)
                 .withExposedPorts(8080)
                 .withMappingFromResource("placeholder", wireMockConfigFolderResource)
                 .withNetwork(network)
@@ -43,7 +45,8 @@ public abstract class WiremockContainerCustomConfig extends BaseContainerCustomC
 
         wireMockContainer.start();
 
-        String wireMockContainerBaseUrl = wireMockContainer.getBaseUrl();
+        final String wireMockContainerBaseUrl = wireMockContainer.getBaseUrl();
+        configureFor("localhost", parseInt(wireMockPortBind));
 
         if (environment instanceof StandardEnvironment) {
             MutablePropertySources propertySources = ((StandardEnvironment) environment).getPropertySources();

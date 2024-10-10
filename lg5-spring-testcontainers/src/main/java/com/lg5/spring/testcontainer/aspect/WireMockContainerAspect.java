@@ -4,23 +4,25 @@ import com.lg5.spring.testcontainer.BaseContainerCustomConfig;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.MutablePropertySources;
 import org.springframework.core.env.StandardEnvironment;
-import org.springframework.stereotype.Component;
 import org.wiremock.integrations.testcontainers.WireMockContainer;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
 import static com.lg5.spring.testcontainer.Constant.WIREMOCK_3_3_1;
 import static com.lg5.spring.testcontainer.Constant.WIREMOCK_NETWORK_ALIAS;
 import static com.lg5.spring.testcontainer.Constant.network;
+import static java.lang.Integer.parseInt;
 
 @Aspect
-@Component
+@TestConfiguration
 public class WireMockContainerAspect extends BaseContainerCustomConfig {
 
     private final Environment environment;
@@ -53,7 +55,7 @@ public class WireMockContainerAspect extends BaseContainerCustomConfig {
                 .withNetworkAliases(WIREMOCK_NETWORK_ALIAS)
                 .withReuse(dockerContainerReuse);
         wireMockContainer.setPortBindings(List.of(wireMockPortBind + ":8080"));
-
+        configureFor("localhost", parseInt(wireMockPortBind));
         wireMockContainer.start();
 
         final String wireMockContainerBaseUrl = wireMockContainer.getBaseUrl();
