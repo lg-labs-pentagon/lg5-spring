@@ -1,4 +1,4 @@
-package com.lg5.spring;
+package com.lg5.spring.mdc;
 
 public final class Lg5SpringVersion {
 

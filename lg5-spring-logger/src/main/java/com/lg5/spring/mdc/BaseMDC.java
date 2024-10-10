@@ -14,5 +14,6 @@ public class BaseMDC {
         MDC.put("springVersion", SpringVersion.getVersion());
         MDC.put("javaVersion", System.getProperty("java.version"));
         MDC.put("SpringBootVersion", SpringBootVersion.getVersion());
+        MDC.put("Lg5Spring", Lg5SpringVersion.getVersion());
     }
 }
