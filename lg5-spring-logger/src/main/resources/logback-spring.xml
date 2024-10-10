@@ -7,19 +7,20 @@
 
     <!-- Define level aliases for some loggers based on Spring Boot 'logging.level' props -->
     <!-- com.example must be replaced to project package -->
-    <springProperty scope="context" name="root"      source="logging.level.root"                         defaultValue="warn" />
-    <springProperty scope="context" name="inditex"   source="logging.level.com.inditex"                  defaultValue="warn" />
-    <springProperty scope="context" name="spring"    source="logging.level.org.springframework"          defaultValue="warn" />
-    <springProperty scope="context" name="data"      source="logging.level.org.springframework.data"     defaultValue="warn" />
-    <springProperty scope="context" name="web"       source="logging.level.org.springframework.web"      defaultValue="warn" />
-    <springProperty scope="context" name="security"  source="logging.level.org.springframework.security" defaultValue="warn" />
+    <springProperty scope="context" name="root" source="logging.level.root" defaultValue="warn"/>
+    <springProperty scope="context" name="any" source="logging.level.com.any" defaultValue="warn"/>
+    <springProperty scope="context" name="spring" source="logging.level.org.springframework" defaultValue="warn"/>
+    <springProperty scope="context" name="data" source="logging.level.org.springframework.data" defaultValue="warn"/>
+    <springProperty scope="context" name="web" source="logging.level.org.springframework.web" defaultValue="warn"/>
+    <springProperty scope="context" name="security" source="logging.level.org.springframework.security"
+                    defaultValue="warn"/>
 
     <!-- Set up logging level for some loggers -->
-    <logger name="com.inditex"                  level="${inditex}" />
-    <logger name="org.springframework"          level="${spring}" />
-    <logger name="org.springframework.data"     level="${data}" />
-    <logger name="org.springframework.web"      level="${web}" />
-    <logger name="org.springframework.security" level="${security}" />
+    <logger name="com.any" level="${any}"/>
+    <logger name="org.springframework" level="${spring}"/>
+    <logger name="org.springframework.data" level="${data}"/>
+    <logger name="org.springframework.web" level="${web}"/>
+    <logger name="org.springframework.security" level="${security}"/>
 
     <property name="LOG_FILE" value="${LOG_PATH:-${java.io.tmpdir:-/tmp}}/${application_name}"/>
     <property name="LOG_FILE_MAX_SIZE" value="${LOG_FILE_MAX_SIZE:-50MB}"/>

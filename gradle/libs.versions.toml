@@ -1,35 +1,35 @@
 [versions]
-springboot-version = "3.3.1"
-springframework-version = "6.1.6"
-junit-jupiter-version = "5.10.2"
-lombok-version = "1.18.32"
-guava-version = "33.1.0-jre"
-mockito-version = "5.7.0"
-spring-dependency-version = "1.1.4"
-jacoco-version = "0.8.11"
-slf4j-version= "2.0.13"
+springboot-version = "3.3.4"
+springframework-version = "6.1.13"
+junit-jupiter-version = "5.11.2"
+lombok-version = "1.18.34"
+guava-version = "33.3.1-jre"
+mockito-version = "5.14.1"
+spring-dependency-version = "1.1.6"
+jacoco-version = "0.8.12"
+slf4j-version= "2.0.16"
 
 # Data
-postgresql-version="42.7.3"
-liquibase-version="4.27.0"
+postgresql-version="42.7.4"
+liquibase-version="4.29.2"
 
 # Rest Client
-openfeign-version="4.1.1"
+openfeign-version="4.1.3"
 
 # Kafka Consumer
-avro-version="1.11.3"
-spring-kafka-version="3.0.12"
+avro-version="1.12.0"
+spring-kafka-version="3.2.4"
 
 #Kafka Publisher
-kafka-avro-serializer-version="7.5.1"
+kafka-avro-serializer-version="7.7.1"
 
 #Lg5 Code Quality
-maven-compiler-plugin-version="3.11.0"
-maven-surefire-plugin-version="3.2.5"
-maven-failsafe-plugin-version="3.2.5"
+maven-compiler-plugin-version="3.15.0"
+maven-surefire-plugin-version="3.5.1"
+maven-failsafe-plugin-version="3.5.1"
 
-maven-checkstyle-plugin-version="3.3.0"
-puppycrawl-tools-checkstyle-version="10.12.1"
+maven-checkstyle-plugin-version="3.5.0"
+puppycrawl-tools-checkstyle-version="10.18.2"
 
 # build images Jib
 jib-maven-plugin-version ="3.4.3"
@@ -38,28 +38,28 @@ jib-maven-plugin-version ="3.4.3"
 ddd-common-domain-version="1.0.0-alpha.2"
 
 #Logger
-logstash-logback-encoder-version="7.4"
-snappy-version="1.1.10.4"
+logstash-logback-encoder-version="8.0"
+snappy-version="1.1.10.7"
 java-uuid-generator-version="5.1.0"
 spring-cloud-sleuth-version="3.1.11"
 codehaus-janino-version="3.1.12"
 
 # utils
-awaitility-version="4.2.0"
-rest-assured-version="5.4.0"
-apache-commons-version="3.14.0"
+awaitility-version="4.2.2"
+rest-assured-version="5.5.0"
+apache-commons-version="3.17.0"
 
-mapstruct-version="1.6.0.Beta2"
+mapstruct-version="1.6.2"
 lombok-mapstruct-binding-version="0.2.0"
 
 #Testcontainer
-testcontainers-version="1.19.8"
-wiremock-testcontainers-module-version="1.0-alpha-13"
-wiremock-standalone-version="3.5.4"
+testcontainers-version="1.20.2"
+wiremock-testcontainers-module-version="1.0-alpha-14"
+wiremock-standalone-version="3.9.1"
 
 # Acceptance Test
 junit-platform-suite-version="1.10.2"
-cucumber-version="7.15.0"
+cucumber-version="7.20.0"
 reporting-plugin-version="7.2.0"
 
 [libraries]
