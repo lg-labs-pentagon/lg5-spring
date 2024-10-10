@@ -1,5 +1,3 @@
-group = "com.lg5.spring"
-version = project.version
 dependencies {
     implementation(libs.springboot.start.web)
     api(libs.slf4j.api)
