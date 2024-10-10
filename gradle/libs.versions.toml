@@ -68,12 +68,12 @@ springboot-parent = { group = "org.springframework.boot", name = "spring-boot-st
 springboot-dependencies = { group = "org.springframework.boot", name = "spring-boot-dependencies", version.ref = "springboot-version" }
 springboot-starter = { group = "org.springframework.boot", name = "spring-boot-starter", version.ref = "springboot-version" }
 springboot-json = { group = "org.springframework.boot", name = "spring-boot-starter-json", version.ref = "springboot-version" }
-    springboot-devtools = { group = "org.springframework.boot", name = "spring-boot-devtools", version.ref = "springboot-version" }
+springboot-devtools = { group = "org.springframework.boot", name = "spring-boot-devtools", version.ref = "springboot-version" }
 springboot-validation = { group = "org.springframework.boot", name = "spring-boot-starter-validation", version.ref = "springboot-version" }
 springboot-start-web = { group = "org.springframework.boot", name = "spring-boot-starter-web", version.ref = "springboot-version" }
 springboot-start-actuator = { group = "org.springframework.boot", name = "spring-boot-starter-actuator", version.ref = "springboot-version" }
 springboot-docker-compose = { group = "org.springframework.boot", name = "spring-boot-docker-compose", version.ref = "springboot-version" }
-
+springboot-start-aop = { group = "org.springframework.boot", name = "spring-boot-starter-aop", version.ref = "springboot-version" }
 # Spring Data JPA
 springboot-data-jpa = { group = "org.springframework.boot", name = "spring-boot-starter-data-jpa", version.ref = "springboot-version" }
 postgresql = { group = "org.postgresql", name = "postgresql", version.ref = "postgresql-version" }

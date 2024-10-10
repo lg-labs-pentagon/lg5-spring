@@ -12,6 +12,7 @@ dependencies {
         exclude(group = "com.vaadin.external.google", module = "android-json")
     }
     implementation(libs.springboot.start.web)
+    implementation(libs.springboot.start.aop)
     api(libs.springboot.testcontainers)
     api(libs.testcontainers.jupiter)
     api(libs.testcontainers.postgresql)
