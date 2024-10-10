@@ -1,4 +1,4 @@
-package com.lg5.mdc;
+package com.lg5.spring.mdc;
 
 import jakarta.annotation.PostConstruct;
 import org.slf4j.MDC;

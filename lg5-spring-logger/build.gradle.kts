@@ -1,4 +1,4 @@
-group = "com.lg5.mdc"
+group = "com.lg5.spring"
 version = project.version
 dependencies {
     implementation(libs.springboot.start.web)
