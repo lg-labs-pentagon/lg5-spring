@@ -24,7 +24,7 @@ spring-kafka-version="3.2.4"
 kafka-avro-serializer-version="7.7.1"
 
 #Lg5 Code Quality
-maven-compiler-plugin-version="3.15.0"
+maven-compiler-plugin-version="3.13.0"
 maven-surefire-plugin-version="3.5.1"
 maven-failsafe-plugin-version="3.5.1"
 
