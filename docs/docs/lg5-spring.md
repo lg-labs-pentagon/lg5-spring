@@ -59,7 +59,7 @@ mvn install
         * `${kafka-config.schema-registry-url}`
     * Wiremock Container
         * Specify third system url `${wiremock.config.url}`.
-        * Indicate a port binding to connect: `${wiremock.co nfig.port}`.
+        * Indicate a port binding to connect: `${wiremock.config.port}`.
         * Directory where stored the mock req/res http `${wiremock.config.folder}`.
 * [lg5-spring-utils](lg5-spring-utils)
 

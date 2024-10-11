@@ -1,4 +1,4 @@
-package com.lg5.spring.testcontainer;
+package com.lg5.spring.testcontainer.boot;
 
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;

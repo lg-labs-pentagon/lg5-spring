@@ -1,4 +1,4 @@
-package com.lg5.spring.testcontainer;
+package com.lg5.spring.testcontainer.container;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.TestConfiguration;

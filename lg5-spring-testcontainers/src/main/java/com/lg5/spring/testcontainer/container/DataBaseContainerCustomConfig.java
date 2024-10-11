@@ -1,4 +1,4 @@
-package com.lg5.spring.testcontainer;
+package com.lg5.spring.testcontainer.container;
 
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
@@ -6,9 +6,9 @@ import org.springframework.context.annotation.Bean;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.utility.DockerImageName;
 
-import static com.lg5.spring.testcontainer.Constant.POSTGRES_16_3;
-import static com.lg5.spring.testcontainer.Constant.POSTGRES_NETWORK_ALIAS;
-import static com.lg5.spring.testcontainer.Constant.network;
+import static com.lg5.spring.testcontainer.util.Constant.POSTGRES_16_3;
+import static com.lg5.spring.testcontainer.util.Constant.POSTGRES_NETWORK_ALIAS;
+import static com.lg5.spring.testcontainer.util.Constant.network;
 
 @TestConfiguration
 public abstract class DataBaseContainerCustomConfig extends BaseContainerCustomConfig {

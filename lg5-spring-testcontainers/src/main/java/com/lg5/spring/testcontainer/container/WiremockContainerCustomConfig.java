@@ -1,4 +1,4 @@
-package com.lg5.spring.testcontainer;
+package com.lg5.spring.testcontainer.container;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.TestConfiguration;
@@ -15,9 +15,9 @@ import java.util.List;
 import java.util.Map;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
-import static com.lg5.spring.testcontainer.Constant.WIREMOCK_3_3_1;
-import static com.lg5.spring.testcontainer.Constant.WIREMOCK_NETWORK_ALIAS;
-import static com.lg5.spring.testcontainer.Constant.network;
+import static com.lg5.spring.testcontainer.util.Constant.WIREMOCK_3_3_1;
+import static com.lg5.spring.testcontainer.util.Constant.WIREMOCK_NETWORK_ALIAS;
+import static com.lg5.spring.testcontainer.util.Constant.network;
 import static java.lang.Integer.parseInt;
 
 

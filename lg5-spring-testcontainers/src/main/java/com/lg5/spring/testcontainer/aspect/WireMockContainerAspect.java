@@ -1,6 +1,6 @@
 package com.lg5.spring.testcontainer.aspect;
 
-import com.lg5.spring.testcontainer.BaseContainerCustomConfig;
+import com.lg5.spring.testcontainer.container.BaseContainerCustomConfig;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,9 +16,9 @@ import java.util.List;
 import java.util.Map;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
-import static com.lg5.spring.testcontainer.Constant.WIREMOCK_3_3_1;
-import static com.lg5.spring.testcontainer.Constant.WIREMOCK_NETWORK_ALIAS;
-import static com.lg5.spring.testcontainer.Constant.network;
+import static com.lg5.spring.testcontainer.util.Constant.WIREMOCK_3_3_1;
+import static com.lg5.spring.testcontainer.util.Constant.WIREMOCK_NETWORK_ALIAS;
+import static com.lg5.spring.testcontainer.util.Constant.network;
 import static java.lang.Integer.parseInt;
 
 @Aspect

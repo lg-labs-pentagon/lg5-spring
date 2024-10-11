@@ -1,4 +1,4 @@
-package com.lg5.spring.testcontainer;
+package com.lg5.spring.testcontainer.container;
 
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -16,11 +16,11 @@ import org.testcontainers.utility.DockerImageName;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.lg5.spring.testcontainer.Constant.CONFLUENTINC_CP_KAFKA_7_6_1;
-import static com.lg5.spring.testcontainer.Constant.CONFLUENTINC_CP_SCHEMA_REGISTRY_7_6_1;
-import static com.lg5.spring.testcontainer.Constant.KAFKA_NETWORK_ALIAS;
-import static com.lg5.spring.testcontainer.Constant.SCHEMA_REGISTRY_NETWORK_ALIAS;
-import static com.lg5.spring.testcontainer.Constant.network;
+import static com.lg5.spring.testcontainer.util.Constant.CONFLUENTINC_CP_KAFKA_7_6_1;
+import static com.lg5.spring.testcontainer.util.Constant.CONFLUENTINC_CP_SCHEMA_REGISTRY_7_6_1;
+import static com.lg5.spring.testcontainer.util.Constant.KAFKA_NETWORK_ALIAS;
+import static com.lg5.spring.testcontainer.util.Constant.SCHEMA_REGISTRY_NETWORK_ALIAS;
+import static com.lg5.spring.testcontainer.util.Constant.network;
 
 @TestConfiguration
 public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConfig {
