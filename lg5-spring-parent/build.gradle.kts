@@ -80,8 +80,8 @@ extensions.configure<PublishingExtension> {
             pom.packaging = "pom"
 
             pom.properties.put("lg5.version", project.version.toString())
-            pom.properties.put("digest-amd", "sha256:c67f402f77197f2e6ae84ff1fca868699ce3b38bfa78604524051420fa2e4383")
-            pom.properties.put("digest-arm", "sha256:c42f049364ab961f746709a4415416634c14a7cba90a08124b69fd82a40da97c")
+            pom.properties.put("digest-amd", "sha256:d5f21fdaf076baf2d2ed134cdc82d8c344cb404b79cee54410a0aca10de986e1")
+            pom.properties.put("digest-arm", "sha256:fa34005cdaa8b1f1f7190c3030bdf3a88b92ea27e61325b616ba9dfb9139f8b2")
 
 
             pom.withXml {
