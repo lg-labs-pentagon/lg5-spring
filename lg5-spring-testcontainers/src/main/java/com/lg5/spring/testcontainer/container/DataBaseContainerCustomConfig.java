@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.utility.DockerImageName;
 
-import static com.lg5.spring.testcontainer.util.Constant.POSTGRES_16_3;
+import static com.lg5.spring.testcontainer.util.Constant.POSTGRES_17_0;
 import static com.lg5.spring.testcontainer.util.Constant.POSTGRES_NETWORK_ALIAS;
 import static com.lg5.spring.testcontainer.util.Constant.network;
 
@@ -16,7 +16,7 @@ public abstract class DataBaseContainerCustomConfig extends BaseContainerCustomC
     @Bean
     @ServiceConnection
     PostgreSQLContainer<?> postgresContainer() {
-        final PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>(DockerImageName.parse(POSTGRES_16_3))
+        final PostgreSQLContainer<?> postgreSQLContainer = new PostgreSQLContainer<>(DockerImageName.parse(POSTGRES_17_0))
                 .withNetwork(network)
                 .withNetworkAliases(POSTGRES_NETWORK_ALIAS)
                 .withReuse(dockerContainerReuse);
