@@ -9,6 +9,10 @@ public final class Constant {
     public static final String SCHEMA_REGISTRY_NETWORK_ALIAS = "schema-registry";
     public static final String POSTGRES_NETWORK_ALIAS = "postgres";
     public static final String WIREMOCK_NETWORK_ALIAS = "wiremock";
+    public static final String APP_NETWORK_ALIAS = "app";
+
+    // ports
+    public static final int APP_PORT_DEFAULT = 8080;
 
     // images
     @Deprecated
