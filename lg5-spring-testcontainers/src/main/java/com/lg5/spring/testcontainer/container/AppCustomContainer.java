@@ -14,7 +14,9 @@ import static com.lg5.spring.testcontainer.util.Constant.APP_NETWORK_ALIAS;
 import static com.lg5.spring.testcontainer.util.Constant.APP_PORT_DEFAULT;
 import static com.lg5.spring.testcontainer.util.Constant.network;
 
-
+/**
+ * TODO: adapt to app container for services without port
+ */
 public class AppCustomContainer extends GenericContainer<AppCustomContainer> {
 
     public static RequestSpecification requestSpecification;

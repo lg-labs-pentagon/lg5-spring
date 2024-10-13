@@ -10,9 +10,11 @@ public final class Constant {
     public static final String POSTGRES_NETWORK_ALIAS = "postgres";
     public static final String WIREMOCK_NETWORK_ALIAS = "wiremock";
     public static final String APP_NETWORK_ALIAS = "app";
+    public static final String WIREMOCK__GUI_NETWORK_ALIAS = "mock-gui";
 
     // ports
     public static final int APP_PORT_DEFAULT = 8080;
+    public static final int WIREMOCK__GUI_PORT_DEFAULT = 8080;
 
     // images
     @Deprecated
@@ -21,6 +23,7 @@ public final class Constant {
     public static final String CONFLUENTINC_CP_KAFKA_7_6_1 = "confluentinc/cp-kafka:7.6.1";
     public static final String CONFLUENTINC_CP_SCHEMA_REGISTRY_7_6_1 = "confluentinc/cp-schema-registry:7.6.1";
     public static final String WIREMOCK_3_3_1 = "wiremock/wiremock:3.3.1";
+    public static final String WIREMOCK__GUI_V_3_6_31 = "holomekc/wiremock-gui:3.6.31";
 
 
     private Constant() {
