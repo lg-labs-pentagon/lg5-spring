@@ -1,6 +1,6 @@
 package com.lg5.spring.testcontainer.aspect;
 
-import com.lg5.spring.testcontainer.container.BaseContainerCustomConfig;
+import com.lg5.spring.testcontainer.util.BaseContainerCustomConfig;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.beans.factory.annotation.Value;

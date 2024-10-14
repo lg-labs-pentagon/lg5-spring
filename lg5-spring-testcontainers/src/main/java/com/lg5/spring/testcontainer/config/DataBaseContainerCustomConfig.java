@@ -1,5 +1,6 @@
-package com.lg5.spring.testcontainer.container;
+package com.lg5.spring.testcontainer.config;
 
+import com.lg5.spring.testcontainer.util.BaseContainerCustomConfig;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Bean;
@@ -12,6 +13,7 @@ import static com.lg5.spring.testcontainer.util.Constant.network;
 
 @TestConfiguration
 public abstract class DataBaseContainerCustomConfig extends BaseContainerCustomConfig {
+    public static final String JDBC_URL_CUSTOM = "JDBC_URL_CUSTOM";
 
     @Bean
     @ServiceConnection
@@ -23,6 +25,12 @@ public abstract class DataBaseContainerCustomConfig extends BaseContainerCustomC
         postgreSQLContainer.withUrlParam("binaryTransfer", "true");
         postgreSQLContainer.withUrlParam("reWriteBatchedInserts", "true");
         postgreSQLContainer.withUrlParam("stringtype", "unspecified");
+        withJdbcUrlCustom(postgreSQLContainer);
         return postgreSQLContainer;
+    }
+
+    private static void withJdbcUrlCustom(PostgreSQLContainer<?> postgreSQLContainer) {
+        final String postgresUrl = String.format("jdbc:postgresql://" + POSTGRES_NETWORK_ALIAS + ":%d/test", PostgreSQLContainer.POSTGRESQL_PORT);
+        postgreSQLContainer.withEnv(JDBC_URL_CUSTOM, postgresUrl);
     }
 }
