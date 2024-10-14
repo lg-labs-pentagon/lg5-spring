@@ -51,6 +51,7 @@ mvn install
 * [lg5-spring-acceptance-test](lg5-spring-acceptance-test)
   * Cucumber
   * Reporting Plugin
+  * Depend On (lg5-spring-testcontainers) dependency.
 * [lg5-spring-testcontainers](lg5-spring-testcontainers)
     * Postgres Container
     * Kafka Container
