@@ -200,6 +200,7 @@ fun Node.surefirePlugin() {
             }
 
             appendNode("excludes").apply {
+                appendNode("exclude", "**/*AcceptanceTestCase.java")
                 appendNode("exclude", "**/*AcceptanceT.java")
                 appendNode("exclude", "**/*AT.java")
             }
@@ -248,6 +249,7 @@ fun Node.failsafePlugin() {
 
                 appendNode("configuration").apply {
                     appendNode("includes").apply {
+                        appendNode("include", "**/*AcceptanceTestCase.java")
                         appendNode("include", "**/*AcceptanceT.java")
                         appendNode("include", "**/*AT.java")
                     }
