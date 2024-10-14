@@ -7,7 +7,6 @@ dependencies{
     api(libs.cucumber.java)
     api(libs.cucumber.junit.platform.engine)
     api(libs.cucumber.spring)
-    api(libs.reporting.plugin)
 }
 
 repositories {

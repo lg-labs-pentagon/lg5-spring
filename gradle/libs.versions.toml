@@ -58,8 +58,8 @@ wiremock-testcontainers-module-version="1.0-alpha-14"
 wiremock-standalone-version="3.9.1"
 
 # Acceptance Test
-junit-platform-suite-version="1.10.2"
-cucumber-version="7.20.0"
+junit-platform-suite-version="1.11.2"
+cucumber-version="7.20.1"
 reporting-plugin-version="7.2.0"
 
 [libraries]
@@ -146,8 +146,6 @@ junit-platform-suite = { group = "jupiter-launcher", name = "junit-platform-suit
 cucumber-java = { group = "io.cucumber", name = "cucumber-java", version.ref = "cucumber-version" }
 cucumber-junit-platform-engine = { group = "io.cucumber", name = "cucumber-junit-platform-engine", version.ref = "cucumber-version" }
 cucumber-spring = { group = "io.cucumber", name = "cucumber-spring", version.ref = "cucumber-version" }
-reporting-plugin = { group = "me.jvt.cucumber", name = "cucumber-spring", version.ref = "reporting-plugin-version"}
-
 
 
 [plugins]
