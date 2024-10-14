@@ -142,7 +142,7 @@ wiremock-standalone = { group = "org.wiremock", name = "wiremock-standalone", ve
 
 # atdd
 # jupiter-root
-junit-platform-suite = { group = "jupiter-launcher", name = "junit-platform-suite", version.ref = "junit-platform-suite-version" }
+junit-platform-suite = { group = "org.junit.platform", name = "junit-platform-suite", version.ref = "junit-platform-suite-version" }
 cucumber-java = { group = "io.cucumber", name = "cucumber-java", version.ref = "cucumber-version" }
 cucumber-junit-platform-engine = { group = "io.cucumber", name = "cucumber-junit-platform-engine", version.ref = "cucumber-version" }
 cucumber-spring = { group = "io.cucumber", name = "cucumber-spring", version.ref = "cucumber-version" }
