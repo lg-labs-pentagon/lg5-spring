@@ -7,6 +7,9 @@ import org.springframework.core.annotation.Order;
 
 import static com.lg5.spring.testcontainer.util.Constant.WIREMOCK_GUI_V_3_6_31;
 
+/**
+ *  Endpoint=> localhost:[dynamic_port]/__admin/webapp
+ */
 @TestConfiguration
 public class WireMockGuiContainerCustomConfig extends BaseContainerCustomConfig {
 
