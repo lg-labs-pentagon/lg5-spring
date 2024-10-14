@@ -39,7 +39,7 @@ public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConf
         kafkaContainer.start();
 
         String kafkaBootstrapServers = kafkaContainer.getBootstrapServers();
-
+        withBootstrapServersCustom(kafkaContainer);
 
         if (environment instanceof StandardEnvironment) {
             MutablePropertySources propertySources = ((StandardEnvironment) environment).getPropertySources();
