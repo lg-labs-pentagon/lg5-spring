@@ -31,8 +31,7 @@ mvn install
     * [lg5-common-application-service](lg5-common%2Flg5-common-application-service)
     * [lg5-common-domain](lg5-common%2Flg5-common-domain)
 * [lg5-jvm-saga](lg5-jvm-saga)
-* [lg5-jvm-test](lg5-jvm-test)_(deprecated)_
-* [lg5-unit-test](lg5-unit-test)
+* [lg5-jvm-unit-test](lg5-unit-test)
 * [lg5-jvm-utils](lg5-jvm-utils)
   * MapStruct
   * Guava

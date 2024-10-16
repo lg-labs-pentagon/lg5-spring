@@ -65,14 +65,13 @@ Also, [Repo with Real Example using Lg5Spring][7] use it.
 * [lg5-spring-testcontainers](lg5-spring-testcontainers)
 * [lg5-spring-acceptance-test](lg5-spring-acceptance-test)
 * [lg5-spring-utils](lg5-spring-utils)
+* [lg5-spring-integration-test](lg5-spring-integration-test)
 * [lg5-common](lg5-common)
     * [lg5-common-application-service](lg5-common%2Flg5-common-application-service)
     * [lg5-common-domain](lg5-common%2Flg5-common-domain)
 * [lg5-jvm-saga](lg5-jvm-saga)
-* [lg5-jvm-test](lg5-jvm-test) _Deprecated_
 * [lg5-jvm-utils](lg5-jvm-utils)
-* [lg5-unit-test](lg5-unit-test)
-* [lg5-spring-integration-test](lg5-spring-integration-test)
+* [lg5-jvmunit-test](lg5-unit-test)
 # ⚠️ Important
 
 > * If you change something into some submodule, you must verify and sync the `lg5-spring-parent`

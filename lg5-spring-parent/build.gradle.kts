@@ -55,8 +55,7 @@ extensions.configure<PublishingExtension> {
                         dependency("com.lg5.spring:lg5-spring-utils:${project.version}")
 
                         // <!-- tests -->
-                        dependency("com.lg5.jvm:lg5-jvm-test:${project.version}")
-                        dependency("com.lg5.jvm:lg5-unit-test:${project.version}")
+                        dependency("com.lg5.jvm:lg5-jvm-unit-test:${project.version}")
                         dependency("com.lg5.spring:lg5-spring-integration-test:${project.version}")
                         dependency("com.lg5.spring:lg5-spring-test:${project.version}")
                         dependency("com.lg5.spring:lg5-spring-testcontainers:${project.version}") {
