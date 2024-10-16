@@ -18,7 +18,7 @@ dependencies {
     api(libs.apache.avro)
     api(libs.postgresql)
     implementation(project(":lg5-spring-kafka:lg5-spring-kafka-config"))
-    testImplementation(project(":lg5-spring-test"))
+    testImplementation(project(":lg5-spring-integration-test"))
 
 }
 tasks.test {

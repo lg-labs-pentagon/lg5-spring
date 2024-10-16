@@ -3,7 +3,6 @@ plugins {
 }
 rootProject.name = "lg5-spring"
 include("lg5-spring-parent")
-include("lg5-spring-test")
 include("lg5-spring-utils")
 include("lg5-jvm-utils")
 include("lg5-spring-kafka")

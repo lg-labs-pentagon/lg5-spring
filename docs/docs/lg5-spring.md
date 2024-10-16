@@ -47,7 +47,6 @@ mvn install
 * [lg5-spring-logger](lg5-spring-logger)
 * [lg5-spring-outbox](lg5-spring-outbox)
 * [lg5-spring-starter](lg5-spring-starter)
-* [lg5-spring-test](lg5-spring-test)
 * [lg5-spring-acceptance-test](lg5-spring-acceptance-test)
   * Cucumber
   * Reporting Plugin

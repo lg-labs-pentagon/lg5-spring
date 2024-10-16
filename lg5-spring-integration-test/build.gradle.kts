@@ -8,11 +8,12 @@ repositories {
 }
 dependencies {
     implementation(libs.springboot.start.web)
-    implementation(project(":lg5-spring-test")){
+    api(libs.springboot.starter.test){
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
         exclude(group = "com.vaadin.external.google", module = "android-json")
         exclude(group = "org.springframework.boot", module = "spring-boot-starter")
     }
+    api(libs.awaitility)
     api(libs.wiremock.standalone)
     api(libs.rest.assured)
     implementation(project(":lg5-spring-testcontainers")){
