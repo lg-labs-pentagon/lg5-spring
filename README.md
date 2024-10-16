@@ -72,6 +72,7 @@ Also, [Repo with Real Example using Lg5Spring][7] use it.
 * [lg5-jvm-test](lg5-jvm-test) _Deprecated_
 * [lg5-jvm-utils](lg5-jvm-utils)
 * [lg5-unit-test](lg5-unit-test)
+* [lg5-spring-integration-test](lg5-spring-integration-test)
 # ⚠️ Important
 
 > * If you change something into some submodule, you must verify and sync the `lg5-spring-parent`

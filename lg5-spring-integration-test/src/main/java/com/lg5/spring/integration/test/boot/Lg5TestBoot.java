@@ -1,4 +1,4 @@
-package com.lg5.spring.testcontainer.boot;
+package com.lg5.spring.integration.test.boot;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;

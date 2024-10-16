@@ -63,6 +63,7 @@ mvn install
         * Indicate a port binding to connect: `${wiremock.config.port}`.
         * Directory where stored the mock req/res http `${wiremock.config.folder}`.
 * [lg5-spring-utils](lg5-spring-utils)
+* [lg5-spring-integration-test](lg5-spring-integration-test)
 
 [4]: https://github.com/lg-labs-pentagon/lg5-spring
 
