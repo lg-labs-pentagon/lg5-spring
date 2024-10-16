@@ -69,9 +69,9 @@ Also, [Repo with Real Example using Lg5Spring][7] use it.
     * [lg5-common-application-service](lg5-common%2Flg5-common-application-service)
     * [lg5-common-domain](lg5-common%2Flg5-common-domain)
 * [lg5-jvm-saga](lg5-jvm-saga)
-* [lg5-jvm-test](lg5-jvm-test)
+* [lg5-jvm-test](lg5-jvm-test) _Deprecated_
 * [lg5-jvm-utils](lg5-jvm-utils)
-
+* [lg5-unit-test](lg5-unit-test)
 # ⚠️ Important
 
 > * If you change something into some submodule, you must verify and sync the `lg5-spring-parent`
