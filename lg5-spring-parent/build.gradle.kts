@@ -96,7 +96,7 @@ extensions.configure<PublishingExtension> {
                                 springBootMavenBuildImagePlugin()
                                 surefirePlugin()
                                 failsafePlugin()
-                                jacocoPlugin()
+                                //jacocoPlugin()
                                 mavenCheckstylePlugin()
                                 mavenCompilerPlugin()
                             }
@@ -104,7 +104,7 @@ extensions.configure<PublishingExtension> {
                             mavenCompilerPluginSimple()
                             surefirePluginSimple()
                             failsafePluginSimple()
-                            jacocoPluginSimple()
+                            //jacocoPluginSimple()
                             mavenCheckstylePluginSimple()
                         }
                     }
