@@ -84,7 +84,8 @@ extensions.configure<PublishingExtension> {
             pom.properties.put("digest-amd", "sha256:d5f21fdaf076baf2d2ed134cdc82d8c344cb404b79cee54410a0aca10de986e1")
             pom.properties.put("digest-arm", "sha256:fa34005cdaa8b1f1f7190c3030bdf3a88b92ea27e61325b616ba9dfb9139f8b2")
             pom.properties.put("base-image", "gcr.io/distroless/java21-debian12")
-
+            pom.properties.put("graph-include", "none")
+            pom.properties.put("graph-exclude", "none")
 
             pom.withXml {
                 asNode()
