@@ -173,8 +173,6 @@ fun Node.mavenCompilerPlugin() {
                     appendNode("version", libs.lombokmapstruct.binding.get().version)
                 }
             }
-
-
         }
 
     }
@@ -205,6 +203,9 @@ fun Node.surefirePlugin() {
                 appendNode("exclude", "**/*AcceptanceTestCase.java")
                 appendNode("exclude", "**/*AcceptanceT.java")
                 appendNode("exclude", "**/*AT.java")
+                appendNode("exclude", "*-report/**")
+                appendNode("exclude", "*-support/**")
+                appendNode("exclude", "*-acceptance-test/**")
             }
         }
     }
@@ -233,8 +234,16 @@ fun Node.failsafePlugin() {
                 }
 
                 appendNode("configuration").apply {
+                    appendNode("argLine", "\${failsafeArgLine}")
+
                     appendNode("includes").apply {
                         appendNode("include", "**/*IT.java")
+                    }
+
+                    appendNode("excludes").apply {
+                        appendNode("exclude", "*-report/**")
+                        appendNode("exclude", "*-support/**")
+                        appendNode("exclude", "*-acceptance-test/**")
                     }
                 }
             }
@@ -255,6 +264,11 @@ fun Node.failsafePlugin() {
                         appendNode("include", "**/*AcceptanceTestCase.java")
                         appendNode("include", "**/*AcceptanceT.java")
                         appendNode("include", "**/*AT.java")
+                    }
+                    appendNode("excludes").apply {
+                        appendNode("exclude", "*-report/**")
+                        appendNode("exclude", "*-support/**")
+                        appendNode("exclude", "*-acceptance-test/**")
                     }
                 }
             }
@@ -280,9 +294,9 @@ fun Node.jacocoPlugin() {
             appendNode("execution").apply {
                 appendNode("id", "prepare-agent")
                     .children().apply {
-                    appendNode("goals")
-                        .appendNode("goal", "prepare-agent")
-                }
+                        appendNode("goals")
+                            .appendNode("goal", "prepare-agent")
+                    }
             }
         }
         appendNode("configuration")
@@ -290,6 +304,8 @@ fun Node.jacocoPlugin() {
                 appendNode("exclude", "**/AvroModel.")
                 appendNode("exclude", "**/**.kafka.*")
                 appendNode("exclude", "infrastructure/kafka/*")
+                appendNode("exclude", "*-acceptance-test/**")
+
             }
     }
 }
