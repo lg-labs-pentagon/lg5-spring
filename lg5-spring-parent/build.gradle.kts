@@ -195,6 +195,7 @@ fun Node.surefirePlugin() {
         appendNode("version", libs.surefire.plugin.get().version)
 
         appendNode("configuration").apply {
+            appendNode("argLine", "\${surefireArgLine}")
 
             appendNode("includes").apply {
                 appendNode("include", "**/*Test.java")
@@ -249,6 +250,7 @@ fun Node.failsafePlugin() {
                 }
 
                 appendNode("configuration").apply {
+                    appendNode("argLine", "\${failsafeArgLine}")
                     appendNode("includes").apply {
                         appendNode("include", "**/*AcceptanceTestCase.java")
                         appendNode("include", "**/*AcceptanceT.java")
@@ -276,7 +278,8 @@ fun Node.jacocoPlugin() {
         appendNode("executions").apply {
 
             appendNode("execution").apply {
-                appendNode("id", "prepare-agent").children().apply {
+                appendNode("id", "prepare-agent")
+                    .children().apply {
                     appendNode("goals")
                         .appendNode("goal", "prepare-agent")
                 }
