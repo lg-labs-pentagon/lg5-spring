@@ -210,6 +210,7 @@ fun Node.surefirePlugin() {
                 appendNode("exclude", "*-report/**")
                 appendNode("exclude", "*-support/**")
                 appendNode("exclude", "*-acceptance-test/**")
+                appendNode("exclude", "*.xml")
             }
         }
     }
@@ -248,6 +249,7 @@ fun Node.failsafePlugin() {
                         appendNode("exclude", "*-report/**")
                         appendNode("exclude", "*-support/**")
                         appendNode("exclude", "*-acceptance-test/**")
+                        appendNode("exclude", "*.xml")
                     }
                 }
             }
@@ -273,6 +275,7 @@ fun Node.failsafePlugin() {
                         appendNode("exclude", "*-report/**")
                         appendNode("exclude", "*-support/**")
                         appendNode("exclude", "*-acceptance-test/**")
+                        appendNode("exclude", "*.xml")
                     }
                 }
             }
@@ -323,6 +326,7 @@ fun Node.jacocoPlugin() {
                 appendNode("exclude", "**/**.kafka.*")
                 appendNode("exclude", "infrastructure/kafka/*")
                 appendNode("exclude", "*-acceptance-test/**")
+                appendNode("exclude", "*.xml")
 
             }
     }
