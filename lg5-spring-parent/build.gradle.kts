@@ -294,8 +294,22 @@ fun Node.jacocoPlugin() {
             appendNode("execution").apply {
                 appendNode("id", "prepare-agent")
                     .children().apply {
+
                         appendNode("goals")
                             .appendNode("goal", "prepare-agent")
+                        appendNode("configuration")
+                            .appendNode("propertyName", "surefireArgLine")
+                    }
+            }
+            appendNode("execution").apply {
+                appendNode("id", "prepare-agent-integration")
+                    .children().apply {
+
+                        appendNode("goals")
+                            .appendNode("goal", "prepare-agent-integration")
+
+                        appendNode("configuration")
+                            .appendNode("propertyName", "surefireArgLine")
                     }
             }
         }
@@ -447,6 +461,39 @@ fun Node.springBootMavenBuildImagePlugin() {
                 appendNode("goals")
                     .appendNode("goal", "build-image")
             }
+
+    }
+}
+
+fun Node.depgraphMavenPlugin() {
+    appendNode("plugin").apply {
+        appendNode("groupId", libs.depgraph.maven.get().group)
+        appendNode("artifactId", libs.depgraph.maven.get().name)
+        appendNode("version", libs.depgraph.maven.get().version)
+
+        appendNode("configuration").apply {
+            appendNode("showGroupIds", true)
+            appendNode("showVersions", true)
+            appendNode("createImage", true)
+            appendNode("reduceEdges", false)
+
+            appendNode("scopes", "compile")
+            appendNode("includeParentProjects", true)
+            appendNode("showDuplicates", true)
+            appendNode("showConflicts", true)
+        }
+
+        appendNode("executions").apply {
+
+
+            appendNode("execution").apply {
+                appendNode("phase", "verify")
+                appendNode("goals")
+                    .appendNode("goal", "aggregate")
+            }
+
+        }
+
 
     }
 }
