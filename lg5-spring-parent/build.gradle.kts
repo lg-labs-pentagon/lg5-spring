@@ -96,16 +96,19 @@ extensions.configure<PublishingExtension> {
                                 springBootMavenBuildImagePlugin()
                                 surefirePlugin()
                                 failsafePlugin()
-                                //jacocoPlugin()
+                                jacocoPlugin()
                                 mavenCheckstylePlugin()
                                 mavenCompilerPlugin()
+                                depgraphMavenPlugin()
                             }
                         appendNode("plugins").apply {
                             mavenCompilerPluginSimple()
                             surefirePluginSimple()
                             failsafePluginSimple()
-                            //jacocoPluginSimple()
+                            jacocoPluginSimple()
                             mavenCheckstylePluginSimple()
+                            mavenCheckstylePluginSimple()
+                            depgraphMavenPluginSimple()
                         }
                     }
                 asNode()
@@ -473,14 +476,19 @@ fun Node.depgraphMavenPlugin() {
 
         appendNode("configuration").apply {
             appendNode("showGroupIds", true)
-            appendNode("showVersions", true)
             appendNode("createImage", true)
+            appendNode("showVersions", true)
             appendNode("reduceEdges", false)
 
             appendNode("scopes", "compile")
             appendNode("includeParentProjects", true)
             appendNode("showDuplicates", true)
             appendNode("showConflicts", true)
+
+
+            appendNode("includes", "com.blanksystem*:*,\${graph-include}")
+            appendNode("excludes", "*:*report*,*:*acceptance*,*:*support*,\${graph-exclude}")
+
         }
 
         appendNode("executions").apply {
@@ -497,7 +505,12 @@ fun Node.depgraphMavenPlugin() {
 
     }
 }
-
+fun Node.depgraphMavenPluginSimple() {
+    appendNode("plugin").apply {
+        appendNode("groupId", libs.depgraph.maven.get().group)
+        appendNode("artifactId", libs.depgraph.maven.get().name)
+    }
+}
 fun Node.profiles() {
 
     appendNode("profiles").apply {
