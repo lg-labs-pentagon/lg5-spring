@@ -105,7 +105,7 @@ jupiter-engine = { group = "org.junit.jupiter", name = "junit-jupiter-engine", v
 jupiter-launcher = { module = "org.junit.platform:junit-platform-launcher" }
 mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito-version" }
 rest-assured= { group = "io.rest-assured", name = "rest-assured", version.ref = "rest-assured-version" }
-depgraph-maven={ group = "com.github.ferstl", name = "depgraph-maven-plugi", version.ref = "jacoco-version" }
+depgraph-maven={ group = "com.github.ferstl", name = "depgraph-maven-plugi", version.ref = "depgraph-version" }
 
 # Utils
 lombok = { group = "org.projectlombok", name = "lombok", version.ref = "lombok-version" }
