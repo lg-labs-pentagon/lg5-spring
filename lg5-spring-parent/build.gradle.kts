@@ -313,7 +313,7 @@ fun Node.jacocoPlugin() {
                             .appendNode("goal", "prepare-agent-integration")
 
                         appendNode("configuration")
-                            .appendNode("propertyName", "surefireArgLine")
+                            .appendNode("propertyName", "failsafeArgLine")
                     }
             }
         }
