@@ -480,9 +480,9 @@ fun Node.depgraphMavenPlugin() {
         appendNode("version", libs.depgraph.maven.get().version)
 
         appendNode("configuration").apply {
-            appendNode("showGroupIds", true)
+            appendNode("showGroupIds", false)
             appendNode("createImage", true)
-            appendNode("showVersions", true)
+            appendNode("showVersions", false)
             appendNode("reduceEdges", false)
 
             appendNode("scopes", "compile")
