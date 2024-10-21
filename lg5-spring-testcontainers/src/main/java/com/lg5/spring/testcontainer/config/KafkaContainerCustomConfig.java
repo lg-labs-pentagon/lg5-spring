@@ -31,7 +31,7 @@ public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConf
     @Order(2)
     public KafkaContainer kafkaContainer(Environment environment) {
         KafkaContainer kafkaContainer = new KafkaContainer(DockerImageName.parse(CONFLUENTINC_CP_KAFKA_7_6_1))
-                .withExposedPorts(9093)
+                .withExposedPorts(KAFKA_INTERNAL_PORT)
                 .withNetwork(network)
                 .withNetworkAliases(KAFKA_NETWORK_ALIAS)
                 .waitingFor(Wait.forListeningPort())
@@ -58,7 +58,7 @@ public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConf
         GenericContainer<?> schemaRegistryContainer = new GenericContainer<>(DockerImageName.parse(CONFLUENTINC_CP_SCHEMA_REGISTRY_7_6_1))
                 .withNetwork(network)
                 .withNetworkAliases(SCHEMA_REGISTRY_NETWORK_ALIAS)
-                .withEnv("SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS", "PLAINTEXT://" + KAFKA_NETWORK_ALIAS + ":9092")
+                .withEnv("SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS", "PLAINTEXT://" + KAFKA_NETWORK_ALIAS + ":"+KAFKA_INTERNAL_PORT)
                 .withEnv("SCHEMA_REGISTRY_HOST_NAME", "schema-registry")
                 .withExposedPorts(8081)
                 .waitingFor(Wait.forListeningPort())
