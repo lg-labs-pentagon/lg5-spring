@@ -1,6 +1,6 @@
 [versions]
 springboot-version = "3.3.4"
-springframework-version = "6.1.13"
+springframework-version = "6.1.14"
 junit-jupiter-version = "5.11.2"
 lombok-version = "1.18.34"
 guava-version = "33.3.1-jre"
