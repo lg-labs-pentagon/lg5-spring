@@ -25,7 +25,7 @@ import static com.lg5.spring.testcontainer.util.Constant.network;
 @TestConfiguration
 public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConfig {
     public static final String BOOTSTRAP_SERVERS_CUSTOM = "BOOTSTRAP_SERVERS_CUSTOM";
-    public static final int KAFKA_INTERNAL_PORT = 9092;
+    public static final int KAFKA_INTERNAL_PORT = 9093;
 
     @Bean
     @Order(2)
