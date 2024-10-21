@@ -31,7 +31,7 @@ public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConf
     @Bean
     @Order(2)
     public KafkaContainer kafkaContainer(Environment environment) {
-        KafkaContainer kafkaContainer = new KafkaContainer(DockerImageName.parse(CONFLUENTINC_CP_KAFKA_7_6_1))
+        final KafkaContainer kafkaContainer = new KafkaContainer(DockerImageName.parse(CONFLUENTINC_CP_KAFKA_7_6_1))
                 .withExposedPorts(KAFKA_INTERNAL_PORT_AS_9093)
                 .withNetwork(network)
                 .withNetworkAliases(KAFKA_NETWORK_ALIAS)
@@ -39,12 +39,12 @@ public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConf
                 .withReuse(dockerContainerReuse);
         kafkaContainer.start();
 
-        String kafkaBootstrapServers = kafkaContainer.getBootstrapServers();
+        final String kafkaBootstrapServers = kafkaContainer.getBootstrapServers();
         withBootstrapServersCustom(kafkaContainer);
 
         if (environment instanceof StandardEnvironment) {
-            MutablePropertySources propertySources = ((StandardEnvironment) environment).getPropertySources();
-            Map<String, Object> map = new HashMap<>();
+            final MutablePropertySources propertySources = ((StandardEnvironment) environment).getPropertySources();
+            final Map<String, Object> map = new HashMap<>();
             map.put("kafka-config.bootstrap-servers", kafkaBootstrapServers);
             propertySources.addFirst(new MapPropertySource("kafkaProperties", map));
         }
@@ -56,7 +56,7 @@ public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConf
     @Order(3)
     @DependsOn({"kafkaContainer"})
     public GenericContainer<?> schemaRegistryContainer(Environment environment) {
-        GenericContainer<?> schemaRegistryContainer = new GenericContainer<>(DockerImageName.parse(CONFLUENTINC_CP_SCHEMA_REGISTRY_7_6_1))
+        final GenericContainer<?> schemaRegistryContainer = new GenericContainer<>(DockerImageName.parse(CONFLUENTINC_CP_SCHEMA_REGISTRY_7_6_1))
                 .withNetwork(network)
                 .withNetworkAliases(SCHEMA_REGISTRY_NETWORK_ALIAS)
                 .withEnv("SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS", "PLAINTEXT://" + KAFKA_NETWORK_ALIAS + ":"+ KAFKA_INTERNAL_PORT_AS_9092)
@@ -67,12 +67,12 @@ public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConf
                 .withReuse(dockerContainerReuse);
         schemaRegistryContainer.start();
 
-        String schemaRegistryUrl = "http://" + schemaRegistryContainer.getHost() + ":" + schemaRegistryContainer.getMappedPort(8081);
+        final String schemaRegistryUrl = "http://" + schemaRegistryContainer.getHost() + ":" + schemaRegistryContainer.getMappedPort(8081);
 
 
         if (environment instanceof StandardEnvironment) {
-            MutablePropertySources propertySources = ((StandardEnvironment) environment).getPropertySources();
-            Map<String, Object> map = new HashMap<>();
+            final MutablePropertySources propertySources = ((StandardEnvironment) environment).getPropertySources();
+            final Map<String, Object> map = new HashMap<>();
             map.put("kafka-config.schema-registry-url", schemaRegistryUrl);
             propertySources.addFirst(new MapPropertySource("schemaRegistryProperties", map));
         }
