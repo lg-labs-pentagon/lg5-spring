@@ -59,7 +59,7 @@ public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConf
         GenericContainer<?> schemaRegistryContainer = new GenericContainer<>(DockerImageName.parse(CONFLUENTINC_CP_SCHEMA_REGISTRY_7_6_1))
                 .withNetwork(network)
                 .withNetworkAliases(SCHEMA_REGISTRY_NETWORK_ALIAS)
-                .withEnv("SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS", "PLAINTEXT://" + KAFKA_NETWORK_ALIAS + ":"+KAFKA_INTERNAL_PORT_ALT)
+                .withEnv("SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS", "PLAINTEXT://" + KAFKA_NETWORK_ALIAS + ":"+KAFKA_INTERNAL_PORT)
                 .withEnv("SCHEMA_REGISTRY_HOST_NAME", "schema-registry")
                 .withExposedPorts(8081)
                 .waitingFor(Wait.forListeningPort())
