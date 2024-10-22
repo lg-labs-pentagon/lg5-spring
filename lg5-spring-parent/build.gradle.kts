@@ -108,7 +108,6 @@ extensions.configure<PublishingExtension> {
                             failsafePluginSimple()
                             jacocoPluginSimple()
                             mavenCheckstylePluginSimple()
-                            mavenCheckstylePluginSimple()
                             depgraphMavenPluginSimple()
                         }
                     }
