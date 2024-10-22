@@ -18,8 +18,8 @@ import org.testcontainers.utility.DockerImageName;
 import java.util.HashMap;
 import java.util.Map;
 
-import static com.lg5.spring.testcontainer.util.Constant.CONFLUENTINC_CP_KAFKA_7_6_1;
-import static com.lg5.spring.testcontainer.util.Constant.CONFLUENTINC_CP_SCHEMA_REGISTRY_7_6_1;
+import static com.lg5.spring.testcontainer.util.Constant.CONFLUENTINC_CP_KAFKA_7_7_1;
+import static com.lg5.spring.testcontainer.util.Constant.CONFLUENTINC_CP_SCHEMA_REGISTRY_7_7_1;
 import static com.lg5.spring.testcontainer.util.Constant.KAFKA_NETWORK_ALIAS;
 import static com.lg5.spring.testcontainer.util.Constant.SCHEMA_REGISTRY_NETWORK_ALIAS;
 import static com.lg5.spring.testcontainer.util.Constant.network;
@@ -39,7 +39,7 @@ public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConf
     @Order(1)
     public KafkaContainer kafkaContainer(Environment environment) {
         final KafkaContainer kafkaContainer = new KafkaContainer(
-                DockerImageName.parse(CONFLUENTINC_CP_KAFKA_7_6_1))
+                DockerImageName.parse(CONFLUENTINC_CP_KAFKA_7_7_1))
                 .withExposedPorts(KAFKA_INTERNAL_PORT_AS_9092, KAFKA_INTERNAL_PORT_AS_9093)
                 .withNetwork(network)
                 .withNetworkAliases(KAFKA_NETWORK_ALIAS)
@@ -66,7 +66,7 @@ public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConf
     @DependsOn({"kafkaContainer"})
     public GenericContainer<?> schemaRegistryContainer(Environment environment) {
         final GenericContainer<?> schemaRegistryContainer = new GenericContainer<>(
-                DockerImageName.parse(CONFLUENTINC_CP_SCHEMA_REGISTRY_7_6_1))
+                DockerImageName.parse(CONFLUENTINC_CP_SCHEMA_REGISTRY_7_7_1))
                 .withExposedPorts(8081)
                 .withNetwork(network)
                 .withNetworkAliases(SCHEMA_REGISTRY_NETWORK_ALIAS)
