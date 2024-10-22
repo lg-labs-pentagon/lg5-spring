@@ -16,7 +16,6 @@ import java.util.List;
 import java.util.Map;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
-import static com.lg5.spring.testcontainer.util.Constant.WIREMOCK_3_3_1;
 import static com.lg5.spring.testcontainer.util.Constant.WIREMOCK_3_9_1;
 import static com.lg5.spring.testcontainer.util.Constant.WIREMOCK_NETWORK_ALIAS;
 import static com.lg5.spring.testcontainer.util.Constant.network;
