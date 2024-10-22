@@ -21,7 +21,9 @@ public final class Constant {
     public static final String CONFLUENTINC_CP_KAFKA_7_6_1 = "confluentinc/cp-kafka:7.6.1";
     public static final String CONFLUENTINC_CP_SCHEMA_REGISTRY_7_6_1 = "confluentinc/cp-schema-registry:7.6.1";
     public static final String WIREMOCK_3_3_1 = "wiremock/wiremock:3.3.1";
+    @Deprecated
     public static final String WIREMOCK_GUI_V_3_6_31 = "holomekc/wiremock-gui:3.6.31";
+    public static final String WIREMOCK_GUI_V_3_8_46 = "holomekc/wiremock-gui:3.8.46";
 
 
     private Constant() {

@@ -1,5 +1,6 @@
 package com.lg5.spring.testcontainer.config;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +12,7 @@ import static com.lg5.spring.testcontainer.util.Constant.POSTGRES_NETWORK_ALIAS;
 import static com.lg5.spring.testcontainer.util.Constant.network;
 
 @TestConfiguration
+@ConditionalOnProperty(name = "testcontainers.postgres.enabled", havingValue = "true", matchIfMissing = true)
 public abstract class PostgresContainerCustomConfig extends BaseContainerCustomConfig {
     public static final String JDBC_URL_CUSTOM = "JDBC_URL_CUSTOM";
 

@@ -16,15 +16,15 @@ import java.util.List;
 import java.util.Map;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
-import static com.lg5.spring.testcontainer.util.Constant.WIREMOCK_3_3_1;
+import static com.lg5.spring.testcontainer.util.Constant.WIREMOCK_GUI_V_3_8_46;
 import static com.lg5.spring.testcontainer.util.Constant.WIREMOCK_NETWORK_ALIAS;
 import static com.lg5.spring.testcontainer.util.Constant.network;
 import static java.lang.Integer.parseInt;
 
 
 @TestConfiguration
-@ConditionalOnProperty(name = "testcontainers.wiremock.enabled", havingValue = "true", matchIfMissing = true)
-public abstract class WiremockContainerCustomConfig extends BaseContainerCustomConfig {
+@ConditionalOnProperty(name = "testcontainers.wiremockui.enabled", havingValue = "true", matchIfMissing = true)
+public abstract class WiremockUIContainerCustomConfig extends BaseContainerCustomConfig {
 
     @Value("${wiremock.config.folder:wiremock/placeholder/template.json}")
     protected String wireMockConfigFolderResource;
@@ -38,7 +38,7 @@ public abstract class WiremockContainerCustomConfig extends BaseContainerCustomC
     @Bean
     @Order(4)
     public WireMockContainer wireMockContainer(Environment environment) {
-        final WireMockContainer wireMockContainer = new WireMockContainer(WIREMOCK_3_3_1)
+        final WireMockContainer wireMockContainer = new WireMockContainer(WIREMOCK_GUI_V_3_8_46)
                 .withExposedPorts(8080)
                 .withMappingFromResource("placeholder", wireMockConfigFolderResource)
                 .withNetwork(network)

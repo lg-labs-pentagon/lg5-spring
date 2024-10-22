@@ -1,5 +1,7 @@
 package com.lg5.spring.testcontainer.config;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.DependsOn;
@@ -23,11 +25,15 @@ import static com.lg5.spring.testcontainer.util.Constant.SCHEMA_REGISTRY_NETWORK
 import static com.lg5.spring.testcontainer.util.Constant.network;
 
 @TestConfiguration
+@ConditionalOnProperty(name = "testcontainers.kafka.enabled", havingValue = "true", matchIfMissing = true)
 public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConfig {
     public static final String BOOTSTRAP_SERVERS_CUSTOM = "BOOTSTRAP_SERVERS_CUSTOM";
     public static final String SCHEMA_REGISTRY_CUSTOM = "SCHEMA_REGISTRY_CUSTOM";
     public static final int KAFKA_INTERNAL_PORT_AS_9093 = 9093;
     public static final int KAFKA_INTERNAL_PORT_AS_9092 = 9092;
+
+    @Value("${docker.container.reuse:false}")
+    protected boolean dockerContainerReuse;
 
     @Bean
     @Order(1)
