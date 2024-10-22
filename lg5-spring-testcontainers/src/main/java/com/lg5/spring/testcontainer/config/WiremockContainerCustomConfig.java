@@ -26,6 +26,8 @@ import static java.lang.Integer.parseInt;
 @ConditionalOnProperty(name = "testcontainers.wiremock.enabled", havingValue = "true", matchIfMissing = true)
 public abstract class WiremockContainerCustomConfig extends BaseContainerCustomConfig {
 
+    public static final String WIREMOCK_SERVER_CUSTOM = "WIREMOCK_SERVER_CUSTOM";
+
     @Value("${wiremock.config.folder:wiremock/placeholder/template.json}")
     protected String wireMockConfigFolderResource;
 
@@ -47,6 +49,7 @@ public abstract class WiremockContainerCustomConfig extends BaseContainerCustomC
         wireMockContainer.setPortBindings(List.of(wireMockPortBind + ":8080"));
 
         wireMockContainer.start();
+        withSchemaRegistryCustom(wireMockContainer);
 
         final String wireMockContainerBaseUrl = wireMockContainer.getBaseUrl();
         configureFor("localhost", parseInt(wireMockPortBind));
@@ -59,4 +62,10 @@ public abstract class WiremockContainerCustomConfig extends BaseContainerCustomC
         }
         return wireMockContainer;
     }
+
+    private static void withSchemaRegistryCustom(WireMockContainer wireMockContainer) {
+        final String endpoint = "http://" + wireMockContainer.getNetworkAliases().getLast() + ":" + wireMockContainer.getExposedPorts().getFirst();
+        wireMockContainer.withEnv(WIREMOCK_SERVER_CUSTOM, endpoint);
+    }
+
 }
