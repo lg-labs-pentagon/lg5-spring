@@ -7,6 +7,7 @@ dependencies{
     api(libs.cucumber.java)
     api(libs.cucumber.junit.platform.engine)
     api(libs.cucumber.spring)
+    implementation(project(":lg5-jvm-utils"))
     implementation(project(":lg5-spring-integration-test"))
 }
 
