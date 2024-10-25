@@ -1,10 +1,10 @@
 [versions]
-springboot-version = "3.3.4"
+springboot-version = "3.3.5"
 springframework-version = "6.1.14"
-junit-jupiter-version = "5.11.2"
+junit-jupiter-version = "5.11.3"
 lombok-version = "1.18.34"
 guava-version = "33.3.1-jre"
-mockito-version = "5.14.1"
+mockito-version = "5.14.2"
 spring-dependency-version = "1.1.6"
 jacoco-version = "0.8.12"
 depgraph-version = "4.0.3"
@@ -33,7 +33,7 @@ maven-checkstyle-plugin-version="3.5.0"
 puppycrawl-tools-checkstyle-version="10.18.2"
 
 # build images Jib
-jib-maven-plugin-version ="3.4.3"
+jib-maven-plugin-version ="3.4.4"
 
 #lg5 Old
 ddd-common-domain-version="1.0.0-alpha.2"
@@ -56,7 +56,7 @@ lombok-mapstruct-binding-version="0.2.0"
 #Testcontainer
 testcontainers-version="1.20.2"
 wiremock-testcontainers-module-version="1.0-alpha-14"
-wiremock-standalone-version="3.9.1"
+wiremock-standalone-version="3.9.2"
 
 # Acceptance Test
 junit-platform-suite-version="1.11.2"
