@@ -104,4 +104,21 @@ public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConf
                 schemaRegistryContainer.getExposedPorts().getFirst());
         schemaRegistryContainer.withEnv(SCHEMA_REGISTRY_CUSTOM, kafkaUrl);
     }
+
+    public void setupKafkaConnection(Environment environment, KafkaContainer kafkaContainer, GenericContainer<?> schemaRegistryContainer) {
+        if (environment instanceof StandardEnvironment) {
+            MutablePropertySources propertySources = ((StandardEnvironment) environment).getPropertySources();
+            Map<String, Object> map = new HashMap<>();
+
+            map.put("kafka-config.schema-registry-url", schemaRegistryContainer.getEnvMap().get(SCHEMA_REGISTRY_CUSTOM));
+            propertySources.addFirst(new MapPropertySource("schemaRegistryProperties", map));
+
+            propertySources = ((StandardEnvironment) environment).getPropertySources();
+            map = new HashMap<>();
+
+            final Integer mappedPort = kafkaContainer.getMappedPort(KAFKA_INTERNAL_PORT_AS_9092);
+            map.put("kafka-config.bootstrap-servers", "localhost:" + mappedPort);
+            propertySources.addFirst(new MapPropertySource("kafkaProperties", map));
+        }
+    }
 }

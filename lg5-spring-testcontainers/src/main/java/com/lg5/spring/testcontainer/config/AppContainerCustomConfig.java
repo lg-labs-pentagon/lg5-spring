@@ -1,6 +1,8 @@
 package com.lg5.spring.testcontainer.config;
 
 import com.lg5.spring.testcontainer.container.AppCustomContainer;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.test.context.TestConfiguration;
@@ -11,6 +13,8 @@ import org.testcontainers.containers.output.OutputFrame;
 @TestConfiguration
 @ConditionalOnProperty(name = "testcontainers.app.enabled", havingValue = "true", matchIfMissing = true)
 public class AppContainerCustomConfig extends BaseContainerCustomConfig {
+
+    private final Logger LOG = LoggerFactory.getLogger(this.getClass());
 
     @Value("${application.traces.enabled: false}")
     private boolean traceEnabled;
@@ -30,7 +34,7 @@ public class AppContainerCustomConfig extends BaseContainerCustomConfig {
         AppCustomContainer appCustomContainer = new AppCustomContainer(imageName);
         appCustomContainer.withFileSystemBind(logDestinationPath, logSourcePath, BindMode.READ_WRITE);
         if (traceEnabled) {
-            appCustomContainer.withLogConsumer((OutputFrame outputFrame) -> System.out.println(outputFrame.getUtf8String()));
+            appCustomContainer.withLogConsumer((OutputFrame outputFrame) -> LOG.info(outputFrame.getUtf8String()));
         }
 
         return appCustomContainer;
