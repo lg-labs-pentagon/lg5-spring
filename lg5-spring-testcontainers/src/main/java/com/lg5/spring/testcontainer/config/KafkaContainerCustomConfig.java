@@ -95,7 +95,7 @@ public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConf
     }
 
 
-    public void setupKafkaConnection(Environment environment, KafkaContainer kafkaContainer, GenericContainer<?> schemaRegistryContainer) {
+    public static void setupKafkaConnection(Environment environment, KafkaContainer kafkaContainer, GenericContainer<?> schemaRegistryContainer) {
         if (environment instanceof StandardEnvironment) {
             MutablePropertySources propertySources = ((StandardEnvironment) environment).getPropertySources();
             Map<String, Object> map = new HashMap<>();
@@ -112,7 +112,7 @@ public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConf
         }
     }
 
-    public Map<String, String> initManualConnectionPropertiesMap(KafkaContainer kafkaContainer,
+    public static Map<String, String> initManualConnectionPropertiesMap(KafkaContainer kafkaContainer,
                                                                  GenericContainer<?> schemaRegistryContainer) {
         return Map.of(
 

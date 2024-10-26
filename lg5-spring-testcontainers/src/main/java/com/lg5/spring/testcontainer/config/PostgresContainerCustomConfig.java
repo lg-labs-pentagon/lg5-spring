@@ -38,7 +38,7 @@ public abstract class PostgresContainerCustomConfig extends BaseContainerCustomC
         postgreSQLContainer.withEnv(JDBC_URL_CUSTOM, postgresUrl);
     }
 
-    public Map<String, String> initManualConnectionPropertiesMap(PostgreSQLContainer<?> postgreSQLContainer) {
+    public static Map<String, String> initManualConnectionPropertiesMap(PostgreSQLContainer<?> postgreSQLContainer) {
         return Map.of(
 
                 "SPRING_DATASOURCE_URL", postgreSQLContainer.getEnvMap().get(JDBC_URL_CUSTOM),
