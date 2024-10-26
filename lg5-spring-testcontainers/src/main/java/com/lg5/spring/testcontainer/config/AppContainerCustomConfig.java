@@ -10,11 +10,18 @@ import org.springframework.context.annotation.Bean;
 import org.testcontainers.containers.BindMode;
 import org.testcontainers.containers.output.OutputFrame;
 
+import java.util.Map;
+
+import static com.lg5.spring.testcontainer.util.Constant.APP_PORT_DEFAULT;
+
 @TestConfiguration
 @ConditionalOnProperty(name = "testcontainers.app.enabled", havingValue = "true", matchIfMissing = true)
 public class AppContainerCustomConfig extends BaseContainerCustomConfig {
 
     private final Logger LOG = LoggerFactory.getLogger(this.getClass());
+
+    @Value("${application.server.port: " + APP_PORT_DEFAULT + "}")
+    private int serverPort;
 
     @Value("${application.traces.enabled: false}")
     private boolean traceEnabled;
@@ -33,11 +40,19 @@ public class AppContainerCustomConfig extends BaseContainerCustomConfig {
     AppCustomContainer appCustomContainer() {
         AppCustomContainer appCustomContainer = new AppCustomContainer(imageName);
         appCustomContainer.withFileSystemBind(logDestinationPath, logSourcePath, BindMode.READ_WRITE);
+        appCustomContainer.withAppEnvVars(appWithEnv());
         if (traceEnabled) {
             appCustomContainer.withLogConsumer((OutputFrame outputFrame) -> LOG.info(outputFrame.getUtf8String()));
         }
 
         return appCustomContainer;
+    }
+
+    private Map<String, String> appWithEnv() {
+        return Map.of(
+                "SERVER_PORT", String.valueOf(serverPort),
+                "log.path", logSourcePath
+        );
     }
 
 }

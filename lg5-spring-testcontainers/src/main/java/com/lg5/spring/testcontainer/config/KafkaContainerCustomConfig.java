@@ -94,16 +94,6 @@ public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConf
         return schemaRegistryContainer;
     }
 
-    private static void withBootstrapServersCustom(KafkaContainer kafkaContainer) {
-        final String kafkaUrl = KAFKA_NETWORK_ALIAS + ":" + KAFKA_INTERNAL_PORT_AS_9092;
-        kafkaContainer.withEnv(BOOTSTRAP_SERVERS_CUSTOM, kafkaUrl);
-    }
-
-    private static void withSchemaRegistryCustom(GenericContainer<?> schemaRegistryContainer) {
-        final String kafkaUrl = String.format("http://%s:%s", schemaRegistryContainer.getNetworkAliases().getLast(),
-                schemaRegistryContainer.getExposedPorts().getFirst());
-        schemaRegistryContainer.withEnv(SCHEMA_REGISTRY_CUSTOM, kafkaUrl);
-    }
 
     public void setupKafkaConnection(Environment environment, KafkaContainer kafkaContainer, GenericContainer<?> schemaRegistryContainer) {
         if (environment instanceof StandardEnvironment) {
@@ -120,5 +110,25 @@ public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConf
             map.put("kafka-config.bootstrap-servers", "localhost:" + mappedPort);
             propertySources.addFirst(new MapPropertySource("kafkaProperties", map));
         }
+    }
+
+    public Map<String, String> initManualConnectionPropertiesMap(KafkaContainer kafkaContainer,
+                                                                 GenericContainer<?> schemaRegistryContainer) {
+        return Map.of(
+
+                "KAFKA-CONFIG_BOOTSTRAP-SERVERS", kafkaContainer.getEnvMap().get(BOOTSTRAP_SERVERS_CUSTOM),
+                "KAFKA-CONFIG_SCHEMA-REGISTRY-URL", schemaRegistryContainer.getEnvMap().get(SCHEMA_REGISTRY_CUSTOM)
+        );
+    }
+
+    private static void withBootstrapServersCustom(KafkaContainer kafkaContainer) {
+        final String kafkaUrl = KAFKA_NETWORK_ALIAS + ":" + KAFKA_INTERNAL_PORT_AS_9092;
+        kafkaContainer.withEnv(BOOTSTRAP_SERVERS_CUSTOM, kafkaUrl);
+    }
+
+    private static void withSchemaRegistryCustom(GenericContainer<?> schemaRegistryContainer) {
+        final String kafkaUrl = String.format("http://%s:%s", schemaRegistryContainer.getNetworkAliases().getLast(),
+                schemaRegistryContainer.getExposedPorts().getFirst());
+        schemaRegistryContainer.withEnv(SCHEMA_REGISTRY_CUSTOM, kafkaUrl);
     }
 }

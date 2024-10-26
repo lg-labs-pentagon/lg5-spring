@@ -63,9 +63,16 @@ public abstract class WiremockContainerCustomConfig extends BaseContainerCustomC
         return wireMockContainer;
     }
 
+    public Map<String, String> initManualConnectionPropertiesMap(WireMockContainer wireMockContainer) {
+        return Map.of(
+                "THIRD_JSONPLACEHOLDER_URL", wireMockContainer.getEnvMap().get(WIREMOCK_SERVER_CUSTOM)
+        );
+    }
+
     private static void withSchemaRegistryCustom(WireMockContainer wireMockContainer) {
         final String endpoint = "http://" + wireMockContainer.getNetworkAliases().getLast() + ":" + wireMockContainer.getExposedPorts().getFirst();
         wireMockContainer.withEnv(WIREMOCK_SERVER_CUSTOM, endpoint);
     }
+
 
 }

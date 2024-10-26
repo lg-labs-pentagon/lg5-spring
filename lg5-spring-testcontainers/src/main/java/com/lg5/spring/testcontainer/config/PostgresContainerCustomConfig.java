@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Bean;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.utility.DockerImageName;
 
+import java.util.Map;
+
 import static com.lg5.spring.testcontainer.util.Constant.POSTGRES_17_0;
 import static com.lg5.spring.testcontainer.util.Constant.POSTGRES_NETWORK_ALIAS;
 import static com.lg5.spring.testcontainer.util.Constant.network;
@@ -34,5 +36,14 @@ public abstract class PostgresContainerCustomConfig extends BaseContainerCustomC
     private static void withJdbcUrlCustom(PostgreSQLContainer<?> postgreSQLContainer) {
         final String postgresUrl = String.format("jdbc:postgresql://" + POSTGRES_NETWORK_ALIAS + ":%d/test", PostgreSQLContainer.POSTGRESQL_PORT);
         postgreSQLContainer.withEnv(JDBC_URL_CUSTOM, postgresUrl);
+    }
+
+    public Map<String, String> initManualConnectionPropertiesMap(PostgreSQLContainer<?> postgreSQLContainer) {
+        return Map.of(
+
+                "SPRING_DATASOURCE_URL", postgreSQLContainer.getEnvMap().get(JDBC_URL_CUSTOM),
+                "SPRING_DATASOURCE_USERNAME", postgreSQLContainer.getUsername(),
+                "SPRING_DATASOURCE_PASSWORD", postgreSQLContainer.getPassword()
+        );
     }
 }
