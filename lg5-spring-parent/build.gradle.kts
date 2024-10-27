@@ -361,6 +361,9 @@ fun Node.avroPlugin() {
                 appendNode("configuration").apply {
                     appendNode("sourceDirectory", "src/main/resources/avro")
                     appendNode("outputDirectory", "src/main/java")
+                    appendNode("testSourceDirectory", "src/test/resources/avro")
+                    appendNode("testOutputDirectory", "src/test/java")
+
                 }
             }
         }
