@@ -26,7 +26,7 @@ import static com.lg5.spring.testcontainer.util.Constant.network;
 
 @TestConfiguration
 @ConditionalOnProperty(name = "testcontainers.kafka.enabled", havingValue = "true", matchIfMissing = true)
-public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConfig {
+public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConfig implements MultiContainerConfig {
     public static final String BOOTSTRAP_SERVERS_CUSTOM = "BOOTSTRAP_SERVERS_CUSTOM";
     public static final String SCHEMA_REGISTRY_CUSTOM = "SCHEMA_REGISTRY_CUSTOM";
     public static final int KAFKA_INTERNAL_PORT_AS_9093 = 9093;
@@ -92,6 +92,11 @@ public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConf
             propertySources.addFirst(new MapPropertySource("schemaRegistryProperties", map));
         }
         return schemaRegistryContainer;
+    }
+
+    @Override
+    public Map<String, String> initializeEnvVariables(GenericContainer<?> container1, GenericContainer<?> container2) {
+        return KafkaContainerCustomConfig.initManualConnectionPropertiesMap((KafkaContainer) container1, container2);
     }
 
     public static Map<String, String> initManualConnectionPropertiesMap(KafkaContainer kafkaContainer,

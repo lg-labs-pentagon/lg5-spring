@@ -9,6 +9,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.MutablePropertySources;
 import org.springframework.core.env.StandardEnvironment;
+import org.testcontainers.containers.GenericContainer;
 import org.wiremock.integrations.testcontainers.WireMockContainer;
 
 import java.util.HashMap;
@@ -24,7 +25,7 @@ import static java.lang.Integer.parseInt;
 
 @TestConfiguration
 @ConditionalOnProperty(name = "testcontainers.wiremock.enabled", havingValue = "true", matchIfMissing = true)
-public abstract class WiremockContainerCustomConfig extends BaseContainerCustomConfig {
+public abstract class WiremockContainerCustomConfig extends BaseContainerCustomConfig implements ContainerConfig {
 
     public static final String WIREMOCK_SERVER_CUSTOM = "WIREMOCK_SERVER_CUSTOM";
 
@@ -63,6 +64,11 @@ public abstract class WiremockContainerCustomConfig extends BaseContainerCustomC
         return wireMockContainer;
     }
 
+    @Override
+    public Map<String, String> initializeEnvVariables(GenericContainer<?> container) {
+        return WiremockContainerCustomConfig.initManualConnectionPropertiesMap((WireMockContainer) container);
+    }
+
     public static Map<String, String> initManualConnectionPropertiesMap(WireMockContainer wireMockContainer) {
         return Map.of(
                 "THIRD_JSONPLACEHOLDER_URL", wireMockContainer.getEnvMap().get(WIREMOCK_SERVER_CUSTOM)
@@ -73,6 +79,5 @@ public abstract class WiremockContainerCustomConfig extends BaseContainerCustomC
         final String endpoint = "http://" + wireMockContainer.getNetworkAliases().getLast() + ":" + wireMockContainer.getExposedPorts().getFirst();
         wireMockContainer.withEnv(WIREMOCK_SERVER_CUSTOM, endpoint);
     }
-
 
 }

@@ -4,6 +4,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.testcontainers.service.connection.ServiceConnection;
 import org.springframework.context.annotation.Bean;
+import org.testcontainers.containers.GenericContainer;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.utility.DockerImageName;
 
@@ -15,7 +16,7 @@ import static com.lg5.spring.testcontainer.util.Constant.network;
 
 @TestConfiguration
 @ConditionalOnProperty(name = "testcontainers.postgres.enabled", havingValue = "true", matchIfMissing = true)
-public abstract class PostgresContainerCustomConfig extends BaseContainerCustomConfig {
+public abstract class PostgresContainerCustomConfig extends BaseContainerCustomConfig implements ContainerConfig {
     public static final String JDBC_URL_CUSTOM = "JDBC_URL_CUSTOM";
 
     @Bean
@@ -36,6 +37,11 @@ public abstract class PostgresContainerCustomConfig extends BaseContainerCustomC
     private static void withJdbcUrlCustom(PostgreSQLContainer<?> postgreSQLContainer) {
         final String postgresUrl = String.format("jdbc:postgresql://" + POSTGRES_NETWORK_ALIAS + ":%d/test", PostgreSQLContainer.POSTGRESQL_PORT);
         postgreSQLContainer.withEnv(JDBC_URL_CUSTOM, postgresUrl);
+    }
+
+    @Override
+    public Map<String, String> initializeEnvVariables(GenericContainer<?> container) {
+        return PostgresContainerCustomConfig.initManualConnectionPropertiesMap((PostgreSQLContainer<?>) container);
     }
 
     public static Map<String, String> initManualConnectionPropertiesMap(PostgreSQLContainer<?> postgreSQLContainer) {
