@@ -94,26 +94,8 @@ public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConf
         return schemaRegistryContainer;
     }
 
-
-    public static void setupKafkaConnection(Environment environment, KafkaContainer kafkaContainer, GenericContainer<?> schemaRegistryContainer) {
-        if (environment instanceof StandardEnvironment) {
-            MutablePropertySources propertySources = ((StandardEnvironment) environment).getPropertySources();
-            Map<String, Object> map = new HashMap<>();
-
-            map.put("kafka-config.schema-registry-url", schemaRegistryContainer.getEnvMap().get(SCHEMA_REGISTRY_CUSTOM));
-            propertySources.addFirst(new MapPropertySource("schemaRegistryProperties", map));
-
-            propertySources = ((StandardEnvironment) environment).getPropertySources();
-            map = new HashMap<>();
-
-            final Integer mappedPort = kafkaContainer.getMappedPort(KAFKA_INTERNAL_PORT_AS_9092);
-            map.put("kafka-config.bootstrap-servers", "localhost:" + mappedPort);
-            propertySources.addFirst(new MapPropertySource("kafkaProperties", map));
-        }
-    }
-
     public static Map<String, String> initManualConnectionPropertiesMap(KafkaContainer kafkaContainer,
-                                                                 GenericContainer<?> schemaRegistryContainer) {
+                                                                        GenericContainer<?> schemaRegistryContainer) {
         return Map.of(
 
                 "KAFKA-CONFIG_BOOTSTRAP-SERVERS", kafkaContainer.getEnvMap().get(BOOTSTRAP_SERVERS_CUSTOM),
