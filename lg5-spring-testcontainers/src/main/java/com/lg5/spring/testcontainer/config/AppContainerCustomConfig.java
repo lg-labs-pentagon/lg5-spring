@@ -23,8 +23,11 @@ public class AppContainerCustomConfig extends BaseContainerCustomConfig {
     @Value("${application.server.port: " + APP_PORT_DEFAULT + "}")
     private int serverPort;
 
-    @Value("${application.traces.enabled: false}")
-    private boolean traceEnabled;
+    @Value("${application.traces.console.enabled: false}")
+    private boolean traceConsoleEnabled;
+
+    @Value("${application.traces.file.enabled: false}")
+    private boolean traceFileEnabled;
 
     @Value("${application.image.name}")
     private String imageName;
@@ -39,19 +42,31 @@ public class AppContainerCustomConfig extends BaseContainerCustomConfig {
     @Bean
     AppCustomContainer appCustomContainer() {
         AppCustomContainer appCustomContainer = new AppCustomContainer(imageName);
-        appCustomContainer.withFileSystemBind(logDestinationPath, logSourcePath, BindMode.READ_WRITE);
         appCustomContainer.withAppEnvVars(appWithEnv());
-        if (traceEnabled) {
-            appCustomContainer.withLogConsumer((OutputFrame outputFrame) -> LOG.info(outputFrame.getUtf8String()));
-        }
+
+        setupLogFiles(appCustomContainer);
+
+        setupConsoleTraces(appCustomContainer);
 
         return appCustomContainer;
     }
 
+    private void setupConsoleTraces(AppCustomContainer appCustomContainer) {
+        if (traceConsoleEnabled) {
+            appCustomContainer.withLogConsumer((OutputFrame outputFrame) -> LOG.info(outputFrame.getUtf8String()));
+        }
+    }
+
+    private void setupLogFiles(AppCustomContainer appCustomContainer) {
+        if(traceFileEnabled){
+            appCustomContainer.withFileSystemBind(logDestinationPath, logSourcePath, BindMode.READ_WRITE);
+            appCustomContainer.getEnvMap().put("log.path", logSourcePath);
+        }
+    }
+
     private Map<String, String> appWithEnv() {
         return Map.of(
-                "SERVER_PORT", String.valueOf(serverPort),
-                "log.path", logSourcePath
+                "SERVER_PORT", String.valueOf(serverPort)
         );
     }
 
