@@ -60,7 +60,7 @@ public class AppContainerCustomConfig extends BaseContainerCustomConfig {
     private void setupLogFiles(AppCustomContainer appCustomContainer) {
         if(traceFileEnabled){
             appCustomContainer.withFileSystemBind(logDestinationPath, logSourcePath, BindMode.READ_WRITE);
-            appCustomContainer.getEnvMap().put("log.path", logSourcePath);
+            appCustomContainer.getEnvMap().put("log.path", "./"+logSourcePath);
         }
     }
 
