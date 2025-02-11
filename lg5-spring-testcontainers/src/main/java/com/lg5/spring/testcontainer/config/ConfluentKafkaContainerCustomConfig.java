@@ -11,8 +11,8 @@ import org.springframework.core.env.MapPropertySource;
 import org.springframework.core.env.MutablePropertySources;
 import org.springframework.core.env.StandardEnvironment;
 import org.testcontainers.containers.GenericContainer;
-import org.testcontainers.containers.KafkaContainer;
 import org.testcontainers.containers.wait.strategy.Wait;
+import org.testcontainers.kafka.ConfluentKafkaContainer;
 import org.testcontainers.utility.DockerImageName;
 
 import java.util.HashMap;
@@ -26,7 +26,8 @@ import static com.lg5.spring.testcontainer.util.Constant.network;
 
 @TestConfiguration
 @ConditionalOnProperty(name = "testcontainers.kafka.enabled", havingValue = "true", matchIfMissing = true)
-public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConfig implements MultiContainerConfig {
+public class ConfluentKafkaContainerCustomConfig extends BaseContainerCustomConfig implements MultiContainerConfig {
+
     public static final String BOOTSTRAP_SERVERS_CUSTOM = "BOOTSTRAP_SERVERS_CUSTOM";
     public static final String SCHEMA_REGISTRY_CUSTOM = "SCHEMA_REGISTRY_CUSTOM";
     public static final int KAFKA_INTERNAL_PORT_AS_9093 = 9093;
@@ -37,8 +38,9 @@ public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConf
 
     @Bean
     @Order(1)
-    public KafkaContainer kafkaContainer(Environment environment) {
-        final KafkaContainer kafkaContainer = new KafkaContainer(
+    public ConfluentKafkaContainer kafkaContainer(Environment environment) {
+
+        final ConfluentKafkaContainer kafkaContainer = new ConfluentKafkaContainer(
                 DockerImageName.parse(CONFLUENTINC_CP_KAFKA_7_8_1))
                 .withExposedPorts(KAFKA_INTERNAL_PORT_AS_9092, KAFKA_INTERNAL_PORT_AS_9093)
                 .withNetwork(network)
@@ -94,12 +96,17 @@ public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConf
         return schemaRegistryContainer;
     }
 
-    @Override
+
     public Map<String, String> initializeEnvVariables(GenericContainer<?> container1, GenericContainer<?> container2) {
-        return KafkaContainerCustomConfig.initManualConnectionPropertiesMap((KafkaContainer) container1, container2);
+        return ConfluentKafkaContainerCustomConfig.initManualConnectionPropertiesMap((ConfluentKafkaContainer) container1, container2);
     }
 
-    public static Map<String, String> initManualConnectionPropertiesMap(KafkaContainer kafkaContainer,
+    @Override
+    public Map<String, String> initializeEnvVariables(GenericContainer<?> container) {
+        return Map.of();
+    }
+
+    public static Map<String, String> initManualConnectionPropertiesMap(ConfluentKafkaContainer kafkaContainer,
                                                                         GenericContainer<?> schemaRegistryContainer) {
         return Map.of(
 
@@ -108,7 +115,7 @@ public abstract class KafkaContainerCustomConfig extends BaseContainerCustomConf
         );
     }
 
-    private static void withBootstrapServersCustom(KafkaContainer kafkaContainer) {
+    private static void withBootstrapServersCustom(ConfluentKafkaContainer kafkaContainer) {
         final String kafkaUrl = KAFKA_NETWORK_ALIAS + ":" + KAFKA_INTERNAL_PORT_AS_9092;
         kafkaContainer.withEnv(BOOTSTRAP_SERVERS_CUSTOM, kafkaUrl);
     }

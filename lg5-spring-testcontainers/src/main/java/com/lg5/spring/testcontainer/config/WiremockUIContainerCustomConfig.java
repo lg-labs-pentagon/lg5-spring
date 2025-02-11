@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Map;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.configureFor;
-import static com.lg5.spring.testcontainer.util.Constant.WIREMOCK_GUI_V_3_8_46;
+import static com.lg5.spring.testcontainer.util.Constant.WIREMOCK_GUI_V_3_10_9;
 import static com.lg5.spring.testcontainer.util.Constant.WIREMOCK_NETWORK_ALIAS;
 import static com.lg5.spring.testcontainer.util.Constant.network;
 import static java.lang.Integer.parseInt;
@@ -38,7 +38,7 @@ public abstract class WiremockUIContainerCustomConfig extends BaseContainerCusto
     @Bean
     @Order(4)
     public WireMockContainer wireMockContainer(Environment environment) {
-        final WireMockContainer wireMockContainer = new WireMockContainer(WIREMOCK_GUI_V_3_8_46)
+        final WireMockContainer wireMockContainer = new WireMockContainer(WIREMOCK_GUI_V_3_10_9)
                 .withExposedPorts(8080)
                 .withMappingFromResource("placeholder", wireMockConfigFolderResource)
                 .withNetwork(network)
