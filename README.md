@@ -40,6 +40,9 @@ Install 2/2: Install the dependencies in your proje`ct.
 ```bash
 mvn install
 ```
+## Using gradle
+Add this to `settings.gradle`:
+
 
 # 🏗 [The template (blank-service)][10]️ 
 
