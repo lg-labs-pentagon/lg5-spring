@@ -32,6 +32,26 @@ public class ConfluentKafkaContainerCustomConfig extends BaseContainerCustomConf
     public static final String SCHEMA_REGISTRY_CUSTOM = "SCHEMA_REGISTRY_CUSTOM";
     public static final int KAFKA_INTERNAL_PORT_AS_9093 = 9093;
     public static final int KAFKA_INTERNAL_PORT_AS_9092 = 9092;
+    /**
+     * Extra listener port advertised to companion containers on the
+     * shared docker {@link com.lg5.spring.testcontainer.util.Constant#network},
+     * notably the Schema Registry started below. Distinct from the
+     * wrapper's default 9092 (host-mapped) and 9093 (internal BROKER)
+     * to avoid collisions with the wrapper-managed advertised listener
+     * set.
+     */
+    public static final int KAFKA_IN_NETWORK_LISTENER_PORT = 19092;
+    /**
+     * In-network bootstrap-servers value handed to companion containers
+     * (e.g. Schema Registry's {@code SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS}).
+     * Resolves to {@code PLAINTEXT://kafka:19092} — the broker advertises
+     * this listener via {@link ConfluentKafkaContainer#withListener(String)}
+     * which both binds it inside the broker AND adds {@code kafka} to the
+     * container's network aliases, so DNS resolution from the SR container
+     * succeeds.
+     */
+    public static final String IN_NETWORK_BOOTSTRAP_SERVERS =
+            KAFKA_NETWORK_ALIAS + ":" + KAFKA_IN_NETWORK_LISTENER_PORT;
 
     @Value("${docker.container.reuse:false}")
     protected boolean dockerContainerReuse;
@@ -42,10 +62,16 @@ public class ConfluentKafkaContainerCustomConfig extends BaseContainerCustomConf
 
         final ConfluentKafkaContainer kafkaContainer = new ConfluentKafkaContainer(
                 DockerImageName.parse(CONFLUENTINC_CP_KAFKA_7_8_1))
-                .withExposedPorts(KAFKA_INTERNAL_PORT_AS_9092, KAFKA_INTERNAL_PORT_AS_9093)
                 .withNetwork(network)
                 .withNetworkAliases(KAFKA_NETWORK_ALIAS)
-                .withEnv("BOOTSTRAP_SERVERS_CUSTOM", KAFKA_NETWORK_ALIAS + ":" + KAFKA_INTERNAL_PORT_AS_9092)
+                // Register an additional listener bound to the docker network alias
+                // so companion containers (Schema Registry, app-in-container, etc.)
+                // can reach the broker by hostname instead of via the host-mapped
+                // ephemeral port. Without this the wrapper only advertises
+                //   PLAINTEXT://<host>:<random-host-port>  +  BROKER://<docker-id>:9093
+                // neither of which is reachable from a sibling container that was
+                // told to bootstrap from "kafka:9092".
+                .withListener(IN_NETWORK_BOOTSTRAP_SERVERS)
                 .waitingFor(Wait.forListeningPort())
                 .withReuse(dockerContainerReuse);
         kafkaContainer.start();
@@ -74,11 +100,20 @@ public class ConfluentKafkaContainerCustomConfig extends BaseContainerCustomConf
                 .withNetworkAliases(SCHEMA_REGISTRY_NETWORK_ALIAS)
                 .withEnv("SCHEMA_REGISTRY_HOST_NAME", "schema-registry")
                 .withEnv("SCHEMA_REGISTRY_LISTENERS", "http://0.0.0.0:8081")
+                // Reach the broker over the dedicated in-network listener
+                // registered on the Kafka container above. Using the host-mapped
+                // bootstrap-servers value here would loop forever because
+                // localhost:<random-port> is unreachable from inside the SR
+                // container.
                 .withEnv("SCHEMA_REGISTRY_KAFKASTORE_BOOTSTRAP_SERVERS",
-                        "PLAINTEXT://" + KAFKA_NETWORK_ALIAS + ":" + KAFKA_INTERNAL_PORT_AS_9092)
+                        "PLAINTEXT://" + IN_NETWORK_BOOTSTRAP_SERVERS)
                 .withEnv("SCHEMA_REGISTRY_HOST_NAME", "schema-registry")
+                // The previous version chained two waitingFor() calls; the
+                // second silently overrode the first, so the container was
+                // released as "ready" the moment the TCP port was bound,
+                // BEFORE the SR REST handler had finished initialising.
+                // Keep only the HTTP probe.
                 .waitingFor(Wait.forHttp("/subjects").forStatusCode(200))
-                .waitingFor(Wait.forListeningPort())
                 .withReuse(dockerContainerReuse);
         schemaRegistryContainer.start();
 
@@ -116,8 +151,11 @@ public class ConfluentKafkaContainerCustomConfig extends BaseContainerCustomConf
     }
 
     private static void withBootstrapServersCustom(ConfluentKafkaContainer kafkaContainer) {
-        final String kafkaUrl = KAFKA_NETWORK_ALIAS + ":" + KAFKA_INTERNAL_PORT_AS_9092;
-        kafkaContainer.withEnv(BOOTSTRAP_SERVERS_CUSTOM, kafkaUrl);
+        // Same listener SR uses (registered via withListener above) — it's
+        // the only one reachable from inside the docker network. Used by
+        // initManualConnectionPropertiesMap to feed app-in-container ATDD
+        // setups.
+        kafkaContainer.withEnv(BOOTSTRAP_SERVERS_CUSTOM, IN_NETWORK_BOOTSTRAP_SERVERS);
     }
 
     private static void withSchemaRegistryCustom(GenericContainer<?> schemaRegistryContainer) {
