@@ -1,0 +1,39 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Extract version from gradle.properties
+        id: get_version
+        run: |
+          VERSION=$(grep 'version=' gradle.properties | cut -d'=' -f2)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Get short commit hash
+        id: commit_hash
+        run: |
+          HASH=$(git rev-parse --short HEAD)
+          echo "hash=$HASH" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.get_version.outputs.version }}-${{ steps.commit_hash.outputs.hash }}
+          name: Release ${{ steps.get_version.outputs.version }}-${{ steps.commit_hash.outputs.hash }}
+          body: ${{ github.event.head_commit.message }}
+          draft: false
+          prerelease: false
