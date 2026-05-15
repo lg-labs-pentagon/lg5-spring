@@ -1,5 +1,5 @@
 [versions]
-springboot-version = "3.4.2"
+springboot-version = "3.5.14"
 springframework-version = "6.2.2"
 junit-jupiter-version = "5.12.0-RC1"
 lombok-version = "1.18.36"
