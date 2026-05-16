@@ -14,38 +14,38 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.event.workflow_run.head_sha }}
-          fetch-depth: 0
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.workflow_run.head_sha }}
+        fetch-depth: 0
 
-      - name: Extract version from gradle.properties
-        id: get_version
-        run: |
-          VERSION=$(grep '^version=' gradle.properties | cut -d'=' -f2)
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
+    - name: Extract version from gradle.properties
+      id: get_version
+      run: |
+        VERSION=$(grep '^version=' gradle.properties | cut -d'=' -f2)
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
 
-      - name: Get short commit hash
-        id: commit_hash
-        run: |
-          HASH=$(git rev-parse --short ${{ github.event.workflow_run.head_sha }})
-          echo "hash=$HASH" >> $GITHUB_OUTPUT
+    - name: Get short commit hash
+      id: commit_hash
+      run: |
+        HASH=$(git rev-parse --short ${{ github.event.workflow_run.head_sha }})
+        echo "hash=$HASH" >> $GITHUB_OUTPUT
 
-      - name: Create Draft Release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: ${{ steps.get_version.outputs.version }}.${{ steps.commit_hash.outputs.hash }}
-          name: Release ${{ steps.get_version.outputs.version }} (${{ steps.commit_hash.outputs.hash }})
-          body: |
-            ## Release ${{ steps.get_version.outputs.version }}
-            
-            **Commit:** ${{ steps.commit_hash.outputs.hash }}
-            **SHA:** ${{ github.sha }}
-            
-            Packages published to GitHub Packages in the previous workflow run.
-          draft: true
-          prerelease: false
-          generate_release_notes: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Create Draft Release
+      uses: softprops/action-gh-release@v2
+      with:
+        tag_name: ${{ steps.get_version.outputs.version }}.${{ steps.commit_hash.outputs.hash }}
+        name: Release ${{ steps.get_version.outputs.version }} (${{ steps.commit_hash.outputs.hash }})
+        body: |
+          ## Release ${{ steps.get_version.outputs.version }}
+          
+          **Commit:** ${{ steps.commit_hash.outputs.hash }}
+          **SHA:** ${{ github.sha }}
+          
+          Packages published to GitHub Packages in the previous workflow run.
+        draft: true
+        prerelease: false
+        generate_release_notes: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
