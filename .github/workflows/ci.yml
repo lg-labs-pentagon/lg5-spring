@@ -2,22 +2,42 @@ name: ci
 on:
   push:
     branches:
-      - master
-      - main
+        - main
+
 permissions:
   contents: write
+
+# =========================================================
+# DOCUMENTACIÓN PRINCIPAL: VitePress en gh-pages
+# =========================================================
+#   https://lg-labs.github.io/lg5-spring/
+#   
+#   Desplegar:
+#     - Build:  site/  (VitePress)
+#     - Branch: gh-pages
+# =========================================================
+
 jobs:
-  deploy:
+  deploy-site:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-python@v6
-        with:
-          python-version: 3.x
-      - uses: actions/cache@v4
-        with:
-          key: ${{ github.ref }}
-          path: .cache
-      - run: pip install mkdocs-material
-      - run: pip install pillow cairosvg
-      - run: cd docs && mkdocs gh-deploy --force
+        - name: Checkout
+          uses: actions/checkout@v5
+
+        - name: Setup Node.js
+          uses: actions/setup-node@v4
+          with:
+            node-version: 21
+
+        - name: Install and build site
+          run: |
+            cd site
+            npm install
+            npm run docs:build
+
+        - name: Deploy to GitHub Pages
+          uses: peaceiris/actions-gh-pages@v3
+          with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            publish_dir: ./site/.vitepress/dist
+            target_branch: gh-pages
