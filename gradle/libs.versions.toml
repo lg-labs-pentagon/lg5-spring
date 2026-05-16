@@ -42,7 +42,7 @@ ddd-common-domain-version="1.0.0-alpha.2"
 logstash-logback-encoder-version="8.0"
 snappy-version="1.1.10.7"
 java-uuid-generator-version="5.1.0"
-spring-cloud-sleuth-version="3.1.11"
+micrometer-tracing-version="1.14.1"
 codehaus-janino-version="3.1.12"
 
 # utils
@@ -91,7 +91,7 @@ slf4j-api = { group = "org.slf4j", name = "slf4j-api", version.ref = "slf4j-vers
 springboot-logging = { group = "org.springframework.boot", name = "spring-boot-starter-logging", version.ref = "springboot-version" }
 logstash-logback-encoder = { group = "net.logstash.logback", name = "logstash-logback-encoder", version.ref = "logstash-logback-encoder-version" }
 janino = { group = "org.codehaus.janino", name = "janino", version.ref = "codehaus-janino-version" }
-springcloud-starter-sleuth = { group = "org.springframework.cloud", name = "spring-cloud-starter-sleuth", version.ref = "spring-cloud-sleuth-version" }
+micrometer-tracing = { group = "io.micrometer", name = "micrometer-tracing-bridge-brave", version.ref = "micrometer-tracing-version" }
 snappy-java = { group = "org.xerial.snappy", name = "snappy-java", version.ref = "snappy-version" }
 java-uuid-generator = { group = "com.fasterxml.uuid", name = "java-uuid-generator", version.ref = "java-uuid-generator-version" }
 

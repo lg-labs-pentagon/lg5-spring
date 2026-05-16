@@ -5,7 +5,7 @@ dependencies {
         exclude(group = "logback-core", module = "ch.qos.logback")
     }
     api(libs.janino)
-    api(libs.springcloud.starter.sleuth)
+    api(libs.micrometer.tracing)
     api(libs.java.uuid.generator)
     api(libs.snappy.java)
 }
