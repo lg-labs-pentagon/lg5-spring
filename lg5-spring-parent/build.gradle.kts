@@ -81,9 +81,9 @@ extensions.configure<PublishingExtension> {
             pom.packaging = "pom"
 
             pom.properties.put("lg5.version", project.version.toString())
-            pom.properties.put("digest-amd", "sha256:d5f21fdaf076baf2d2ed134cdc82d8c344cb404b79cee54410a0aca10de986e1")
-            pom.properties.put("digest-arm", "sha256:fa34005cdaa8b1f1f7190c3030bdf3a88b92ea27e61325b616ba9dfb9139f8b2")
-            pom.properties.put("base-image", "gcr.io/distroless/java21-debian12")
+            pom.properties.put("digest-amd", "sha256:28e6e0f7787378e110040b48e125063bcd3204840b1e5fcba181deb729786af4")
+            pom.properties.put("digest-arm", "sha256:04492d65364ca05db00a63c3ec92e4cb5f401ce95179b8f78a443168ee7e4a23")
+            pom.properties.put("base-image", "gcr.io/distroless/java25-debian13")
             pom.properties.put("graph-include", "none")
             pom.properties.put("graph-exclude", "none")
 
@@ -145,7 +145,7 @@ repositories {
     mavenCentral()
 }
 kotlin {
-    jvmToolchain(21)
+    jvmToolchain(25)
 }
 
 fun Node.mavenCompilerPlugin() {
@@ -155,7 +155,7 @@ fun Node.mavenCompilerPlugin() {
         appendNode("artifactId", "maven-compiler-plugin")
         appendNode("version", libs.versions.maven.compiler.plugin.version.get())
         appendNode("configuration").apply {
-            appendNode("release", 21)
+            appendNode("release", 25)
 
             appendNode("annotationProcessorPaths").apply {
                 appendNode("path").apply {
