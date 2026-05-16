@@ -5,20 +5,27 @@ on:
     workflows: ["Publish package to GitHub Packages"]
     types:
       - completed
+    branches:
+      - main
 
 permissions:
   contents: write
+  actions: read
 
 jobs:
   create-release:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: >
+      github.event.workflow_run.event == 'push' &&
+      github.repository == 'lg-pentagon/lg5-spring' &&
+      github.ref == 'refs/heads/main' &&
+      github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.workflow_run.head_sha }}
           fetch-depth: 0
+
       - name: Extract version from gradle.properties
         id: get_version
         run: |
@@ -28,7 +35,7 @@ jobs:
       - name: Get short commit hash
         id: commit_hash
         run: |
-          HASH=$(git rev-parse --short ${{ github.event.workflow_run.head_sha }})
+          HASH=$(git rev-parse --short HEAD)
           echo "hash=$HASH" >> $GITHUB_OUTPUT
 
       - name: Create Draft Release
@@ -38,10 +45,10 @@ jobs:
           name: Release ${{ steps.get_version.outputs.version }} (${{ steps.commit_hash.outputs.hash }})
           body: |
             ## Release ${{ steps.get_version.outputs.version }}
-            
+
             **Commit:** ${{ steps.commit_hash.outputs.hash }}
             **SHA:** ${{ github.sha }}
-            
+
             Packages published to GitHub Packages in the previous workflow run.
           draft: true
           prerelease: false
