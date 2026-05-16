@@ -2,7 +2,7 @@
 springboot-version = "3.5.14"
 springframework-version = "6.2.2"
 junit-jupiter-version = "5.12.0-RC1"
-lombok-version = "1.18.36"
+lombok-version = "1.18.46"
 guava-version = "33.4.0-jre"
 mockito-version = "5.15.2"
 spring-dependency-version = "1.1.7"
