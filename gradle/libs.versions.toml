@@ -42,7 +42,7 @@ ddd-common-domain-version="1.0.0-alpha.2"
 logstash-logback-encoder-version="8.0"
 snappy-version="1.1.10.7"
 java-uuid-generator-version="5.1.0"
-micrometer-tracing-version="1.14.1"
+micrometer-tracing-version="1.4.13"
 codehaus-janino-version="3.1.12"
 
 # utils
