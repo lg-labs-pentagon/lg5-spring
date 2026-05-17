@@ -22,4 +22,4 @@ publish-local:
 
 
 gradle-update:
-	./gradlew wrapper --gradle-version=8.9-rc-1
+	./gradlew wrapper --gradle-version=9.5.1
