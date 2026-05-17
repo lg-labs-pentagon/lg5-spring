@@ -15,7 +15,7 @@ postgresql-version="42.7.5"
 liquibase-version="4.31.0"
 
 # Rest Client
-openfeign-version="4.2.0"
+openfeign-version="4.3.2"
 
 # Kafka Consumer
 avro-version="1.12.0"
