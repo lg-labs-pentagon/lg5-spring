@@ -1,27 +1,18 @@
 name: Release
 
 on:
-  workflow_run:
-    workflows: ["Publish package to GitHub Packages"]
-    types:
-      - completed
+  push:
     branches:
       - main
 
 permissions:
   contents: write
-  actions: read
 
 jobs:
-  create-release:
-    if: >
-      github.event.workflow_run.event == 'push' &&
-      github.repository == 'lg-pentagon/lg5-spring' &&
-      github.ref == 'refs/heads/main' &&
-      github.event.workflow_run.conclusion == 'success'
+  release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -29,29 +20,18 @@ jobs:
       - name: Extract version from gradle.properties
         id: get_version
         run: |
-          VERSION=$(grep '^version=' gradle.properties | cut -d'=' -f2)
+          VERSION=$(grep 'version=' gradle.properties | cut -d'=' -f2)
           echo "version=$VERSION" >> $GITHUB_OUTPUT
-
       - name: Get short commit hash
         id: commit_hash
         run: |
           HASH=$(git rev-parse --short HEAD)
           echo "hash=$HASH" >> $GITHUB_OUTPUT
-
-      - name: Create Draft Release
+      - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ steps.get_version.outputs.version }}.${{ steps.commit_hash.outputs.hash }}
-          name: Release ${{ steps.get_version.outputs.version }} (${{ steps.commit_hash.outputs.hash }})
-          body: |
-            ## Release ${{ steps.get_version.outputs.version }}
-
-            **Commit:** ${{ steps.commit_hash.outputs.hash }}
-            **SHA:** ${{ github.sha }}
-
-            Packages published to GitHub Packages in the previous workflow run.
-          draft: true
+          tag_name: ${{ steps.get_version.outputs.version }}-${{ steps.commit_hash.outputs.hash }}
+          name: Release ${{ steps.get_version.outputs.version }}-${{ steps.commit_hash.outputs.hash }}
+          body: ${{ github.event.head_commit.message }}
+          draft: false
           prerelease: false
-          generate_release_notes: true
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
