@@ -1,22 +1,12 @@
-name: ci
-on:
-   push:
-      branches:
-         - main
+name: Deploy VitePress Docs to GitHub Pages
 
-# =========================================================
-# DOCUMENTACIÓN PRINCIPAL: VitePress en gh-pages
-# =========================================================
-#   https://lg-labs.github.io/lg5-spring/
-#
-#   Desplegar:
-#     - Build:  site/  (VitePress)
-#     - Branch: gh-pages
-# =========================================================
+on:
+  push:
+    branches:
+      - main
 
 jobs:
-  deploy-site:
-
+  deploy:
     runs-on: ubuntu-latest
     permissions:
       pages: write
@@ -24,7 +14,6 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
