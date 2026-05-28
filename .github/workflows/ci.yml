@@ -4,9 +4,6 @@ on:
       branches:
          - main
 
-permissions:
-  contents: write
-
 # =========================================================
 # DOCUMENTACIÓN PRINCIPAL: VitePress en gh-pages
 # =========================================================
@@ -21,27 +18,45 @@ jobs:
   deploy-site:
 
     runs-on: ubuntu-latest
-    working-directory: site
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Setup Node.js
+      - name: Set up pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8
+
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 21
-          cache: npm
+          node-version: 20
 
-      - name: Install and build site
-        run: |
-          cd site
-          npm install
-          npm run docs:build
+      - name: Install dependencies
+        run: pnpm install --registry https://registry.npmjs.org/
+        working-directory: ./site
+
+      - name: Build VitePress site
+        run: pnpm docs:build
+        working-directory: ./site
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site/.vitepress/dist
 
       - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./.vitepress/dist
-          target_branch: gh-pages
+        id: deployment
+        uses: actions/deploy-pages@v4
