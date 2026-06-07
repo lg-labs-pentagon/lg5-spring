@@ -2,6 +2,7 @@ import { defineConfig, defaultTheme } from 'vitepress'
 
 
 export default defineConfig({
+  base: '/lg5-spring/',
   title: 'lg5-spring',
   description: 'Spring Boot 3.5 + JDK 21 — Microservices Framework',
   themeConfig: {
