@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
+
     <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener"/>
+
 
     <springProperty scope="context" name="application_name" source="info.app.name"/>
+    <springProperty scope="context" name="application_version" source="info.app.version"/>
     <springProperty scope="context" name="LOG_PATH" source="log.path"/>
 
     <!-- Define level aliases for some loggers based on Spring Boot 'logging.level' props -->
-    <!-- com.example must be replaced to project package -->
+    <!-- com.any must be replaced to project package -->
     <springProperty scope="context" name="root" source="logging.level.root" defaultValue="warn"/>
     <springProperty scope="context" name="any" source="logging.level.com.any" defaultValue="warn"/>
     <springProperty scope="context" name="spring" source="logging.level.org.springframework" defaultValue="warn"/>
@@ -28,58 +32,65 @@
 
     <!-- You can override this to have a custom pattern -->
     <property name="CONSOLE_LOG_PATTERN"
-              value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+              value="%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint}   %clr(:){faint} %clr(%-60logger){cyan} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
 
-    <!-- Appender to log to console -->
-    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
-        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-            <!-- Minimum logging level to be presented in the console logs-->
-            <level>INFO</level>
-        </filter>
-        <encoder>
-            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
-            <charset>utf8</charset>
-        </encoder>
-    </appender>
+    <!-- Appender to log to console (human-readable pattern, default) -->
+    <springProfile name="!json-console">
+        <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+            <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+                <!-- Minimum logging level to be presented in the console logs-->
+                <level>INFO</level>
+            </filter>
+            <encoder>
+                <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+                <charset>utf8</charset>
+            </encoder>
+        </appender>
+        <root level="INFO">
+            <appender-ref ref="console"/>
+        </root>
+    </springProfile>
 
-
-    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
-        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
-            <providers>
-                <timestamp>
-                    <timeZone>UTC</timeZone>
-                </timestamp>
-                <pattern>
+    <!-- JSON console appender: opt-in for container/k8s envs via Spring profile 'json-console' -->
+    <springProfile name="json-console">
+        <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+                <providers>
+                    <timestamp>
+                        <timeZone>UTC</timeZone>
+                    </timestamp>
                     <pattern>
-                        {
-                        "level": "%level",
-                        "thread": "%thread",
-                        "logger": "%logger",
-                        "message": "%msg",
-                        "context": "%mdc",
-                          "traceId": "%X{trace_id:-}",
-                        "spanId": "%X{span_id:-}",
-                        "exception": "%ex"
-                        }
+                        <pattern>
+                            {
+                            "level": "%level",
+                            "thread": "%thread",
+                            "logger": "%logger",
+                            "message": "%msg",
+                            "context": "%mdc",
+                            "traceId": "%X{traceId:-}",
+                            "spanId": "%X{spanId:-}",
+                            "exception": "%ex"
+                            }
+                        </pattern>
                     </pattern>
-                </pattern>
-            </providers>
-        </encoder>
-    </appender>
+                </providers>
+            </encoder>
+        </appender>
+        <root level="INFO">
+            <appender-ref ref="CONSOLE"/>
+        </root>
+    </springProfile>
 
 
     <!-- Appender to log to file in a JSON format -->
     <appender name="logstash" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_FILE}-complex.log</file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>${LOG_FILE}-complex.json.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
-            <minIndex>1</minIndex>
-            <maxIndex>1</maxIndex>
-            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <!--Max Size of file to start Archive -->
-                <maxFileSize>${LOG_FILE_MAX_SIZE}</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
+            <!--Max Size of file to start Archive -->
+            <maxFileSize>${LOG_FILE_MAX_SIZE}</maxFileSize>
             <maxHistory>7</maxHistory>
+            <totalSizeCap>1GB</totalSizeCap>
         </rollingPolicy>
 
         <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
@@ -94,29 +105,43 @@
                 <loggerName/>
                 <threadName/>
                 <context/>
+                <contextName/>
                 <tags/>
+                <stackTrace/>
+                <callerData>
+                    <classFieldName>class</classFieldName>
+                    <methodFieldName>method</methodFieldName>
+                    <lineFieldName>line</lineFieldName>
+                </callerData>
+                <mdc>
+                    <includeMdcKeyName>springVersion</includeMdcKeyName>
+                    <includeMdcKeyName>javaVersion</includeMdcKeyName>
+                    <includeMdcKeyName>SpringBootVersion</includeMdcKeyName>
+                    <includeMdcKeyName>Lg5Spring</includeMdcKeyName>
+                </mdc>
                 <pattern>
                     <omitEmptyFields>true</omitEmptyFields>
                     <pattern>
                         {
                         "thread": "%thread",
-                        "logger": "%logger",
+                        "class": "%logger",
                         "message_preview": "%msg",
                         "context": "%mdc",
                         "exception": "%ex",
-                        "traceId_alt": "%X{trace_id:-}",
+                        "traceId_alt": "%X{traceId:-}",
                         "timestamp": "@timestamp",
                         "level": "%level",
                         "application_name": "${application_name:-}",
-                        "trace": "%X{trace_id:-}",
-                        "span": "%X{span_id:-}",
+                        "application_version": "${application_version:-}",
+                        "trace": "%X{traceId:-}",
+                        "span": "%X{spanId:-}",
                         "baggage": "%X{key:-}",
                         "pid": "${PID:-}",
-                        "class": "%logger{40}",
+                        "short_class": "%logger{40}",
                         "message": "%message",
                         "myCustomField": "fieldValue",
                         "relative": "#asLong{%relative}",
-                        "traceId": "%mdc{trace_id}",
+                        "traceId": "%mdc{traceId}",
                         "custom_constant": "123",
                         "tags": ["one", "two"]
                         }
@@ -129,13 +154,12 @@
     <!-- Appender to log to file in a JSON Simple format -->
     <appender name="logstash-simple" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_FILE}-simple.log</file>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
             <fileNamePattern>${LOG_FILE}-simple.json.%d{yyyy-MM-dd}.%i.gz</fileNamePattern>
-            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <!--Max Size of file to start Archive -->
-                <maxFileSize>${LOG_FILE_MAX_SIZE}</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
+            <!--Max Size of a file to start Archive -->
+            <maxFileSize>${LOG_FILE_MAX_SIZE}</maxFileSize>
             <maxHistory>7</maxHistory>
+            <totalSizeCap>1GB</totalSizeCap>
         </rollingPolicy>
         <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
             <providers>
@@ -148,8 +172,9 @@
                         "timestamp": "@timestamp",
                         "level": "%level",
                         "application_name": "${application_name:-}",
-                        "trace": "%X{trace_id:-}",
-                        "span": "%X{span_id:-}",
+                        "application_version": "${application_version:-}",
+                        "trace": "%X{traceId:-}",
+                        "span": "%X{spanId:-}",
                         "baggage": "%X{key:-}",
                         "pid": "${PID:-}",
                         "thread": "%thread",
@@ -162,7 +187,6 @@
         </encoder>
     </appender>
     <root level="INFO">
-        <appender-ref ref="console"/>
         <appender-ref ref="logstash"/>
         <appender-ref ref="logstash-simple"/>
     </root>
