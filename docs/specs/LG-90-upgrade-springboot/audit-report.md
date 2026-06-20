@@ -17,3 +17,9 @@
 - Kafka: PASS (Verified via integration tests)
 - Persistence: PASS (Verified via integration tests)
 - Test Support: PASS (Verified via Cucumber/JUnit)
+
+## 4. CI/CD Pipeline Compatibility
+- Pipeline Structure: The current Gradle-based `pipeline.yml` differs from the canonical `c-integration.yml` 11-job Maven topology. This is acceptable as this repository is the framework itself, not a microservice.
+- JDK Version: Current pipeline uses JDK 25, which aligns with the target baseline.
+- Dependency Management: Need to ensure future CI updates align with `lg5-github-actions` conventions if common jobs (e.g., docs, security) are added.
+- Compatibility Note: No immediate blocking issues found, but recommend aligning `gradle` wrapper and action versions with standard `lg5-spring` practices.

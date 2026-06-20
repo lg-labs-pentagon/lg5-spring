@@ -31,7 +31,7 @@
 
 ## TASK-003 — Infrastructure compatibility verification
 - **Status:** `done`
-- **Completion:** Infrastructure compatibility verified (commit <sha>)
+- **Completion:** Infrastructure compatibility verified (commit c1607df)
 - **References:** REQ-002
 - **Depends on:** TASK-002
 - **Modules touched:** `<svc>-application-service`, `<svc>-acceptance-test`
@@ -43,7 +43,8 @@
   - **Then** all tests pass and `audit-report.md` §3 is updated
 
 ## TASK-004 — Validate CI/CD pipeline compatibility
-- **Status:** `todo`
+- **Status:** `done`
+- **Completion:** CI/CD pipeline compatibility validated (commit <sha>)
 - **References:** REQ-003
 - **Depends on:** TASK-003
 - **Modules touched:** `.github/workflows/`
