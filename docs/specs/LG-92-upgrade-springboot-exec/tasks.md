@@ -30,7 +30,7 @@ TASK-001 ──► TASK-002 ──► TASK-003 ──► TASK-004 ──► TASK
 ## TASK-002 — Upgrade Parent POM and Spring Boot BOM
 
 - **Status:** `done`
-- **Completion:** Upgraded Spring Boot BOM to 4.0.0 (commit placeholder)
+- **Completion:** Upgraded Spring Boot BOM to 4.0.0 (commit 326bc51)
 - **References:** REQ-001, RULE-002
 - **Depends on:** TASK-001
 - **Modules touched:** `container` (Parent POM)
@@ -43,7 +43,8 @@ TASK-001 ──► TASK-002 ──► TASK-003 ──► TASK-004 ──► TASK
 
 ## TASK-003 — Dependency Alignment and Conflict Resolution
 
-- **Status:** `todo`
+- **Status:** `done`
+- **Completion:** Dependency alignment and conflict resolution (commit <sha>)
 - **References:** REQ-001, RULE-001
 - **Depends on:** TASK-002
 - **Modules touched:** `gradle/libs.versions.toml`, `container`

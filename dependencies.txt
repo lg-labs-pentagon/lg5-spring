@@ -1,4 +1,3 @@
-Starting a Gradle Daemon (subsequent builds will be faster)
 
 > Task :dependencies
 
@@ -257,6 +256,6 @@ No dependencies
 
 A web-based, searchable dependency report is available by adding the --scan option.
 
-BUILD SUCCESSFUL in 5s
+BUILD SUCCESSFUL in 482ms
 1 actionable task: 1 executed
 Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.5.1/userguide/configuration_cache_enabling.html

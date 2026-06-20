@@ -1,14 +1,14 @@
 [versions]
 springboot-version = "4.0.0"
 springframework-version = "6.2.2"
-junit-jupiter-version = "5.12.0-RC1"
+junit-jupiter-version = "6.0.1"
 lombok-version = "1.18.46"
 guava-version = "33.4.0-jre"
 mockito-version = "5.15.2"
 spring-dependency-version = "1.1.7"
 jacoco-version = "0.8.14"
 depgraph-version = "4.0.3"
-slf4j-version= "2.0.16"
+slf4j-version= "2.0.17"
 
 # Data
 postgresql-version="42.7.5"
@@ -46,9 +46,9 @@ micrometer-tracing-version="1.4.13"
 codehaus-janino-version="3.1.12"
 
 # utils
-awaitility-version="4.2.2"
+awaitility-version="4.3.0"
 rest-assured-version="5.5.0"
-apache-commons-version="3.17.0"
+apache-commons-version="3.18.0"
 
 mapstruct-version="1.6.3"
 lombok-mapstruct-binding-version="0.2.0"
@@ -59,7 +59,7 @@ wiremock-testcontainers-module-version="1.0-alpha-14"
 wiremock-standalone-version="3.11.0"
 
 # Acceptance Test
-junit-platform-suite-version="1.12.0-RC1"
+junit-platform-suite-version="6.0.1"
 cucumber-version="7.21.1"
 reporting-plugin-version="7.2.0"
 
