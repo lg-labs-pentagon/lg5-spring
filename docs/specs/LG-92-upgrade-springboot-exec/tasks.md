@@ -15,7 +15,8 @@ TASK-001 ──► TASK-002 ──► TASK-003 ──► TASK-004 ──► TASK
 
 ## TASK-001 — Environment Preparation and Dependency Audit
 
-- **Status:** `todo`
+- **Status:** `done`
+- **Completion:** Implemented dependency audit and created audit report (commit SHA placeholder)
 - **References:** REQ-001, RULE-001
 - **Depends on:** —
 - **Modules touched:** `container`
