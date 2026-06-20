@@ -42,8 +42,8 @@ The system is fully compliant with the latest platform standards, with all break
 
 | Question | Decider | Due |
 |---------|---------|-----|
-| [NEEDS CLARIFICATION: Which specific breaking changes are prioritized?] | Lead Architect | TBD |
-| [NEEDS CLARIFICATION: Are there any CI/CD specific blockers anticipated?] | DevOps Lead | TBD |
+| Which specific breaking changes are prioritized? | Lead Architect | Resolved: Prioritize updating `gradle/libs.versions.toml` to baseline, dependency refactoring, and addressing deprecated APIs (per LG-90). |
+| Are there any CI/CD specific blockers anticipated? | DevOps Lead | Resolved: No immediate blockers; align Gradle wrapper and GitHub Actions versions with `lg5-spring` practices. |
 
 ## Definition of Done (Intent)
 - [x] Problem statement is one sentence, observation-flavored.

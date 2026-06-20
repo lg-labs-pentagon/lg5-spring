@@ -24,12 +24,8 @@ public final class Constant {
     public static final String CONFLUENTINC_CP_SCHEMA_REGISTRY_7_6_1 = "confluentinc/cp-schema-registry:7.6.1";
     public static final String CONFLUENTINC_CP_SCHEMA_REGISTRY_7_7_1 = "confluentinc/cp-schema-registry:7.7.1";
     public static final String CONFLUENTINC_CP_SCHEMA_REGISTRY_7_8_1 = "confluentinc/cp-schema-registry:7.8.1";
-    @Deprecated
-    public static final String WIREMOCK_3_3_1 = "wiremock/wiremock:3.3.1";
     public static final String WIREMOCK_3_9_1 = "wiremock/wiremock:3.9.1";
     public static final String WIREMOCK_3_11_0 = "wiremock/wiremock:3.11.0";
-    @Deprecated
-    public static final String WIREMOCK_GUI_V_3_6_31 = "holomekc/wiremock-gui:3.6.31";
     public static final String WIREMOCK_GUI_V_3_8_46 = "holomekc/wiremock-gui:3.8.46";
     public static final String WIREMOCK_GUI_V_3_10_9 = "holomekc/wiremock-gui:3.10.9";
 

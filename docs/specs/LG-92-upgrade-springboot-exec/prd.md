@@ -63,8 +63,8 @@ The current platform version is outdated, creating significant maintenance overh
 
 | Question | Decider | Due |
 |---------|---------|-----|
-| [NEEDS CLARIFICATION: Which specific breaking changes are highest priority for initial validation?] | Lead Architect | Before Planning |
-| [NEEDS CLARIFICATION: Are there performance thresholds required for pipeline duration beyond '≤ Baseline'?] | DevOps Lead | Before Planning |
+| Which specific breaking changes are highest priority for initial validation? | Lead Architect | Resolved: Dependency updates in `gradle/libs.versions.toml` and API deprecations. |
+| Are there performance thresholds required for pipeline duration beyond '≤ Baseline'? | DevOps Lead | Resolved: Maintaining baseline duration is sufficient. |
 
 ## Definition of Done (PRD)
 
