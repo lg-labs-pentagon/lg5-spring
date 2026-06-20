@@ -56,7 +56,8 @@
   - **Then** the build passes and `audit-report.md` contains CI compatibility notes
 
 ## TASK-005 — Finalize migration plan
-- **Status:** `in_progress`
+- **Status:** `done`
+- **Completion:** Implemented migration roadmap (commit f6b393b)
 - **References:** REQ-004
 - **Depends on:** TASK-004
 - **Modules touched:** `docs/specs/LG-90-upgrade-springboot/audit-report.md`
@@ -68,7 +69,8 @@
   - **Then** the audit report is complete and ready for sign-off
 
 ## TASK-006 — Final Verification
-- **Status:** `todo`
+- **Status:** `done`
+- **Completion:** Final audit report review and verification completed (commit e0514e2)
 - **References:** REQ-001, REQ-002, REQ-003, REQ-004
 - **Depends on:** TASK-005
 - **Modules touched:** `docs/specs/LG-90-upgrade-springboot/audit-report.md`
