@@ -30,7 +30,8 @@
   - **Then** `audit-report.md` §2 is populated with compatibility status
 
 ## TASK-003 — Infrastructure compatibility verification
-- **Status:** `todo`
+- **Status:** `done`
+- **Completion:** Infrastructure compatibility verified (commit <sha>)
 - **References:** REQ-002
 - **Depends on:** TASK-002
 - **Modules touched:** `<svc>-application-service`, `<svc>-acceptance-test`
