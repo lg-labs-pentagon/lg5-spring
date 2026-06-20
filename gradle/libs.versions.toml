@@ -1,7 +1,7 @@
 [versions]
 springboot-version = "4.0.0"
 springframework-version = "6.2.2"
-junit-jupiter-version = "6.0.1"
+junit-jupiter-version = "6.0.2"
 lombok-version = "1.18.46"
 guava-version = "33.4.0-jre"
 mockito-version = "5.15.2"
@@ -54,13 +54,13 @@ mapstruct-version="1.6.3"
 lombok-mapstruct-binding-version="0.2.0"
 
 #Testcontainer
-testcontainers-version="1.20.4"
+testcontainers-version="1.20.5"
 wiremock-testcontainers-module-version="1.0-alpha-14"
 wiremock-standalone-version="3.11.0"
 
 # Acceptance Test
-junit-platform-suite-version="6.0.1"
-cucumber-version="7.21.1"
+junit-platform-suite-version="6.0.2"
+cucumber-version="7.21.2"
 reporting-plugin-version="7.2.0"
 
 [libraries]

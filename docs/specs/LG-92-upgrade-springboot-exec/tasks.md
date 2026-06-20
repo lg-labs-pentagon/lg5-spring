@@ -58,7 +58,7 @@ TASK-001 ──► TASK-002 ──► TASK-003 ──► TASK-004 ──► TASK
 ## TASK-004 — Codebase Adaptation and Refactoring
 
 - **Status:** `done`
-- **Completion:** Refactored deprecated code and cleaned up unused constants (commit SHA placeholder)
+- **Completion:** Refactored deprecated code and cleaned up unused constants (commit 5becdbf)
 - **References:** REQ-002, RULE-015
 - **Depends on:** TASK-003
 - **Modules touched:** `api`, `domain_service`, `domain_core`, `data_access`, `message_core`, `message_model`
@@ -71,7 +71,8 @@ TASK-001 ──► TASK-002 ──► TASK-003 ──► TASK-004 ──► TASK
 
 ## TASK-005 — Update Acceptance and Testcontainers Dependencies
 
-- **Status:** `todo`
+- **Status:** `done`
+- **Completion:** Updated Cucumber, JUnit, and Testcontainers dependencies (commit pending)
 - **References:** REQ-003, RULE-012, RULE-013, ADR-002
 - **Depends on:** TASK-004
 - **Modules touched:** `acceptance_test`, `container`
