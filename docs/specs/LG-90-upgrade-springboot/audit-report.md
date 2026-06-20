@@ -9,9 +9,9 @@
 | Library | Current Version | Target Baseline Compatible? | Notes |
 |---------|-----------------|---------------------------|-------|
 | spring-boot | 3.5.14 | Yes | Baseline |
-| testcontainers | 1.20.0 | Yes | |
-| kafka-clients | 3.9.0 | Yes | |
-| ... | ... | ... | ... |
+| testcontainers | 1.20.4 | Yes | Updated from 1.20.0 |
+| spring-kafka | 3.3.2 | Yes | |
+| cucumber | 7.21.1 | Yes | |
 
 ## 3. Infrastructure Compatibility
 - Kafka: <Status>

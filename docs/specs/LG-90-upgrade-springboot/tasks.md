@@ -17,15 +17,16 @@
   - **Then** the file exists and is ready for population
 
 ## TASK-002 — Perform dependency audit
-- **Status:** `todo`
+- **Status:** `done`
+- **Completion:** Completed dependency audit and updated report (commit f638d6b)
 - **References:** REQ-001, ADR-001, ADR-002
 - **Depends on:** TASK-001
-- **Modules touched:** `pom.xml`, `docs/specs/LG-90-upgrade-springboot/audit-report.md`
+- **Modules touched:** `gradle/libs.versions.toml`, `docs/specs/LG-90-upgrade-springboot/audit-report.md`
 - **Skill:** lg5-spring-overview
 - **Command:** (none)
 - **Acceptance:**
   - **Given** `audit-report.md` exists
-  - **When** I run `mvn dependency:list` and analyze against Spring Boot 3.5.14 and Java 25
+  - **When** I run `gradle dependencies` (since it's a gradle project) and analyze against Spring Boot 3.5.14 and Java 25
   - **Then** `audit-report.md` §2 is populated with compatibility status
 
 ## TASK-003 — Infrastructure compatibility verification
