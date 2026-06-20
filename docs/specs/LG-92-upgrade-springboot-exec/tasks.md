@@ -72,7 +72,7 @@ TASK-001 ──► TASK-002 ──► TASK-003 ──► TASK-004 ──► TASK
 ## TASK-005 — Update Acceptance and Testcontainers Dependencies
 
 - **Status:** `done`
-- **Completion:** Updated Cucumber, JUnit, and Testcontainers dependencies (commit pending)
+- **Completion:** Updated Cucumber, JUnit, and Testcontainers dependencies (commit c526a69)
 - **References:** REQ-003, RULE-012, RULE-013, ADR-002
 - **Depends on:** TASK-004
 - **Modules touched:** `acceptance_test`, `container`
