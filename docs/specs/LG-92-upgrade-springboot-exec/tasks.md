@@ -44,7 +44,7 @@ TASK-001 ──► TASK-002 ──► TASK-003 ──► TASK-004 ──► TASK
 ## TASK-003 — Dependency Alignment and Conflict Resolution
 
 - **Status:** `done`
-- **Completion:** Dependency alignment and conflict resolution (commit <sha>)
+- **Completion:** Dependency alignment and conflict resolution (commit 8f564f9)
 - **References:** REQ-001, RULE-001
 - **Depends on:** TASK-002
 - **Modules touched:** `gradle/libs.versions.toml`, `container`
@@ -57,7 +57,8 @@ TASK-001 ──► TASK-002 ──► TASK-003 ──► TASK-004 ──► TASK
 
 ## TASK-004 — Codebase Adaptation and Refactoring
 
-- **Status:** `todo`
+- **Status:** `done`
+- **Completion:** Refactored deprecated code and cleaned up unused constants (commit SHA placeholder)
 - **References:** REQ-002, RULE-015
 - **Depends on:** TASK-003
 - **Modules touched:** `api`, `domain_service`, `domain_core`, `data_access`, `message_core`, `message_model`
