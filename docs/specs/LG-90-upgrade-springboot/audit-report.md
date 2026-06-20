@@ -23,3 +23,18 @@
 - JDK Version: Current pipeline uses JDK 25, which aligns with the target baseline.
 - Dependency Management: Need to ensure future CI updates align with `lg5-github-actions` conventions if common jobs (e.g., docs, security) are added.
 - Compatibility Note: No immediate blocking issues found, but recommend aligning `gradle` wrapper and action versions with standard `lg5-spring` practices.
+
+## 5. Migration Roadmap
+- **Step 1: Preparation**
+  - Update `gradle/libs.versions.toml` to baseline versions.
+  - Ensure all modules compile against target JDK.
+- **Step 2: Dependency Refactoring**
+  - Systematic upgrade of project-level dependencies.
+  - Resolve version conflicts and deprecated APIs.
+- **Step 3: Verification (ATDD)**
+  - Run full Cucumber/JUnit ATDD suite.
+  - Address failures caused by API changes.
+- **Step 4: Finalization**
+  - Update OpenAPI/AsyncAPI contracts.
+  - Final audit report sign-off.
+

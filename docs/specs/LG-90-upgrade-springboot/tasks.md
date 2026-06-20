@@ -44,7 +44,7 @@
 
 ## TASK-004 — Validate CI/CD pipeline compatibility
 - **Status:** `done`
-- **Completion:** CI/CD pipeline compatibility validated (commit <sha>)
+- **Completion:** CI/CD pipeline compatibility validated (commit adc9734)
 - **References:** REQ-003
 - **Depends on:** TASK-003
 - **Modules touched:** `.github/workflows/`
@@ -56,7 +56,7 @@
   - **Then** the build passes and `audit-report.md` contains CI compatibility notes
 
 ## TASK-005 — Finalize migration plan
-- **Status:** `todo`
+- **Status:** `in_progress`
 - **References:** REQ-004
 - **Depends on:** TASK-004
 - **Modules touched:** `docs/specs/LG-90-upgrade-springboot/audit-report.md`
