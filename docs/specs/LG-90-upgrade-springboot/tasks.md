@@ -4,7 +4,8 @@
 > TASK-001 ──► TASK-002 ──► TASK-003 ──► TASK-004 ──► TASK-005 ──► TASK-006
 
 ## TASK-001 — Initialize audit environment and report structure
-- **Status:** `todo`
+- **Status:** `done`
+- **Completion:** Implemented audit report structure (commit af7032f)
 - **References:** REQ-001, ADR-001
 - **Depends on:** —
 - **Modules touched:** `docs/specs/LG-90-upgrade-springboot/`
