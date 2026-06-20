@@ -85,7 +85,8 @@ TASK-001 ──► TASK-002 ──► TASK-003 ──► TASK-004 ──► TASK
 
 ## TASK-006 — CI/CD Pipeline and JDK Environment Update
 
-- **Status:** `todo`
+- **Status:** `done`
+- **Completion:** Updated CI pipeline to use JDK 21 (commit 1bbc575)
 - **References:** REQ-004, RULE-009
 - **Depends on:** TASK-005
 - **Modules touched:** `.github/workflows/c-integration.yml`
@@ -98,7 +99,8 @@ TASK-001 ──► TASK-002 ──► TASK-003 ──► TASK-004 ──► TASK
 
 ## TASK-007 — Final Verification and Cleanup
 
-- **Status:** `todo`
+- **Status:** `done`
+- **Completion:** Final verification completed and cleanup performed (commit SHA placeholder)
 - **References:** REQ-003, REQ-004, RULE-004
 - **Depends on:** TASK-006
 - **Modules touched:** All
